@@ -1,7 +1,7 @@
 package textbox;
 
 import command.Command;
-import map.AMap;
+import map.BaseMap;
 
 public class TextBox {
     protected static String nextInstruction;
@@ -14,7 +14,7 @@ public class TextBox {
         nextNarration = "Welcome to Calcula: Chronicles of the Algorithmic Kingdom";
         nextError = "";
     }
-    public void nextTextBoxBasedOnMapAndCommand(Command userCommand, AMap map){
+    public void nextTextBoxBasedOnMapAndCommand(Command userCommand, BaseMap map){
 
     }
 

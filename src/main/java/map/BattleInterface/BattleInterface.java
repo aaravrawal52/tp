@@ -3,7 +3,7 @@ package map.BattleInterface;
 import interactable.Enemy;
 import interactable.InteractableEntity;
 import filereader.FileReader;
-import map.AMap;
+import map.BaseMap;
 import textbox.PlayerStatus;
 import textbox.TextBox;
 import ui.Ui;
@@ -14,7 +14,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BattleInterface extends AMap {
+public class BattleInterface extends BaseMap {
     protected PlayerStatus currentPlayer;
     protected TextBox currentTextBox;
     protected InteractableEntity currentEntity;
@@ -42,7 +42,7 @@ public class BattleInterface extends AMap {
             Pattern pattern = Pattern.compile("^[--]?[0-9]+$");
             Matcher matcher;
             ui.printPlayerStatus(currentPlayer);
-            ui.printMap(currentMap);
+            ui.printMap(currentMap, (Enemy) currentEntity);
             MathQuestion mathQuestion = mathPool.getQuestionByDifficulty(0);
             ui.printQuestion(mathQuestion);
             String answerCommand = in.nextLine().trim();

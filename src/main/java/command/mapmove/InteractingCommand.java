@@ -22,7 +22,7 @@ public class InteractingCommand extends MapMoveCommand {
             textBox.setNextInstruction("Will you [fight] or will you [run]?");
         }
 
-        AMap battleMap;
+        BaseMap battleMap;
         switch (entityInteractedWith) {
         case "@": //centaur
             int xPos = currentMap.getInteractX();
@@ -34,6 +34,12 @@ public class InteractingCommand extends MapMoveCommand {
             storedMaps.add(battleMap);
             currentOn = 1;
             break;
+        case "#":  //some shopkeeper
+            ShopKeeper shopkeeper = new ShopKeeper(null, "Hi welcome to my shop!");
+            currentMap = new ShopMap(playerStatus, textBox, shopkeeper);
+            break; //not done yet
+
+
         default:
             battleMap = new BattleInterface(null, null, null);
             break;

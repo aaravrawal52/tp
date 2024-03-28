@@ -1,6 +1,6 @@
 package map;
 
-public class FirstMap extends AMap{
+public class FirstMap extends BaseMap {
     protected String DIFFICULTY_MODIFIER = "easy"; //can use to determine question difficulty
 
     @Override

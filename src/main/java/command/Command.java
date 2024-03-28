@@ -1,7 +1,7 @@
 package command;
 
 import textbox.*;
-import map.AMap;
+import map.BaseMap;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ public abstract class Command {
     protected TextBox textBox;
     protected PlayerStatus playerStatus;
     protected String commandDescription;
-    protected AMap currentMap;
+    protected BaseMap currentMap;
 
     public abstract void execute();
 
@@ -28,11 +28,11 @@ public abstract class Command {
         return commandDescription;
     }
 
-    public AMap getCurrentMap() {
+    public BaseMap getCurrentMap() {
         return currentMap;
     }
 
-    public void setCurrentMap(AMap givenMap) {
+    public void setCurrentMap(BaseMap givenMap) {
         currentMap = givenMap;
     }
 

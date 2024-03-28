@@ -3,7 +3,7 @@ package map;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public abstract class AMap {
+public abstract class BaseMap {
 
     protected int width;
     protected int height;
@@ -12,7 +12,7 @@ public abstract class AMap {
     protected int playerY;
     protected String mapName;
 
-    public AMap() {
+    public BaseMap() {
 
     }
 
@@ -22,7 +22,7 @@ public abstract class AMap {
 
     }
 
-    public void initMap(int givenWidth, int givenHeight) {
+    public void initMap(int givenWidth, int givenHeight) { //creates a box of "." of a given width and height and width
         this.width = givenWidth;
         this.height = givenHeight;
         this.currentMap = new ArrayList<>(height);
