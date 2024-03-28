@@ -24,7 +24,7 @@ conditions, we will call the execute function with no parameter.
 
 ### Map Component
 
-The API of this component is defined in AMap.java.
+The API of this component is defined in BaseMap.java.
 
 Each map instance consists of a `currentMap` which stores a 2-dimensional array of characters which represents the 
 printed map for the player. All maps will come with a given `height` and `width`, all of these attributes are inherited

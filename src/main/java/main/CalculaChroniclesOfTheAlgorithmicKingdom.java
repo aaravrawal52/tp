@@ -1,26 +1,21 @@
 package main;
 
-import InteractableEntity.Enemy;
+import Hint.HintHandler;
 import command.Command;
-import command.*;
-import command.mapmove.InteractingCommand;
-import command.mapmove.MapMoveCommand;
 import map.*;
 import map.BattleInterface.BattleInterface;
 import parser.Parser;
 import textbox.PlayerStatus;
 import textbox.TextBox;
 import ui.Ui;
-import Math.*;
 
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Scanner;
 
 
 public class CalculaChroniclesOfTheAlgorithmicKingdom {
     public static int currentOn;
-    public static ArrayList<AMap> storedMaps = new ArrayList<>();
+    public static ArrayList<BaseMap> storedMaps = new ArrayList<>();
 
     public static void main(String[] args) {
         new CalculaChroniclesOfTheAlgorithmicKingdom().startGame();
@@ -32,8 +27,9 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         PlayerStatus playerStatus = new PlayerStatus(100, 0, 0);
         TextBox textBox = new TextBox();
         Parser parser = new Parser();
-        AMap map = new FirstMap();
+        BaseMap map = new FirstMap();
         Ui ui = new Ui();
+        HintHandler hints = new HintHandler(map, textBox);
 
         map.initMap(30, 10);
         map.initPlayerLocation(0, 0);
@@ -50,7 +46,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         Command userCommand;
         do {
             String userCommandText = in.nextLine();
-
+            hints.checkMapThenDisplayHint(); //handles invisible map triggers for hints
             userCommand = parser.parseCommand(userCommandText);
             setUserCommand(userCommand, storedMaps.get(currentOn), playerStatus, textBox);
 
@@ -74,7 +70,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         } while (!userCommand.getCommandDescription().equals("TIRED"));
     }
 
-    private static void setUserCommand(Command userCommand, AMap map, PlayerStatus playerStatus, TextBox textBox) {
+    private static void setUserCommand(Command userCommand, BaseMap map, PlayerStatus playerStatus, TextBox textBox) {
         userCommand.setCurrentMap(map);
         userCommand.setPlayerStatus(playerStatus);
         userCommand.setTextBox(textBox);

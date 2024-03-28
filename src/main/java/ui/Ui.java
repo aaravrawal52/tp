@@ -1,7 +1,7 @@
 package ui;
 
-import map.BattleInterface.BattleInterface;
-import map.AMap;
+import InteractableEntity.Enemy;
+import map.BaseMap;
 import textbox.PlayerStatus;
 import textbox.TextBox;
 import Math.*;
@@ -54,17 +54,45 @@ public class Ui {
         System.out.println(message);
         printDividingLine();
     }
-    public void printMap(ArrayList<ArrayList<Character>> map) {
+
+    public void printMap(ArrayList<ArrayList<Character>> map, Enemy monster) {
         printDividingLine();
-        for (ArrayList<Character> row : map) {
-            for (char cell : row) {
-                System.out.print(cell);
+        String healthInfo = " Health: " + monster.getHealth(); // Health information as a string
+
+        for (int rowIndex = 0; rowIndex < map.size(); rowIndex++) {
+            ArrayList<Character> row = map.get(rowIndex);
+
+            // Overlay the health information on the first row directly within the ASCII art
+            if (rowIndex == 0) {
+                StringBuilder firstRowWithHealth = getStringBuilder(row, healthInfo);
+                System.out.println(firstRowWithHealth.toString());
+            } else {
+                for (char cell : row) {
+                    System.out.print(cell);
+                }
+                System.out.println();
             }
-            System.out.println();
         }
         printDividingLine();
     }
-    public void printMap(AMap map) {
+
+    private static StringBuilder getStringBuilder(ArrayList<Character> row, String healthInfo) {
+        StringBuilder firstRowWithHealth = new StringBuilder();
+        for (int cellIndex = 0; cellIndex < row.size(); cellIndex++) {
+            // Append the art character until reaching the position to overlay health info
+            if (cellIndex < row.size() - healthInfo.length()) {
+                firstRowWithHealth.append(row.get(cellIndex));
+            } else {
+                // Start overlaying health info onto the map
+                int healthInfoIndex = cellIndex - (row.size() - healthInfo.length());
+                firstRowWithHealth.append(healthInfo.charAt(healthInfoIndex));
+            }
+        }
+        return firstRowWithHealth;
+    }
+
+
+    public void printMap(BaseMap map) {
         printDividingLine();
         for (ArrayList<Character> row : map.getCurrentMap()) {
             for (char cell : row) {
@@ -74,7 +102,7 @@ public class Ui {
         }
         printDividingLine();
     }
-    public void printEnemy(AMap map) {
+    public void printEnemy(BaseMap map) {
         printDividingLine();
         for (ArrayList<Character> row : map.getCurrentMap()) {
             for (char cell : row) {
