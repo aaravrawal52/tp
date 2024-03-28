@@ -1,7 +1,7 @@
 package map.BattleInterface;
 
-import InteractableEntity.Enemy;
-import InteractableEntity.InteractableEntity;
+import interactable.Enemy;
+import interactable.InteractableEntity;
 import filereader.FileReader;
 import map.BaseMap;
 import textbox.PlayerStatus;

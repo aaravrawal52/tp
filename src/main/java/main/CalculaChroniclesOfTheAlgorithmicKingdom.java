@@ -1,5 +1,6 @@
 package main;
 
+
 import Hint.HintHandler;
 import command.Command;
 import map.*;
