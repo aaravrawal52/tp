@@ -1,7 +1,6 @@
 package command.fight;
 
 import command.Command;
-import map.*;
 import map.BattleInterface.BattleInterface;
 
 import static main.CalculaChroniclesOfTheAlgorithmicKingdom.currentOn;

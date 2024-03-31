@@ -1,6 +1,7 @@
 package command;
 
-import textbox.*;
+import textbox.PlayerStatus;
+import textbox.TextBox;
 import map.BaseMap;
 
 import java.util.Scanner;

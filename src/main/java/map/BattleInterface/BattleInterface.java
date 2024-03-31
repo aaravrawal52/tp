@@ -7,7 +7,8 @@ import map.BaseMap;
 import textbox.PlayerStatus;
 import textbox.TextBox;
 import ui.Ui;
-import Math.*;
+import Math.MathQuestion;
+import Math.MathPool;
 
 import java.util.ArrayList;
 import java.util.Scanner;

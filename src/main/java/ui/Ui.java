@@ -1,10 +1,10 @@
 package ui;
 
-import InteractableEntity.Enemy;
+import interactable.Enemy;
 import map.BaseMap;
 import textbox.PlayerStatus;
 import textbox.TextBox;
-import Math.*;
+import Math.MathQuestion;
 import java.util.ArrayList;
 
 public class Ui {
