@@ -3,7 +3,8 @@ package main;
 
 import Hint.HintHandler;
 import command.Command;
-import map.*;
+import map.BaseMap;
+import map.FirstMap;
 import map.BattleInterface.BattleInterface;
 import parser.Parser;
 import textbox.PlayerStatus;

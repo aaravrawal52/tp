@@ -1,4 +1,4 @@
-package InteractableEntity;
+package interactable;
 
 import InventoryItems.Consumable;
 import InventoryItems.ShopItem;

@@ -1,7 +1,5 @@
 package filereader;
 
-import command.ErrorCommand;
-
 import java.io.*;
 import java.util.ArrayList;
 

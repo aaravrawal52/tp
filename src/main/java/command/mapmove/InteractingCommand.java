@@ -1,10 +1,16 @@
 package command.mapmove;
 
-import interactable.*;
-import interactable.enemies.*;
-import map.*;
+import interactable.InteractableEntity;
+import interactable.ShopKeeper;
+import interactable.enemies.Centaur;
+import map.BaseMap;
+import map.ShopMap;
 import map.BattleInterface.BattleInterface;
-import static main.CalculaChroniclesOfTheAlgorithmicKingdom.*;
+
+import java.util.Objects;
+
+import static main.CalculaChroniclesOfTheAlgorithmicKingdom.storedMaps;
+import static main.CalculaChroniclesOfTheAlgorithmicKingdom.currentOn;
 
 public class InteractingCommand extends MapMoveCommand {
 
@@ -14,7 +20,7 @@ public class InteractingCommand extends MapMoveCommand {
     @Override
     public void execute() {
         String entityInteractedWith = currentMap.handleInteract();
-        if (entityInteractedWith == "no interaction"){
+        if (Objects.equals(entityInteractedWith, "no interaction")){
             textBox.setNextNarration("Nothing to interact with here");
         }
         else{
