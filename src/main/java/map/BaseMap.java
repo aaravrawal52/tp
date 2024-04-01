@@ -22,18 +22,7 @@ public abstract class BaseMap {
 
     }
 
-    public void initMap(int givenWidth, int givenHeight) { //creates a box of "." of a given width and height and width
-        this.width = givenWidth;
-        this.height = givenHeight;
-        this.currentMap = new ArrayList<>(height);
-
-        for (int i = 0; i < height; i += 1) {
-            ArrayList<Character> row = new ArrayList<>(width);
-            for (int j = 0; j < width; j += 1) {
-                row.add('.');
-            }
-            currentMap.add(row);
-        }
+    public void initMap(int givenWidth, int givenHeight) {
     }
 
     public ArrayList<ArrayList<Character>> getCurrentMap() {
@@ -41,10 +30,18 @@ public abstract class BaseMap {
     }
 
     public void initPlayerLocation(int x, int y) {
+
         if (x >= 0 && x < width && y >= 0 && y < height) {
             currentMap.get(y).set(x, 'P');
             this.playerX = x;
             this.playerY = y;
+        }
+
+    }
+
+    public void initShopLocation(int x, int y) {
+        if (x >= 0 && x < width && y >= 0 && y < height) {
+            currentMap.get(y).set(x, '#');
         }
     }
 
@@ -159,12 +156,19 @@ public abstract class BaseMap {
     }
 
     public abstract boolean getEntityDeath();
+
     public abstract boolean getPlayerDeath();
+
     public abstract void handleDeath();
+
     public abstract void handleLootingByPlayer();
 
-    public void placeMonsterInTheMap(int x, int y) {
-        currentMap.get(y).set(x, '@');
+    public void placeMonsterInTheMap(int x, int y, Character monsterType) {
+        currentMap.get(y).set(x, monsterType);
+    }
+
+    public Character getCurrentMapInfo(int x, int y) {
+        return currentMap.get(y).get(x);
     }
 
     public int getPlayerX() {
@@ -173,5 +177,13 @@ public abstract class BaseMap {
 
     public int getPlayerY() {
         return playerY;
+    }
+    public void printMap(){
+        for(int i = 0; i < height; i++){
+            for (int j = 0;  j < width; j++){
+                System.out.print(currentMap.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
     }
 }
