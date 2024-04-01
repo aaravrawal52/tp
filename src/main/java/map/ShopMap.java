@@ -1,5 +1,6 @@
 package map;
 
+import interactable.InteractableEntity;
 import interactable.ShopKeeper;
 import filereader.FileReader;
 import textbox.PlayerStatus;
