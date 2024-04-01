@@ -37,12 +37,14 @@ public class InteractingCommand extends MapMoveCommand {
             textBox.setNextDialogue("*the " + monster.getName() + " stares at you menacingly*");
             battleMap = new BattleInterface(playerStatus, textBox, monster);
             battleMap.initMap(30, monster.getHeight());
-            storedMaps.add(battleMap);
             currentOn = 1;
+            storedMaps.set(currentOn, battleMap);
             break;
         case "#":  //some shopkeeper
-            ShopKeeper shopkeeper = new ShopKeeper(null, "Hi welcome to my shop!");
-            currentMap = new ShopMap(playerStatus, textBox, shopkeeper);
+            InteractableEntity shopkeeper = new ShopKeeper("resources/ShopKeeper/ShopKeeper", "Hi welcome to my shop!");
+            currentMap = new ShopMap(playerStatus, textBox, (ShopKeeper) shopkeeper);
+            currentOn = 2;
+            storedMaps.set(currentOn, currentMap);
             break; //not done yet
 
 

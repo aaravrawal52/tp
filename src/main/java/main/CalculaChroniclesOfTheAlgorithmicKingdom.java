@@ -6,6 +6,7 @@ import command.Command;
 import map.BaseMap;
 import map.FirstMap;
 import map.BattleInterface.BattleInterface;
+import map.ShopMap;
 import parser.Parser;
 import textbox.PlayerStatus;
 import textbox.TextBox;
@@ -37,8 +38,10 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         MapGenerator.getInstance().generateMap(map);
         textBox.initTextBox();
         currentOn = 0;
-        storedMaps.add(map);
-        assert storedMaps.size() == 1;
+        storedMaps.add(map); //map for player traversal index 0
+        storedMaps.add(new BattleInterface(null, null, null)); //map for battles to take place index 1
+        storedMaps.add(new ShopMap(null, null, null)); //map for shop index 2
+        assert storedMaps.size() == 3;
 
         ui.printPlayerStatus(playerStatus);
         ui.printMap(storedMaps.get(currentOn));
