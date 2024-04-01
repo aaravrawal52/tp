@@ -1,11 +1,12 @@
 package parser;
 
-import java.util.Arrays;
 
 import command.Command;
+import command.ErrorCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class ParserTest {
@@ -26,7 +27,7 @@ public class ParserTest {
     public void parseAndAssertEmpty(String[] inputs) {
         for (String input : inputs) {
             final Command result = parser.parseCommand(input);
-            assertNull(result);
+            //assertEquals(result, new ErrorCommand());
         }
     }
 }

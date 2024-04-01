@@ -4,6 +4,7 @@ package command.mapmove;
 public class MovingRightCommand extends MapMoveCommand {
     public MovingRightCommand(String userInput) {
         super(userInput);
+        commandDescription = "Right";
     }
 
     @Override

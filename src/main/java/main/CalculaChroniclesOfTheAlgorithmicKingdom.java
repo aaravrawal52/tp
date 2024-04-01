@@ -13,6 +13,7 @@ import ui.Ui;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import map.MapGenerator;
 
 
 public class CalculaChroniclesOfTheAlgorithmicKingdom {
@@ -33,9 +34,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         Ui ui = new Ui();
         HintHandler hints = new HintHandler(map, textBox);
 
-        map.initMap(30, 10);
-        map.initPlayerLocation(0, 0);
-        map.placeMonsterInTheMap(2, 3);
+        MapGenerator.getInstance().generateMap(map);
         textBox.initTextBox();
         currentOn = 0;
         storedMaps.add(map);
@@ -52,24 +51,32 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
             userCommand = parser.parseCommand(userCommandText);
             setUserCommand(userCommand, storedMaps.get(currentOn), playerStatus, textBox);
 
-            if (userCommand.getCommandDescription().equals("FIGHT!")) {
-                userCommand.execute(in);
-            } else {
-                userCommand.execute();
-            }
+            executeCommand(userCommand, in);
 
-            if (!userCommand.getCommandDescription().equals("HelpMe!!") &&
-                    !userCommand.getCommandDescription().equals("TIRED")) {
-                ui.printPlayerStatus(playerStatus);
-                if (storedMaps.get(currentOn) instanceof BattleInterface) {
-                    ui.printEnemy(storedMaps.get(currentOn));
-                } else {
-                    ui.printMap(storedMaps.get(currentOn));
-                }
-                ui.printTextBox(textBox);
-            }
+            printMessageUnderMap(userCommand, ui, playerStatus, textBox);
 
         } while (!userCommand.getCommandDescription().equals("TIRED"));
+    }
+
+    private static void printMessageUnderMap(Command userCommand, Ui ui, PlayerStatus playerStatus, TextBox textBox) {
+        if (!userCommand.getCommandDescription().equals("HelpMe!!") &&
+                !userCommand.getCommandDescription().equals("TIRED")) {
+            ui.printPlayerStatus(playerStatus);
+            if (storedMaps.get(currentOn) instanceof BattleInterface) {
+                ui.printEnemy(storedMaps.get(currentOn));
+            } else {
+                ui.printMap(storedMaps.get(currentOn));
+            }
+            ui.printTextBox(textBox);
+        }
+    }
+
+    private static void executeCommand(Command userCommand, Scanner in) {
+        if (userCommand.getCommandDescription().equals("FIGHT!")) {
+            userCommand.execute(in);
+        } else {
+            userCommand.execute();
+        }
     }
 
     private static void setUserCommand(Command userCommand, BaseMap map, PlayerStatus playerStatus, TextBox textBox) {
