@@ -3,8 +3,8 @@ package command.fight;
 import command.Command;
 import map.BattleInterface.BattleInterface;
 
-import static main.CalculaChroniclesOfTheAlgorithmicKingdom.currentOn;
-import static main.CalculaChroniclesOfTheAlgorithmicKingdom.storedMaps;
+import static map.BaseMap.currentOn;
+import static map.BaseMap.storedMaps;
 
 public class RunningCommand extends Command {
     public RunningCommand() {

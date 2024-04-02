@@ -5,16 +5,17 @@ import interactable.enemies.Gryphon;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MapGenerator {
-    public static final Character CENTAUR = '@';
-    public static final Character DEMON = '$';
-    public static final Character DRAGON= '%';
-    public static final Character GOBLIN = '^';
-    public static final Character GRYPHON = '&';
+    public static final char FIRST_MAP_IDENTITY = '!';
+    public static final char SHOP = '#';
+    public static final char CENTAUR = '@';
+    public static final char DEMON = '$';
+    public static final char DRAGON= '%';
+    public static final char GOBLIN = '^';
+    public static final char GRYPHON = '&';
 
     private static final int MIN = 0;
     private static final int MAX = 999;
     private static MapGenerator mapGen = null;
-    protected BaseMap mapToGenerate;
 
     private MapGenerator() {
 

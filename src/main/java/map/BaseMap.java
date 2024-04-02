@@ -1,10 +1,14 @@
 package map;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public abstract class BaseMap {
 
+    public static int currentOn;
+    public static ArrayList<BaseMap> storedMaps = new ArrayList<>();
+    public static HashMap<Character, Integer> mapIndex = new HashMap<>();
     protected int width;
     protected int height;
     protected ArrayList<ArrayList<Character>> currentMap;
@@ -19,10 +23,12 @@ public abstract class BaseMap {
     public abstract void fightLoop();
 
     public void fightLoop(Scanner in) {
-
+        assert in != null;
     }
 
     public void initMap(int givenWidth, int givenHeight) {
+        assert givenHeight != 0;
+        assert givenWidth != 0;
     }
 
     public ArrayList<ArrayList<Character>> getCurrentMap() {
@@ -163,7 +169,7 @@ public abstract class BaseMap {
 
     public abstract void handleLootingByPlayer();
 
-    public void placeMonsterInTheMap(int x, int y, Character monsterType) {
+    public void placeMonsterInTheMap(int x, int y, char monsterType) {
         currentMap.get(y).set(x, monsterType);
     }
 

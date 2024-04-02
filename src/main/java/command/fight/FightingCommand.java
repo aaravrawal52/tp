@@ -1,7 +1,7 @@
 package command.fight;
 import command.Command;
-import static main.CalculaChroniclesOfTheAlgorithmicKingdom.storedMaps;
-import static main.CalculaChroniclesOfTheAlgorithmicKingdom.currentOn;
+import static map.BaseMap.storedMaps;
+import static map.BaseMap.currentOn;
 import java.util.Scanner;
 
 
