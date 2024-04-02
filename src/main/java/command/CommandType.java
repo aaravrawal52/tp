@@ -13,7 +13,7 @@ public enum CommandType {
     ERROR("");
     final String regExpression;
 
-    private CommandType(String regExpression) {
+    CommandType(String regExpression) {
         this.regExpression = regExpression;
     }
 
