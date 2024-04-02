@@ -2,6 +2,7 @@ package interactable;
 
 import InventoryItems.Consumable;
 import InventoryItems.ShopItem;
+import main.CalculaChroniclesOfTheAlgorithmicKingdom;
 
 import java.util.ArrayList;
 
@@ -9,6 +10,7 @@ public class ShopKeeper extends InteractableEntity{
     protected ArrayList<ShopItem> shopItems;
     protected String defaultMessgage; //whatever the guy says to introduce his items
     protected String filePath;
+
 
     public ShopKeeper(String filePathway, String message){
         //addConsumable();

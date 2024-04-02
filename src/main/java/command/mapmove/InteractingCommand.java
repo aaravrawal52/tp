@@ -45,6 +45,7 @@ public class InteractingCommand extends MapMoveCommand {
             ShopKeeper shopkeeper = new ShopKeeper("src/main/resources/ShopKeeper/ShopKeeper", "Hi welcome to my shop!");
             shopMap = new ShopMap(playerStatus, textBox, shopkeeper);
             shopMap.initMap(30, 0); // Set appropriate width and height
+            //shopMap.printShopItems();
             currentOn = 2;
             storedMaps.set(currentOn, shopMap);
 

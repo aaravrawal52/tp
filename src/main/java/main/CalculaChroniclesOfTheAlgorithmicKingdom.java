@@ -14,6 +14,7 @@ import ui.Ui;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import map.MapGenerator;
 
 
