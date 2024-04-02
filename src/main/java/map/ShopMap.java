@@ -17,9 +17,34 @@ public class ShopMap extends BaseMap{
         this.currentPlayer = player;
         this.currentTextBox = text;
         this.currentEntity = entity;
+        //this.currentMap = new ArrayList<>(height);
+        //loadShopMap();
+
+    }
+    @Override
+    public void initMap(int givenWidth, int givenHeight) {
+        this.width = givenWidth;
+        this.height = givenHeight;
+        this.currentMap = new ArrayList<>(height);
+        FileReader fileReader = new FileReader(currentEntity.getFilePath());
+        try {
+            currentMap = fileReader.readShopMapDesign();
+        } catch (Exception e) {
+            // display exception, see how sihan wants to do.
+        }
     }
 
-    public void initMap(int givenWidth, int givenHeight) { //copied from battle interface
+    private void loadShopMap() {
+        FileReader fileReader = new FileReader(currentEntity.getFilePath());
+        try {
+            currentMap = fileReader.readShopMapDesign();
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle exception accordingly
+        }
+    }
+
+
+   /* public void initMap(int givenWidth, int givenHeight) { //copied from battle interface
         this.width = givenWidth;
         this.height = givenHeight;
         this.currentMap = new ArrayList<>(height);
@@ -30,7 +55,7 @@ public class ShopMap extends BaseMap{
         } catch (Exception e) {
             // display exception, see how sihan wants to do.
         }
-    }
+    }*/
 
     public void queueTextBox(){
         currentTextBox.setNextNarration("Welcome to " + currentEntity.getName() + "'s shop");

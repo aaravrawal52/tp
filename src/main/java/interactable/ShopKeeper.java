@@ -8,9 +8,12 @@ import java.util.ArrayList;
 public class ShopKeeper extends InteractableEntity{
     protected ArrayList<ShopItem> shopItems;
     protected String defaultMessgage; //whatever the guy says to introduce his items
+    protected String filePath;
+
     public ShopKeeper(String filePathway, String message){
         //addConsumable();
-        defaultMessgage = message;
+        this.filePath = filePathway;
+        this.defaultMessgage = message;
 
     }
 
@@ -63,6 +66,7 @@ public class ShopKeeper extends InteractableEntity{
 
     @Override
     public String getFilePath() {
-        return null;
+        return filePath;
     }
+
 }

@@ -41,12 +41,16 @@ public class InteractingCommand extends MapMoveCommand {
             storedMaps.set(currentOn, battleMap);
             break;
         case "#":  //some shopkeeper
-            InteractableEntity shopkeeper = new ShopKeeper("resources/ShopKeeper/ShopKeeper", "Hi welcome to my shop!");
-            currentMap = new ShopMap(playerStatus, textBox, (ShopKeeper) shopkeeper);
+            ShopMap shopMap;
+            ShopKeeper shopkeeper = new ShopKeeper("/Users/aaravrawal/cs2103/tp/src/main/resources/ShopKeeper/ShopKeeper", "Hi welcome to my shop!");
+            shopMap = new ShopMap(playerStatus, textBox, shopkeeper);
+            shopMap.initMap(30, 20); // Set appropriate width and height
             currentOn = 2;
-            storedMaps.set(currentOn, currentMap);
-            break; //not done yet
+            storedMaps.set(currentOn, shopMap);
 
+            //((ShopMap) battleMap).interact(textBox); // Interact with the shop
+            textBox.setNextNarration("Welcome to shop");
+            break;
 
         default:
             battleMap = new BattleInterface(null, null, null);
