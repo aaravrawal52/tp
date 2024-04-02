@@ -8,7 +8,8 @@ import command.mapmove.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static main.CalculaChroniclesOfTheAlgorithmicKingdom.*;
+import static map.BaseMap.*;
+import static map.MapGenerator.*;
 
 public class Parser {
 
@@ -33,28 +34,28 @@ public class Parser {
 
         switch (commandType) {
         case FIGHT:
-            command = (currentOn != FIRST_MAP) ? new FightingCommand() : new ErrorCommand();
+            command = (currentOn != mapIndex.get(FIRST_MAP_IDENTITY)) ? new FightingCommand() : new ErrorCommand();
             break;
         case RUN:
-            command = (currentOn != FIRST_MAP) ? new RunningCommand() : new ErrorCommand();
+            command = (currentOn != mapIndex.get(FIRST_MAP_IDENTITY)) ? new RunningCommand() : new ErrorCommand();
             break;
         case MOVE_FORWARD:
-            command = (currentOn == FIRST_MAP) ? new MovingForwardCommand(userCommand) : new ErrorCommand();
+            command = (currentOn == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingForwardCommand(userCommand) : new ErrorCommand();
             break;
         case MOVE_DOWNWARD:
-            command = (currentOn == FIRST_MAP) ? new MovingDownwardCommand(userCommand) : new ErrorCommand();
+            command = (currentOn == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingDownwardCommand(userCommand) : new ErrorCommand();
             break;
         case MOVE_LEFT:
-            command = (currentOn == FIRST_MAP) ? new MovingLeftCommand(userCommand) : new ErrorCommand();
+            command = (currentOn == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingLeftCommand(userCommand) : new ErrorCommand();
             break;
         case MOVE_RIGHT:
-            command = (currentOn == FIRST_MAP) ? new MovingRightCommand(userCommand) : new ErrorCommand();
+            command = (currentOn == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingRightCommand(userCommand) : new ErrorCommand();
             break;
         case QUIT:
             command = new QuitCommand();
             break;
         case INTERACT:
-            command = (currentOn == FIRST_MAP) ? new InteractingCommand() : new ErrorCommand();
+            command = (currentOn == mapIndex.get(FIRST_MAP_IDENTITY)) ? new InteractingCommand() : new ErrorCommand();
             break;
         case HELP:
             command = new HelpCommand();

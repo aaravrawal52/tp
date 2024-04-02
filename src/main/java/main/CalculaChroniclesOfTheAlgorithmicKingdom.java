@@ -12,14 +12,13 @@ import textbox.PlayerStatus;
 import textbox.TextBox;
 import ui.Ui;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import map.MapGenerator;
+import static map.BaseMap.*;
+import static map.MapGenerator.*;
 
 
 public class CalculaChroniclesOfTheAlgorithmicKingdom {
-    public static int currentOn;
-    public static ArrayList<BaseMap> storedMaps = new ArrayList<>();
 
     public static void main(String[] args) {
         new CalculaChroniclesOfTheAlgorithmicKingdom().startGame();
@@ -37,11 +36,11 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
 
         MapGenerator.getInstance().generateMap(map);
         textBox.initTextBox();
+
         currentOn = 0;
-        storedMaps.add(map); //map for player traversal index 0
-        storedMaps.add(new BattleInterface(null, null, null)); //map for battles to take place index 1
-        storedMaps.add(new ShopMap(null, null, null)); //map for shop index 2
-        assert storedMaps.size() == 3;
+        storedMaps.add(map);
+        mapIndex.put(FIRST_MAP_IDENTITY, storedMaps.size() - 1);
+
 
         ui.printPlayerStatus(playerStatus);
         ui.printMap(storedMaps.get(currentOn));
