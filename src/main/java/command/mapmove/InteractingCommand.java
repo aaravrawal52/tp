@@ -23,7 +23,7 @@ public class InteractingCommand extends MapMoveCommand {
         if (Objects.equals(entityInteractedWith, "no interaction")){
             textBox.setNextNarration("Nothing to interact with here");
         }
-        else{
+        else if (Objects.equals(entityInteractedWith, "@")){
             textBox.setNextNarration(entityInteractedWith + " appears in your path. What will you do?");
             textBox.setNextInstruction("Will you [fight] or will you [run]?");
         }
@@ -36,20 +36,20 @@ public class InteractingCommand extends MapMoveCommand {
             InteractableEntity monster = new Centaur(10, 10, 10, xPos, yPos, 10, 10);
             textBox.setNextDialogue("*the " + monster.getName() + " stares at you menacingly*");
             battleMap = new BattleInterface(playerStatus, textBox, monster);
-            battleMap.initMap(30, monster.getHeight());
+            battleMap.initMap(30, 0);
             currentOn = 1;
             storedMaps.set(currentOn, battleMap);
             break;
         case "#":  //some shopkeeper
             ShopMap shopMap;
-            ShopKeeper shopkeeper = new ShopKeeper("/Users/aaravrawal/cs2103/tp/src/main/resources/ShopKeeper/ShopKeeper", "Hi welcome to my shop!");
+            ShopKeeper shopkeeper = new ShopKeeper("src/main/resources/ShopKeeper/ShopKeeper", "Hi welcome to my shop!");
             shopMap = new ShopMap(playerStatus, textBox, shopkeeper);
-            shopMap.initMap(30, 20); // Set appropriate width and height
+            shopMap.initMap(30, 0); // Set appropriate width and height
             currentOn = 2;
             storedMaps.set(currentOn, shopMap);
 
             //((ShopMap) battleMap).interact(textBox); // Interact with the shop
-            textBox.setNextNarration("Welcome to shop");
+            textBox.setNextNarration(shopkeeper.getDefaultMessgage());
             break;
 
         default:

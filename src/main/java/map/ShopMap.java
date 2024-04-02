@@ -34,14 +34,6 @@ public class ShopMap extends BaseMap{
         }
     }
 
-    private void loadShopMap() {
-        FileReader fileReader = new FileReader(currentEntity.getFilePath());
-        try {
-            currentMap = fileReader.readShopMapDesign();
-        } catch (Exception e) {
-            e.printStackTrace(); // Handle exception accordingly
-        }
-    }
 
 
    /* public void initMap(int givenWidth, int givenHeight) { //copied from battle interface
