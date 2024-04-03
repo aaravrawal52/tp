@@ -23,7 +23,7 @@ public class InteractingCommand extends MapMoveCommand {
         String entityInteractedWith = currentMap.handleInteract();
         if (Objects.equals(entityInteractedWith, "no interaction")) {
             textBox.setNextNarration("Nothing to interact with here");
-        } else {
+        } else if (Objects.equals(entityInteractedWith, "@")) {
             textBox.setNextNarration(entityInteractedWith + " appears in your path. What will you do?");
             textBox.setNextInstruction("Will you [fight] or will you [run]?");
         }
@@ -39,6 +39,7 @@ public class InteractingCommand extends MapMoveCommand {
             monster = new Centaur(10, 10, 10, xPos, yPos, 10, 10);
             textBox.setNextDialogue("*the " + monster.getName() + " stares at you menacingly*");
             battleMap = new BattleInterface(playerStatus, textBox, monster);
+
             battleMap.initMap(30, monster.getHeight());
             storedMaps.add(battleMap);
             mapIndex.put(CENTAUR, storedMaps.size() - 1);
@@ -81,12 +82,20 @@ public class InteractingCommand extends MapMoveCommand {
             BaseMap.currentMap = mapIndex.get(GRYPHON);
             break;
         case SHOP:  //some shopkeeper
-            ShopKeeper shopkeeper = new ShopKeeper("resources/ShopKeeper/ShopKeeper", "Hi welcome to my shop!");
-            currentMap = new ShopMap(playerStatus, textBox, shopkeeper);
-            storedMaps.add(currentMap);
+            ShopMap shopMap;
+            ShopKeeper shopkeeper = new ShopKeeper("src/main/resources/ShopKeeper/ShopKeeper", "Hi welcome to my shop!");
+            shopMap = new ShopMap(playerStatus, textBox, shopkeeper);
+            shopMap.initMap(30, 0); // Set appropriate width and height
+            //shopMap.printShopItems();
+            storedMaps.add(shopMap);
+
             mapIndex.put(SHOP, storedMaps.size() - 1);
             BaseMap.currentMap = mapIndex.get(SHOP);
-            break; //not done yet
+
+            //((ShopMap) battleMap).interact(textBox); // Interact with the shop
+            textBox.setNextNarration(shopkeeper.getDefaultMessgage());
+            break;
+
         default:
             battleMap = new BattleInterface(null, null, null);
             break;

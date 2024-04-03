@@ -12,6 +12,7 @@ import textbox.TextBox;
 import ui.Ui;
 
 import java.util.Scanner;
+
 import map.MapGenerator;
 import static map.BaseMap.mapIndex;
 import static map.BaseMap.storedMaps;
