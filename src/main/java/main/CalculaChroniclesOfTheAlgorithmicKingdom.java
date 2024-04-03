@@ -6,7 +6,6 @@ import command.Command;
 import map.BaseMap;
 import map.FirstMap;
 import map.BattleInterface.BattleInterface;
-import map.ShopMap;
 import parser.Parser;
 import textbox.PlayerStatus;
 import textbox.TextBox;
@@ -14,11 +13,17 @@ import ui.Ui;
 
 import java.util.Scanner;
 import map.MapGenerator;
-import static map.BaseMap.*;
-import static map.MapGenerator.*;
+import static map.BaseMap.mapIndex;
+import static map.BaseMap.storedMaps;
+import static map.BaseMap.currentMap;
+import static map.MapGenerator.FIRST_MAP_IDENTITY;
 
 
 public class CalculaChroniclesOfTheAlgorithmicKingdom {
+
+    public static final int START_HEALTH = 100;
+    public static final int START_MONEY = 0;
+    public static final int START_EXP = 0;
 
     public static void main(String[] args) {
         new CalculaChroniclesOfTheAlgorithmicKingdom().startGame();
@@ -27,7 +32,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
     public void startGame() {
         Scanner in = new Scanner(System.in);
 
-        PlayerStatus playerStatus = new PlayerStatus(100, 0, 0);
+        PlayerStatus playerStatus = new PlayerStatus(START_HEALTH, START_MONEY, START_EXP);
         TextBox textBox = new TextBox();
         Parser parser = new Parser();
         BaseMap map = new FirstMap();
@@ -37,13 +42,13 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         MapGenerator.getInstance().generateMap(map);
         textBox.initTextBox();
 
-        currentOn = 0;
         storedMaps.add(map);
         mapIndex.put(FIRST_MAP_IDENTITY, storedMaps.size() - 1);
+        currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
 
 
         ui.printPlayerStatus(playerStatus);
-        ui.printMap(storedMaps.get(currentOn));
+        ui.printMap(storedMaps.get(currentMap));
         ui.printTextBox(textBox);
 
         Command userCommand;
@@ -51,7 +56,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
             String userCommandText = in.nextLine();
             hints.checkMapThenDisplayHint(); //handles invisible map triggers for hints
             userCommand = parser.parseCommand(userCommandText);
-            setUserCommand(userCommand, storedMaps.get(currentOn), playerStatus, textBox);
+            setUserCommand(userCommand, storedMaps.get(currentMap), playerStatus, textBox);
 
             executeCommand(userCommand, in);
 
@@ -64,10 +69,10 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         if (!userCommand.getCommandDescription().equals("HelpMe!!") &&
                 !userCommand.getCommandDescription().equals("TIRED")) {
             ui.printPlayerStatus(playerStatus);
-            if (storedMaps.get(currentOn) instanceof BattleInterface) {
-                ui.printEnemy(storedMaps.get(currentOn));
+            if (storedMaps.get(currentMap) instanceof BattleInterface) {
+                ui.printEnemy(storedMaps.get(currentMap));
             } else {
-                ui.printMap(storedMaps.get(currentOn));
+                ui.printMap(storedMaps.get(currentMap));
             }
             ui.printTextBox(textBox);
         }

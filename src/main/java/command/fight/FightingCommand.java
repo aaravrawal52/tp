@@ -1,8 +1,12 @@
 package command.fight;
 import command.Command;
-import static map.BaseMap.storedMaps;
-import static map.BaseMap.currentOn;
+import map.BaseMap;
+
 import java.util.Scanner;
+
+import static map.BaseMap.mapIndex;
+import static map.BaseMap.storedMaps;
+import static map.MapGenerator.FIRST_MAP_IDENTITY;
 
 
 public class FightingCommand extends Command {
@@ -16,12 +20,12 @@ public class FightingCommand extends Command {
 
     @Override
     public void execute(Scanner in) {
-        currentMap.fightLoop(in);
-        currentOn = 0;
+        currentMap.enableFight(in);
+        BaseMap.currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
         if (currentMap.getEntityDeath()){
-            int xPos = storedMaps.get(currentOn).getInteractX();
-            int yPos = storedMaps.get(currentOn).getInteractY();
-            storedMaps.get(currentOn).clearSpot(xPos, yPos);
+            int xPos = storedMaps.get(BaseMap.currentMap).getInteractX();
+            int yPos = storedMaps.get(BaseMap.currentMap).getInteractY();
+            storedMaps.get(BaseMap.currentMap).clearSpot(xPos, yPos);
             currentMap.handleLootingByPlayer();
         }
         else if (currentMap.getPlayerDeath()){

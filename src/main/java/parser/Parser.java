@@ -1,15 +1,25 @@
 package parser;
 
-import command.*;
+import command.CommandType;
 import command.fight.FightingCommand;
 import command.fight.RunningCommand;
-import command.mapmove.*;
+import command.mapmove.InteractingCommand;
+import command.mapmove.MovingDownwardCommand;
+import command.mapmove.MovingForwardCommand;
+import command.mapmove.MovingLeftCommand;
+import command.mapmove.MovingRightCommand;
+import command.ErrorCommand;
+import command.HelpCommand;
+import command.QuitCommand;
+import command.Command;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static map.BaseMap.*;
-import static map.MapGenerator.*;
+
+import static map.BaseMap.currentMap;
+import static map.BaseMap.mapIndex;
+import static map.MapGenerator.FIRST_MAP_IDENTITY;
 
 public class Parser {
 
@@ -34,28 +44,28 @@ public class Parser {
 
         switch (commandType) {
         case FIGHT:
-            command = (currentOn != mapIndex.get(FIRST_MAP_IDENTITY)) ? new FightingCommand() : new ErrorCommand();
+            command = (currentMap != mapIndex.get(FIRST_MAP_IDENTITY)) ? new FightingCommand() : new ErrorCommand();
             break;
         case RUN:
-            command = (currentOn != mapIndex.get(FIRST_MAP_IDENTITY)) ? new RunningCommand() : new ErrorCommand();
+            command = (currentMap != mapIndex.get(FIRST_MAP_IDENTITY)) ? new RunningCommand() : new ErrorCommand();
             break;
         case MOVE_FORWARD:
-            command = (currentOn == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingForwardCommand(userCommand) : new ErrorCommand();
+            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingForwardCommand(userCommand) : new ErrorCommand();
             break;
         case MOVE_DOWNWARD:
-            command = (currentOn == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingDownwardCommand(userCommand) : new ErrorCommand();
+            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingDownwardCommand(userCommand) : new ErrorCommand();
             break;
         case MOVE_LEFT:
-            command = (currentOn == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingLeftCommand(userCommand) : new ErrorCommand();
+            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingLeftCommand(userCommand) : new ErrorCommand();
             break;
         case MOVE_RIGHT:
-            command = (currentOn == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingRightCommand(userCommand) : new ErrorCommand();
+            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingRightCommand(userCommand) : new ErrorCommand();
             break;
         case QUIT:
             command = new QuitCommand();
             break;
         case INTERACT:
-            command = (currentOn == mapIndex.get(FIRST_MAP_IDENTITY)) ? new InteractingCommand() : new ErrorCommand();
+            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ? new InteractingCommand() : new ErrorCommand();
             break;
         case HELP:
             command = new HelpCommand();
