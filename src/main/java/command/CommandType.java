@@ -10,6 +10,8 @@ public enum CommandType {
     INTERACT("(?i)\\h*(e)\\h*"),
     QUIT("(?i)\\h*(q|quit)\\h*"),
     HELP("(?i)\\h*(h|help)\\h*"),
+    EXIT("(?i)\\h*(exit)\\h*"), // New command: EXIT
+
     ERROR("");
     final String regExpression;
 

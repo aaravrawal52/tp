@@ -3,11 +3,7 @@ package parser;
 import command.CommandType;
 import command.fight.FightingCommand;
 import command.fight.RunningCommand;
-import command.mapmove.InteractingCommand;
-import command.mapmove.MovingDownwardCommand;
-import command.mapmove.MovingForwardCommand;
-import command.mapmove.MovingLeftCommand;
-import command.mapmove.MovingRightCommand;
+import command.mapmove.*;
 import command.ErrorCommand;
 import command.HelpCommand;
 import command.QuitCommand;
@@ -20,6 +16,7 @@ import java.util.regex.Pattern;
 import static map.BaseMap.currentMap;
 import static map.BaseMap.mapIndex;
 import static map.MapGenerator.FIRST_MAP_IDENTITY;
+import static map.MapGenerator.SHOP;
 
 public class Parser {
 
@@ -45,6 +42,9 @@ public class Parser {
         switch (commandType) {
         case FIGHT:
             command = (currentMap != mapIndex.get(FIRST_MAP_IDENTITY)) ? new FightingCommand() : new ErrorCommand();
+            break;
+        case EXIT:
+            command = (currentMap == mapIndex.get(SHOP)) ? new ExitShop() : new ErrorCommand();
             break;
         case RUN:
             command = (currentMap != mapIndex.get(FIRST_MAP_IDENTITY)) ? new RunningCommand() : new ErrorCommand();
