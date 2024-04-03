@@ -1,0 +1,118 @@
+@startuml
+
+box Battle Component
+participant "CalculaChroniclesOfTheAlgorithmicKingdom" as main
+participant ":UI" as ui
+participant ":Parser" as parser
+participant ":TextBox" as text
+participant ":InteractingCommand" as iCommand
+participant ":Enemy" as e
+participant ":BattleInterface" as bi
+participant ":ShopKeeper" as staff
+participant ":ShopMap" as shopMap
+participant ":FileReader" as fileReader
+participant ":Map" as map
+
+activate main
+main -> parser : parseCommand(userCommandText)
+activate parser
+create iCommand
+parser -> iCommand
+activate iCommand
+iCommand --> parser
+deactivate iCommand
+parser --> main : command class
+deactivate parser
+main -> main : executeCommand()
+activate main
+main -> iCommand : execute()
+activate iCommand
+iCommand -> map : handleInteract()
+activate map
+map --> iCommand : entity
+deactivate map
+alt noEntityToInteract
+    iCommand -> text : setNextNarration(narration)
+    activate text
+    text --> iCommand
+    deactivate text
+else hasEntityToInteract
+    iCommand -> text : setNextNarration(narration)
+    activate text
+    text --> iCommand
+    deactivate text
+    iCommand -> text : setNextInstruction(instruction)
+    activate text
+    text --> iCommand
+    deactivate text
+end
+iCommand -> map : getInteractX()
+activate map
+map --> iCommand : x coordinate
+deactivate map
+iCommand -> map : getInteractY()
+activate map
+map --> iCommand : y coordinate
+deactivate map
+alt is enemy
+    create e
+    iCommand -> e
+    activate e
+    e --> iCommand
+    deactivate e
+    iCommand -> text : setNextDialogue(dialogue)
+    activate text
+    text -> iCommand
+    deactivate text
+    create bi
+    iCommand -> bi
+    activate bi
+    bi --> iCommand
+    deactivate bi
+    iCommand -> bi : initMap(width, height)
+    activate bi
+    create fileReader
+    bi -> fileReader
+    activate fileReader
+    fileReader --> bi
+    deactivate fileReader
+    bi -> fileReader : readEnemyDesign()
+    activate fileReader
+    fileReader --> bi : enemy display map
+    deactivate fileReader
+    bi --> iCommand
+    deactivate bi
+else is a shop
+    create staff
+    iCommand -> staff
+    activate staff
+    staff --> iCommand
+    deactivate staff
+    create shopMap
+    iCommand -> shopMap
+    activate shopMap
+    shopMap --> iCommand
+    deactivate shopMap
+end
+iCommand --> main
+deactivate iCommand
+deactivate main
+main -> main : printMessageUnderMap(userCommand, ui, playerStatus, textBox)
+activate main
+alt not calling help menu or quitting game
+    alt show battle interface
+        main -> ui : printEnemy(currentMap)
+        activate ui
+        ui --> main
+        deactivate ui
+    else
+        main -> ui : printMap(currentMap)
+        activate ui
+        ui --> main
+        deactivate ui
+    end
+end
+
+end box
+
+@enduml

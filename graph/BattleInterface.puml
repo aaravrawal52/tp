@@ -1,0 +1,137 @@
+@startuml
+
+box Battle Component
+participant "CalculaChroniclesOfTheAlgorithmicKingdom" as main
+participant ":UI" as ui
+participant ":Parser" as parser
+participant ":TextBox" as text
+participant ":FightCommand" as f
+participant ":PlayerStatus" as player
+participant ":Enemy" as e
+participant ":BattleInterface" as bi
+participant ":FileReader" as fileReader
+participant ":Map" as map
+participant ":MathPool" as mathpool
+
+activate main
+main -> parser : parseCommand(userCommandText)
+activate parser
+create f
+parser -> f
+activate f
+f --> parser
+deactivate f
+parser --> main : command class
+deactivate parser
+main -> main : executeCommand()
+activate main
+main -> f : execute()
+activate f
+f -> bi : enableFight()
+activate bi
+create mathpool
+bi -> mathpool
+activate mathpool
+mathpool --> bi
+deactivate mathpool
+bi -> mathpool : init()
+activate mathpool
+mathpool --> bi
+deactivate
+create ":UI" as UI
+bi -> UI
+activate UI
+UI --> bi
+deactivate UI
+loop player and enemy is alive
+    bi -> player : getPlayerHealth()
+    activate player
+    player --> bi : player health
+    deactivate player
+    bi -> e : getHealth()
+    activate e
+    e --> bi : enemy health
+    deactivate e
+    bi -> UI : printPlayerStatus(currentPlayer)
+    activate UI
+    UI --> bi
+    deactivate UI
+    bi -> UI : printMap(mapData, currentEntity)
+    activate UI
+    UI --> bi
+    deactivate UI
+    bi -> mathpool : getQuestionByDifficulty(difficulty);
+    activate mathpool
+    mathpool --> bi : question
+    deactivate mathpool
+    bi -> UI : printQuestion(question)
+    activate UI
+    UI --> bi
+    deactivate UI
+    loop command is not an integer
+    bi -> text : setNextError(error)
+    activate text
+    text --> bi
+    deactivate text
+    bi -> text : setNextInstruction(question)
+    activate text
+    text --> bi
+    deactivate text
+    bi -> UI : printTextBox()
+    activate UI
+    UI --> bi
+    deactivate UI
+    end
+    alt correct answer
+    bi -> bi : playerHitEnemy()
+    else wrong answer
+    bi -> bi : enemyHitPlayer()
+    end
+end
+bi --> f
+deactivate bi
+alt enemy died
+    f -> map : getInteractX()
+    activate map
+    map --> f : x coordinate
+    deactivate map
+    f -> map : getInteractY()
+    activate map
+    map --> f : y coordinate
+    deactivate map
+    f -> map : clearSpot(x coordinate, y coordinate)
+    activate map
+    map --> f
+    deactivate map
+    f -> map : handleLootingByPlayer()
+    activate map
+    map --> f
+    deactivate map
+else player died
+    f -> map : handleDeath();
+    activate map
+    map --> f
+    deactivate map
+end
+f --> main
+deactivate f
+deactivate main
+main -> main : printMessageUnderMap(userCommand, ui, playerStatus, textBox)
+activate main
+alt not calling help menu or quitting game
+    alt show battle interface
+        main -> ui : printEnemy(currentMap)
+        activate ui
+        ui --> main
+        deactivate ui
+    else
+        main -> ui : printMap(currentMap)
+        activate ui
+        ui --> main
+        deactivate ui
+    end
+end
+
+end box
+
+@enduml
