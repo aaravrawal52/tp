@@ -21,18 +21,18 @@ and the other interactable entities are denoted by other symbols.
 ### Movement
 Traversing the map is similar to many common computer games. We use the "WASD" system such that
 entering `w` to the program shifts the player up by 1 space, entering `a` shifts the player to the left,
- entering `s` shifts the player down 1 space and lastly, entering `d` shifts the player to the right by 1 space.
+entering `s` shifts the player down 1 space and lastly, entering `d` shifts the player to the right by 1 space.
 This movement can only take place when the 2D grid map is visible.
 
 
 ### Interacting 
 
 To interact with any entity in the game the player first has to move towards the symbol and be within close proximity
-to the symbol. We define close as the player needing to be directly above, below, to the left or to the right of an 
+to the symbol. We define close as the player needing to be directly above, below, to the left or to the right of an
 entity symbol, in other words, there can be no gap in between the player and the entity and interactions cannot occur
 diagonally. 
 
-To interact the player enters `e`.
+To interact the player enters `e`. 
 
 This action will bring up a new interface called the battle interface. For now there will only be battles using this 
 interface but we plan to implement shops and other entities using this interface. For now, this interface will display 
@@ -47,13 +47,13 @@ to back out of the fight and return to the main map to continue moving around.
 
 Should the player, in the battle interface, wish to fight the enemy. Entering `fight` in the battle interface will 
 start a fight. A series of math questions will appear based on the strength of the enemy. Generally, stronger enemies
-will come with harder math questions.
+will come with harder math questions. 
 
 The player will then enter the correct answer. The answer is guaranteed to be an integer. Getting the question correct
 will cause the player to attack the enemy and getting it wrong will cause the enemy to attack the player. Getting the 
 questions wrong repeatedly will deplete the player's health and once the player's health reaches 0, the player dies and 
 the game is over. However, depleting the enemy's health to 0 will result in a victory and the player is rewarded with 
-some gold and exp before returning the player to the main map.
+some gold and exp before returning the player to the main map. 
 
 ### Hints
 

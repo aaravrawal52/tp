@@ -1,6 +1,5 @@
 package map;
 
-import interactable.InteractableEntity;
 import interactable.ShopKeeper;
 import filereader.FileReader;
 import textbox.PlayerStatus;
@@ -22,11 +21,11 @@ public class ShopMap extends BaseMap{
     public void initMap(int givenWidth, int givenHeight) { //copied from battle interface
         this.width = givenWidth;
         this.height = givenHeight;
-        this.currentMap = new ArrayList<>(height);
+        this.mapData = new ArrayList<>(height);
 
         FileReader fileReader = new FileReader(currentEntity.getFilePath());
         try {
-            currentMap = fileReader.readEnemyDesign();
+            mapData = fileReader.readEnemyDesign();
         } catch (Exception e) {
             // display exception, see how sihan wants to do.
         }
@@ -40,7 +39,7 @@ public class ShopMap extends BaseMap{
 
 
     @Override
-    public void fightLoop() {
+    public void enableFight() {
 
     }
 

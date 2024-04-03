@@ -1,10 +1,12 @@
 package command.fight;
 
 import command.Command;
+import map.BaseMap;
 import map.BattleInterface.BattleInterface;
 
-import static map.BaseMap.currentOn;
 import static map.BaseMap.storedMaps;
+import static map.MapGenerator.FIRST_MAP_IDENTITY;
+import static map.BaseMap.mapIndex;
 
 public class RunningCommand extends Command {
     public RunningCommand() {
@@ -14,8 +16,8 @@ public class RunningCommand extends Command {
     public void execute(){
         if(currentMap instanceof BattleInterface) {
             textBox.setNextNarration("You decide to run and successfully got away");
-            currentOn = 0;
-            currentMap = storedMaps.get(currentOn);
+            BaseMap.currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
+            currentMap = storedMaps.get(BaseMap.currentMap);
         }
     }
 }

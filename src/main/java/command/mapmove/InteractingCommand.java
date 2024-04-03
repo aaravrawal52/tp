@@ -11,7 +11,6 @@ import java.util.Objects;
 
 import static map.BaseMap.*;
 import static map.MapGenerator.*;
-import ui.Ui;
 
 public class InteractingCommand extends MapMoveCommand {
 
@@ -43,7 +42,7 @@ public class InteractingCommand extends MapMoveCommand {
             battleMap.initMap(30, monster.getHeight());
             storedMaps.add(battleMap);
             mapIndex.put(CENTAUR, storedMaps.size() - 1);
-            currentOn = mapIndex.get(CENTAUR);
+            BaseMap.currentMap = mapIndex.get(CENTAUR);
             break;
         case DEMON:
             monster = new Demon(15, 15, 15, xPos, yPos, 15, 15);
@@ -52,7 +51,7 @@ public class InteractingCommand extends MapMoveCommand {
             battleMap.initMap(30, monster.getHeight());
             storedMaps.add(battleMap);
             mapIndex.put(DEMON, storedMaps.size() - 1);
-            currentOn = mapIndex.get(DEMON);
+            BaseMap.currentMap = mapIndex.get(DEMON);
             break;
         case DRAGON:
             monster = new Dragon(20, 20, 20, xPos, yPos, 20, 20);
@@ -61,7 +60,7 @@ public class InteractingCommand extends MapMoveCommand {
             battleMap.initMap(30, monster.getHeight());
             storedMaps.add(battleMap);
             mapIndex.put(DRAGON, storedMaps.size() - 1);
-            currentOn = mapIndex.get(DRAGON);
+            BaseMap.currentMap = mapIndex.get(DRAGON);
             break;
         case GOBLIN:
             monster = new Goblin(25, 25, 25, xPos, yPos, 25, 25);
@@ -70,7 +69,7 @@ public class InteractingCommand extends MapMoveCommand {
             battleMap.initMap(30, monster.getHeight());
             storedMaps.add(battleMap);
             mapIndex.put(GOBLIN, storedMaps.size() - 1);
-            currentOn = mapIndex.get(GOBLIN);
+            BaseMap.currentMap = mapIndex.get(GOBLIN);
             break;
         case GRYPHON:
             monster = new Gryphon(30, 30, 30, xPos, yPos, 30, 30);
@@ -79,14 +78,14 @@ public class InteractingCommand extends MapMoveCommand {
             battleMap.initMap(30, monster.getHeight());
             storedMaps.add(battleMap);
             mapIndex.put(GRYPHON, storedMaps.size() - 1);
-            currentOn = mapIndex.get(GRYPHON);
+            BaseMap.currentMap = mapIndex.get(GRYPHON);
             break;
         case SHOP:  //some shopkeeper
             ShopKeeper shopkeeper = new ShopKeeper("resources/ShopKeeper/ShopKeeper", "Hi welcome to my shop!");
             currentMap = new ShopMap(playerStatus, textBox, shopkeeper);
             storedMaps.add(currentMap);
             mapIndex.put(SHOP, storedMaps.size() - 1);
-            currentOn = mapIndex.get(SHOP);
+            BaseMap.currentMap = mapIndex.get(SHOP);
             break; //not done yet
         default:
             battleMap = new BattleInterface(null, null, null);
