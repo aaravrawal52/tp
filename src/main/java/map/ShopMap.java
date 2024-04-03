@@ -30,7 +30,7 @@ public class ShopMap extends BaseMap{
 
         FileReader fileReader = new FileReader(currentEntity.getFilePath());
         try {
-            mapData = fileReader.readEnemyDesign();
+            mapData = fileReader.readShopMapDesign();
         } catch (Exception e) {
             // display exception, see how sihan wants to do.
         }

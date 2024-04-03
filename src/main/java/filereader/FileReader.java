@@ -47,7 +47,7 @@ public class FileReader {
              BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                line = line.trim(); // Trim leading and trailing whitespace
+                //line = line.trim(); // Trim leading and trailing whitespace
                 ArrayList<Character> row = new ArrayList<>();
                 for (int i = 0; i < line.length(); i += 1) {
                     row.add(line.charAt(i));
