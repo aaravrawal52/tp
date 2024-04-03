@@ -13,12 +13,12 @@ public abstract class Command {
     protected String commandDescription;
     protected BaseMap currentMap;
 
-    public abstract void execute();
-
     public Command() {
         commandDescription = "Impossible";
         currentMap = null;
     }
+
+    public abstract void execute();
 
     public void execute(Scanner in) {
 

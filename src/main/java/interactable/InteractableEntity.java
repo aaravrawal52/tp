@@ -3,8 +3,8 @@ package interactable;
 public abstract class InteractableEntity {
     protected int x;
     protected int y;
-    protected int exp_dropped;
-    protected int money_dropped;
+    protected int expDropped;
+    protected int moneyDropped;
     protected String name;
 
     public abstract int getHealth();
@@ -18,11 +18,11 @@ public abstract class InteractableEntity {
     public abstract String getFilePath();
 
     public int getExp_dropped(){
-        return exp_dropped;
+        return expDropped;
     }
 
     public int getMoney_dropped(){
-        return money_dropped;
+        return moneyDropped;
     }
     public int getHeight() {
         return 0;

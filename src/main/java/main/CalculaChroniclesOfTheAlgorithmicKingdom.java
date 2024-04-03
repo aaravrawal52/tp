@@ -1,11 +1,11 @@
 package main;
 
 
-import Hint.HintHandler;
+import hint.HintHandler;
 import command.Command;
 import map.BaseMap;
 import map.FirstMap;
-import map.BattleInterface.BattleInterface;
+import map.battleinterface.BattleInterface;
 import parser.Parser;
 import textbox.PlayerStatus;
 import textbox.TextBox;

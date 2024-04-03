@@ -27,8 +27,7 @@ public class FightingCommand extends Command {
             int yPos = storedMaps.get(BaseMap.currentMap).getInteractY();
             storedMaps.get(BaseMap.currentMap).clearSpot(xPos, yPos);
             currentMap.handleLootingByPlayer();
-        }
-        else if (currentMap.getPlayerDeath()){
+        } else if (currentMap.getPlayerDeath()){
             currentMap.handleDeath();
         }
     }

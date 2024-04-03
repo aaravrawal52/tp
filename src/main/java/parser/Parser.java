@@ -50,16 +50,20 @@ public class Parser {
             command = (currentMap != mapIndex.get(FIRST_MAP_IDENTITY)) ? new RunningCommand() : new ErrorCommand();
             break;
         case MOVE_FORWARD:
-            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingForwardCommand(userCommand) : new ErrorCommand();
+            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ?
+                    new MovingForwardCommand(userCommand) : new ErrorCommand();
             break;
         case MOVE_DOWNWARD:
-            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingDownwardCommand(userCommand) : new ErrorCommand();
+            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ?
+                    new MovingDownwardCommand(userCommand) : new ErrorCommand();
             break;
         case MOVE_LEFT:
-            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingLeftCommand(userCommand) : new ErrorCommand();
+            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ?
+                    new MovingLeftCommand(userCommand) : new ErrorCommand();
             break;
         case MOVE_RIGHT:
-            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ? new MovingRightCommand(userCommand) : new ErrorCommand();
+            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ?
+                    new MovingRightCommand(userCommand) : new ErrorCommand();
             break;
         case QUIT:
             command = new QuitCommand();
