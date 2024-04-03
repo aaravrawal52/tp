@@ -23,10 +23,15 @@ public class InteractingCommand extends MapMoveCommand {
         String entityInteractedWith = currentMap.handleInteract();
         if (Objects.equals(entityInteractedWith, "no interaction")) {
             textBox.setNextNarration("Nothing to interact with here");
-        } else if (Objects.equals(entityInteractedWith, "@")) {
+        } else if (Objects.equals(entityInteractedWith, "@") ||
+                Objects.equals(entityInteractedWith, "$") ||
+                Objects.equals(entityInteractedWith, "%") ||
+                Objects.equals(entityInteractedWith, "^") ||
+                Objects.equals(entityInteractedWith, "&")) {
             textBox.setNextNarration(entityInteractedWith + " appears in your path. What will you do?");
             textBox.setNextInstruction("Will you [fight] or will you [run]?");
         }
+
 
         char entity = entityInteractedWith.charAt(0);
         BaseMap battleMap;
