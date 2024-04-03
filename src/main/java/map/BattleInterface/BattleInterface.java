@@ -28,12 +28,12 @@ public class BattleInterface extends BaseMap {
     }
 
     @Override
-    public void fightLoop() {
+    public void enableFight() {
 
     }
 
     @Override
-    public void fightLoop(Scanner in) {
+    public void enableFight(Scanner in) {
         MathPool mathPool = new MathPool();
         mathPool.init();
         Ui ui = new Ui();
@@ -41,9 +41,8 @@ public class BattleInterface extends BaseMap {
         while (currentPlayer.getPlayerHealth() > 0 && currentEntity.getHealth() > 0) {
             int answer;
             Pattern pattern = Pattern.compile("^[--]?[0-9]+$");
-            Matcher matcher;
             ui.printPlayerStatus(currentPlayer);
-            ui.printMap(currentMap, (Enemy) currentEntity);
+            ui.printMap(mapData, (Enemy) currentEntity);
             MathQuestion mathQuestion = mathPool.getQuestionByDifficulty(0);
             ui.printQuestion(mathQuestion);
             String answerCommand = in.nextLine().trim();
@@ -68,11 +67,11 @@ public class BattleInterface extends BaseMap {
     public void initMap(int givenWidth, int givenHeight) {
         this.width = givenWidth;
         this.height = givenHeight;
-        this.currentMap = new ArrayList<>(height);
+        this.mapData = new ArrayList<>(height);
 
         FileReader fileReader = new FileReader(currentEntity.getFilePath());
         try {
-            currentMap = fileReader.readEnemyDesign();
+            mapData = fileReader.readEnemyDesign();
         } catch (Exception e) {
             // display exception, see how sihan wants to do.
         }

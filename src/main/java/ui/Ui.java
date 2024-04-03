@@ -94,7 +94,7 @@ public class Ui {
 
     public void printMap(BaseMap map) {
         printDividingLine();
-        for (ArrayList<Character> row : map.getCurrentMap()) {
+        for (ArrayList<Character> row : map.getMapData()) {
             for (char cell : row) {
                 System.out.print(cell + " ");
             }
@@ -104,7 +104,7 @@ public class Ui {
     }
     public void printEnemy(BaseMap map) {
         printDividingLine();
-        for (ArrayList<Character> row : map.getCurrentMap()) {
+        for (ArrayList<Character> row : map.getMapData()) {
             for (char cell : row) {
                 System.out.print(cell);
             }
