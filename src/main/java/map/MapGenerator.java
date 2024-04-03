@@ -1,7 +1,5 @@
 package map;
 
-import interactable.enemies.Gryphon;
-
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MapGenerator {

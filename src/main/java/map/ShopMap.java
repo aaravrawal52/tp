@@ -6,7 +6,6 @@ import textbox.PlayerStatus;
 import textbox.TextBox;
 
 import java.util.ArrayList;
-import InventoryItems.ShopItem;
 
 
 public class ShopMap extends BaseMap{

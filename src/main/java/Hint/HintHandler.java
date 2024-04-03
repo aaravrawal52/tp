@@ -1,4 +1,4 @@
-package Hint;
+package hint;
 
 import map.BaseMap;
 import textbox.TextBox;

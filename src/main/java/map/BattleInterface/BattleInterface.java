@@ -1,4 +1,4 @@
-package map.BattleInterface;
+package map.battleinterface;
 
 import interactable.Enemy;
 import interactable.InteractableEntity;
@@ -7,12 +7,11 @@ import map.BaseMap;
 import textbox.PlayerStatus;
 import textbox.TextBox;
 import ui.Ui;
-import Math.MathQuestion;
-import Math.MathPool;
+import math.MathQuestion;
+import math.MathPool;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BattleInterface extends BaseMap {

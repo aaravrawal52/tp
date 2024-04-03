@@ -1,4 +1,4 @@
-package Hint;
+package hint;
 
 public class Trigger {
     protected String message;

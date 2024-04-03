@@ -1,4 +1,4 @@
-package InventoryItems;
+package inventoryitems;
 
 public abstract class ShopItem {
     protected String description;

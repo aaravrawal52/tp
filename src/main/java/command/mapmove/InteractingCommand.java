@@ -2,15 +2,25 @@ package command.mapmove;
 
 import interactable.InteractableEntity;
 import interactable.ShopKeeper;
-import interactable.enemies.*;
+import interactable.enemies.Centaur;
+import interactable.enemies.Dragon;
+import interactable.enemies.Demon;
+import interactable.enemies.Gryphon;
+import interactable.enemies.Goblin;
 import map.BaseMap;
 import map.ShopMap;
-import map.BattleInterface.BattleInterface;
+import map.battleinterface.BattleInterface;
 
 import java.util.Objects;
 
-import static map.BaseMap.*;
-import static map.MapGenerator.*;
+import static map.BaseMap.storedMaps;
+import static map.BaseMap.mapIndex;
+import static map.MapGenerator.CENTAUR;
+import static map.MapGenerator.DEMON;
+import static map.MapGenerator.DRAGON;
+import static map.MapGenerator.GOBLIN;
+import static map.MapGenerator.GRYPHON;
+import static map.MapGenerator.SHOP;
 
 public class InteractingCommand extends MapMoveCommand {
 
@@ -83,7 +93,8 @@ public class InteractingCommand extends MapMoveCommand {
             break;
         case SHOP:  //some shopkeeper
             ShopMap shopMap;
-            ShopKeeper shopkeeper = new ShopKeeper("src/main/resources/ShopKeeper/ShopKeeper", "Hi welcome to my shop!");
+            ShopKeeper shopkeeper = new ShopKeeper("src/main/resources/ShopKeeper/ShopKeeper",
+                    "Hi welcome to my shop!");
             shopMap = new ShopMap(playerStatus, textBox, shopkeeper);
             shopMap.initMap(30, 0); // Set appropriate width and height
             //shopMap.printShopItems();

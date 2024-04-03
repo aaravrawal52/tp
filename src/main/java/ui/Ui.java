@@ -4,7 +4,7 @@ import interactable.Enemy;
 import map.BaseMap;
 import textbox.PlayerStatus;
 import textbox.TextBox;
-import Math.MathQuestion;
+import math.MathQuestion;
 import java.util.ArrayList;
 
 public class Ui {
@@ -55,27 +55,6 @@ public class Ui {
         printDividingLine();
     }
 
-    public void printMap(ArrayList<ArrayList<Character>> map, Enemy monster) {
-        printDividingLine();
-        String healthInfo = " Health: " + monster.getHealth(); // Health information as a string
-
-        for (int rowIndex = 0; rowIndex < map.size(); rowIndex++) {
-            ArrayList<Character> row = map.get(rowIndex);
-
-            // Overlay the health information on the first row directly within the ASCII art
-            if (rowIndex == 0) {
-                StringBuilder firstRowWithHealth = getStringBuilder(row, healthInfo);
-                System.out.println(firstRowWithHealth.toString());
-            } else {
-                for (char cell : row) {
-                    System.out.print(cell);
-                }
-                System.out.println();
-            }
-        }
-        printDividingLine();
-    }
-
     private static StringBuilder getStringBuilder(ArrayList<Character> row, String healthInfo) {
         StringBuilder firstRowWithHealth = new StringBuilder();
         for (int cellIndex = 0; cellIndex < row.size(); cellIndex++) {
@@ -102,6 +81,28 @@ public class Ui {
         }
         printDividingLine();
     }
+
+    public void printMap(ArrayList<ArrayList<Character>> map, Enemy monster) {
+        printDividingLine();
+        String healthInfo = " Health: " + monster.getHealth(); // Health information as a string
+
+        for (int rowIndex = 0; rowIndex < map.size(); rowIndex++) {
+            ArrayList<Character> row = map.get(rowIndex);
+
+            // Overlay the health information on the first row directly within the ASCII art
+            if (rowIndex == 0) {
+                StringBuilder firstRowWithHealth = getStringBuilder(row, healthInfo);
+                System.out.println(firstRowWithHealth.toString());
+            } else {
+                for (char cell : row) {
+                    System.out.print(cell);
+                }
+                System.out.println();
+            }
+        }
+        printDividingLine();
+    }
+
     public void printEnemy(BaseMap map) {
         printDividingLine();
         for (ArrayList<Character> row : map.getMapData()) {

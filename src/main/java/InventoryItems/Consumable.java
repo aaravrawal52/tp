@@ -1,4 +1,4 @@
-package InventoryItems;
+package inventoryitems;
 
 public class Consumable extends ShopItem { //we assume all consumables are for 1 turn only
     protected int healAmt;

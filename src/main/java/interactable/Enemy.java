@@ -13,8 +13,8 @@ public abstract class Enemy extends InteractableEntity{
         this.health = hp;
         this.x = xCoordinate;
         this.y = yCoordinate;
-        this.exp_dropped = exp;
-        this.money_dropped = money;
+        this.expDropped = exp;
+        this.moneyDropped = money;
     }
 
     public int getHealth(){

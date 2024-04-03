@@ -3,7 +3,7 @@ package map;
 import java.util.ArrayList;
 
 public class FirstMap extends BaseMap {
-    protected String DIFFICULTY_MODIFIER = "easy"; //can use to determine question difficulty
+    protected String difficultyModifier = "easy"; //can use to determine question difficulty
 
     @Override
     public void enableFight() {

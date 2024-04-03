@@ -1,8 +1,7 @@
 package interactable;
 
-import InventoryItems.Consumable;
-import InventoryItems.ShopItem;
-import main.CalculaChroniclesOfTheAlgorithmicKingdom;
+import inventoryitems.Consumable;
+import inventoryitems.ShopItem;
 
 import java.util.ArrayList;
 
