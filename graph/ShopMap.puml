@@ -1,0 +1,32 @@
+
+@startuml
+class ShopMap {
+    - currentPlayer : PlayerStatus
+    - currentTextBox : TextBox
+    - currentEntity : ShopKeeper
+    + ShopMap(player : PlayerStatus, text : TextBox, shopKeeper : ShopKeeper)
+    + initMap(givenWidth : int, givenHeight : int) : void
+    + queueTextBox() : void
+    + enableFight() : void
+    + getEntityDeath() : boolean
+    + getPlayerDeath() : boolean
+    + handleDeath() : void
+    + handleLootingByPlayer() : void
+}
+
+class PlayerStatus {
+}
+
+class TextBox {
+}
+
+class ShopKeeper {
+}
+
+ShopMap --> PlayerStatus : -currentPlayer
+ShopMap --> TextBox : -currentTextBox
+ShopMap --> ShopKeeper : -currentEntity
+
+@enduml
+
+@enduml
