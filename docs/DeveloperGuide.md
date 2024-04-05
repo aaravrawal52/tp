@@ -20,7 +20,7 @@ Command back to the main based on the command type. The Final step is to call th
 is the type of `fightCommand`, we will call the execute function with one parameter `Scanner`. For all other
 conditions, we will call the execute function with no parameter.
 
-![dummy test](/picture/Command.svg)
+![dummy test](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/67ccf80caff928cb70c37b213cf55248b909e02b/picture/Command.svg)
 
 ### Map Component
 
@@ -33,7 +33,7 @@ extend AMap. `FirstMap` is the first map displayed upon entering the game and it
 The `BattleInterface` is the map displayed when the player interacts with an `interactable`. The following image
 shows the architecture of the Map component
 
-![Map UML](../picture/Map.png)
+![Map UML](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/Map.png)
 
 At the moment the `MapGenerator` class allows the positions of enemies to be placed randomly throughout instances of
 `FirstMap` only. 
@@ -50,7 +50,7 @@ class is because during the game loop, these maps are being cycled through as th
 
 The API of this component is defined in InteractingCommand.java
 
-![Interaction UML](../picture/Interaction.png)
+![Interaction UML](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/Interaction.png)
 
 This component happens when the user chooses to key the interact command. <br>
 Here is how it works:
@@ -67,7 +67,7 @@ running their respective methods.
 
 The API of this component is defined in FightCommand.java.
 
-![BattleInterface UML](../picture/BattleInterface.png)
+![BattleInterface UML](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/BattleInterface.png)
 
 This component happens when the user chooses to fight an enemy. <br>
 Here is how it works:
