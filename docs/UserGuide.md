@@ -10,7 +10,7 @@ math wizard.
 
 
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `CalculaChroniclesOfTheAlgorithmicKingdom` from [here](http://link.to/duke).
+1. Down the latest version of `CalculaChroniclesOfTheAlgorithmicKingdom` from [here](https://github.com/AY2324S2-CS2113-W12-3/tp/releases).
 
 ## Features 
 
