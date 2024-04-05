@@ -3,11 +3,16 @@ package parser;
 import command.CommandType;
 import command.fight.FightingCommand;
 import command.fight.RunningCommand;
-import command.mapmove.*;
 import command.ErrorCommand;
 import command.HelpCommand;
 import command.QuitCommand;
 import command.Command;
+import command.mapmove.InteractingCommand;
+import command.mapmove.MovingForwardCommand;
+import command.mapmove.MovingDownwardCommand;
+import command.mapmove.MovingLeftCommand;
+import command.mapmove.ExitShop;
+import command.mapmove.MovingRightCommand;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -2,7 +2,6 @@ package command.mapmove;
 
 import command.Command;
 import map.BaseMap;
-import map.BattleInterface.BattleInterface;
 import map.ShopMap;
 
 import static map.BaseMap.storedMaps;
