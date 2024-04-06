@@ -4,13 +4,15 @@ public class Consumable extends ShopItem { //we assume all consumables are for 1
     protected int healAmt;
     protected int damageAmpAmt;
 
-    public Consumable(int heal, int damage, String itemDescription, String itemName, int cost){
+    public Consumable(int heal, int damage, String itemDescription, String itemName, int cost) {
         super.description = itemDescription;
         healAmt = heal;
         damageAmpAmt = damage;
         super.name = itemName;
         super.price = cost;
     }
+
+    public void use() {}
 
     public int getDamageAmpAmt() {
         return damageAmpAmt;

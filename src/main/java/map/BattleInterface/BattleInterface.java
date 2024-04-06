@@ -79,7 +79,7 @@ public class BattleInterface extends BaseMap {
 
     public void playerHitEnemy() {
         if (currentEntity instanceof Enemy) {
-            int dmgDone = 10;
+            int dmgDone = currentPlayer.getPlayerDamage();
             ((Enemy) currentEntity).harmHealth(dmgDone);
         }
     }

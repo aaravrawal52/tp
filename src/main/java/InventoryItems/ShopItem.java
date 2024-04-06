@@ -1,24 +1,13 @@
 package inventoryitems;
 
-public abstract class ShopItem {
-    protected String description;
-    protected String name;
-
+public abstract class ShopItem extends Item{
     protected int price;
 
-    public ShopItem(){
+    public ShopItem() {
 
     }
 
     public int getPrice() {
         return price;
-    }
-
-    public String getDescription(){
-        return description;
-    }
-
-    public String getName(){
-        return name;
     }
 }

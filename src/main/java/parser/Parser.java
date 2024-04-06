@@ -3,16 +3,22 @@ package parser;
 import command.CommandType;
 import command.fight.FightingCommand;
 import command.fight.RunningCommand;
+import command.inventory.SellCommand;
+import command.inventory.OpenInventoryCommand;
+import command.inventory.CloseInventoryCommand;
+import command.inventory.UseCommand;
+import command.inventory.NextPageCommand;
+import command.inventory.PrevPageCommand;
+import command.mapmove.InteractingCommand;
+import command.mapmove.MovingDownwardCommand;
+import command.mapmove.MovingForwardCommand;
+import command.mapmove.MovingLeftCommand;
+import command.mapmove.MovingRightCommand;
 import command.ErrorCommand;
 import command.HelpCommand;
 import command.QuitCommand;
 import command.Command;
-import command.mapmove.InteractingCommand;
-import command.mapmove.MovingForwardCommand;
-import command.mapmove.MovingDownwardCommand;
-import command.mapmove.MovingLeftCommand;
 import command.mapmove.ExitShop;
-import command.mapmove.MovingRightCommand;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,6 +28,7 @@ import static map.BaseMap.currentMap;
 import static map.BaseMap.mapIndex;
 import static map.MapGenerator.FIRST_MAP_IDENTITY;
 import static map.MapGenerator.SHOP;
+import static map.MapGenerator.INVENTORY_IDENTITY;
 
 public class Parser {
 
@@ -81,6 +88,28 @@ public class Parser {
             break;
         case ERROR:
             command = new ErrorCommand();
+            break;
+        case INVENTORY:
+            command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ?
+                    new OpenInventoryCommand() : new ErrorCommand();
+            break;
+        case INV_NEXT:
+            command = (currentMap == mapIndex.get(INVENTORY_IDENTITY)) ? new NextPageCommand() : new ErrorCommand();
+            break;
+        case INV_PREV:
+            command = (currentMap == mapIndex.get(INVENTORY_IDENTITY)) ? new PrevPageCommand() : new ErrorCommand();
+            break;
+        case USE_ITEM:
+            command = (currentMap == mapIndex.get(INVENTORY_IDENTITY)) ?
+                    new UseCommand(userCommand) : new ErrorCommand();
+            break;
+        case SELL_ITEM:
+            command = (currentMap == mapIndex.get(INVENTORY_IDENTITY)) ?
+                    new SellCommand(userCommand) : new ErrorCommand();
+            break;
+        case CLOSE_INV: // to delete aft sihan implements
+            command = (currentMap == mapIndex.get(INVENTORY_IDENTITY)) ?
+                    new CloseInventoryCommand() : new ErrorCommand();
             break;
         default:
             command = new ErrorCommand();
