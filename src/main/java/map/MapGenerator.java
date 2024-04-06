@@ -10,6 +10,7 @@ public class MapGenerator {
     public static final char DRAGON= '%';
     public static final char GOBLIN = '^';
     public static final char GRYPHON = '&';
+    public static final char INVENTORY_IDENTITY = 'i';
 
     private static final int MIN = 0;
     private static final int MAX = 999;

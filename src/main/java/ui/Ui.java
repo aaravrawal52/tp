@@ -1,6 +1,7 @@
 package ui;
 
 import interactable.Enemy;
+import inventoryitems.Item;
 import map.BaseMap;
 import textbox.PlayerStatus;
 import textbox.TextBox;
@@ -113,6 +114,71 @@ public class Ui {
         }
         printDividingLine();
     }
+
+    public void printInventoryLine(String text, int quantity, int width) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("|");
+        stringBuilder.append(text);
+        int itemQuantityCharacters = quantity <= 0 ? 0 : (String.valueOf(quantity).length() + 3);
+        int length = width - text.length() - itemQuantityCharacters - 2;
+        stringBuilder.append(" ".repeat(Math.max(0, length)));
+        if (quantity > 0) {
+            stringBuilder.append("x");
+            stringBuilder.append(" ");
+            stringBuilder.append(quantity);
+            stringBuilder.append(" ");
+        }
+
+        stringBuilder.append("|");
+        System.out.println(stringBuilder.toString());
+    }
+
+    public void printInventory(ArrayList<Item> inventory, String name, int width, int height) {
+        printDividingLine();
+        StringBuilder header = buildHeader(name, width);
+        System.out.println(header);
+        printInventoryLine("", 0, width);
+        if (inventory.isEmpty()) {
+            for (int i = 0; i < height - 1; i += 1) {
+                System.out.print("|");
+                for (int j = 0; j < width - 2; j += 1) {
+                    System.out.print(" ");
+                }
+                System.out.println("|");
+            }
+            return;
+        }
+        for (Item item : inventory) {
+            int itemIndex = inventory.indexOf(item) + 1;
+            printInventoryLine(" " + itemIndex + ". " + item.getName(), item.getQuantity(), width);
+        }
+        if (inventory.size() < height - 1) {
+            for (int i = 0; i < height - inventory.size() - 1; i += 1) {
+                printInventoryLine(" ", 0, width);
+            }
+        }
+        printDividingLine();
+    }
+
+    private static StringBuilder buildHeader(String inventoryName, int width) {
+        StringBuilder header = new StringBuilder();
+        int length = width - inventoryName.length() - 2;
+        header.append("|");
+        for (int i = 0; i <= length; i += 1) {
+            if (i == 1) {
+                header.append("<");
+            } else if (i == length - 1) {
+                header.append(">");
+            } else if (i == length / 2 - 1) {
+                header.append(inventoryName);
+            } else {
+                header.append(" ");
+            }
+        }
+        header.append("|");
+        return header;
+    }
+
     public void printHelpMenu() {
         printDividingLine();
         System.out.println("'w' 'a' 's' 'd' to move around");

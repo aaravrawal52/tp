@@ -5,6 +5,7 @@ import hint.HintHandler;
 import command.Command;
 import map.BaseMap;
 import map.FirstMap;
+import map.PlayerInventory;
 import map.battleinterface.BattleInterface;
 import parser.Parser;
 import textbox.PlayerStatus;
@@ -18,6 +19,7 @@ import static map.BaseMap.mapIndex;
 import static map.BaseMap.storedMaps;
 import static map.BaseMap.currentMap;
 import static map.MapGenerator.FIRST_MAP_IDENTITY;
+import static map.MapGenerator.INVENTORY_IDENTITY;
 
 
 public class CalculaChroniclesOfTheAlgorithmicKingdom {
@@ -25,6 +27,8 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
     public static final int START_HEALTH = 100;
     public static final int START_MONEY = 0;
     public static final int START_EXP = 0;
+    public static final int START_DAMAGE = 5;
+    public static final PlayerInventory PLAYER_INVENTORY = new PlayerInventory();
 
     public static void main(String[] args) {
         new CalculaChroniclesOfTheAlgorithmicKingdom().startGame();
@@ -33,7 +37,10 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
     public void startGame() {
         Scanner in = new Scanner(System.in);
 
-        PlayerStatus playerStatus = new PlayerStatus(START_HEALTH, START_MONEY, START_EXP);
+        PlayerStatus playerStatus = new PlayerStatus(START_HEALTH, START_MONEY, START_EXP, START_DAMAGE,
+                PLAYER_INVENTORY);
+        storedMaps.add(PLAYER_INVENTORY);
+        mapIndex.put(INVENTORY_IDENTITY, storedMaps.size() - 1);
         TextBox textBox = new TextBox();
         Parser parser = new Parser();
         BaseMap map = new FirstMap();
@@ -42,6 +49,8 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
 
         MapGenerator.getInstance().generateMap(map);
         textBox.initTextBox();
+        PLAYER_INVENTORY.setPlayerStatus(playerStatus);
+        PLAYER_INVENTORY.setCurrentTextBox(textBox);
 
         storedMaps.add(map);
         mapIndex.put(FIRST_MAP_IDENTITY, storedMaps.size() - 1);
@@ -72,6 +81,11 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
             ui.printPlayerStatus(playerStatus);
             if (storedMaps.get(currentMap) instanceof BattleInterface) {
                 ui.printEnemy(storedMaps.get(currentMap));
+            } else if (storedMaps.get(currentMap) instanceof PlayerInventory){
+                int listIndex = playerStatus.getPlayerInventory().getCurrentItemPageNumber();
+                ui.printInventory(playerStatus.getPlayerInventory().getAllItemsList().get(listIndex),
+                        playerStatus.getPlayerInventory().getInventoryNames().get(listIndex),
+                        storedMaps.get(currentMap).getWidth(), storedMaps.get(currentMap).getHeight());
             } else {
                 ui.printMap(storedMaps.get(currentMap));
             }

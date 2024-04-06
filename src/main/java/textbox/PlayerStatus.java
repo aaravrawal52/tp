@@ -1,15 +1,22 @@
 package textbox;
 
 
+import map.PlayerInventory;
+
 public class PlayerStatus {
     private int playerHealth;
     private int playerMoney;
     private int playerExp;
+    private int playerDamage;
+    private PlayerInventory playerInventory;
 
-    public PlayerStatus(int startHealth, int startMoney, int startExp){
+    public PlayerStatus(int startHealth, int startMoney, int startExp, int startDamage,
+                        PlayerInventory playerInventory){
         this.playerHealth = startHealth;
         this.playerMoney = startMoney;
         this.playerExp = startExp;
+        this.playerDamage = startDamage;
+        this.playerInventory = playerInventory;
     }
 
     public int getPlayerHealth(){
@@ -36,6 +43,14 @@ public class PlayerStatus {
         this.playerMoney = playerMoney;
     }
 
+    public int getPlayerDamage() {
+        return playerDamage;
+    }
+
+    public void setPlayerDamage(int playerDamage) {
+        this.playerDamage = playerDamage;
+    }
+
     public void harmHealth(int dmg){
         playerHealth -= dmg;
     }
@@ -46,5 +61,13 @@ public class PlayerStatus {
 
     public void addExp(int exp){
         playerExp += exp;
+    }
+
+    public PlayerInventory getPlayerInventory() {
+        return playerInventory;
+    }
+
+    public void setPlayerInventory(PlayerInventory playerInventory) {
+        this.playerInventory = playerInventory;
     }
 }

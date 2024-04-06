@@ -49,7 +49,6 @@ public class InteractingCommand extends MapMoveCommand {
             monster = new Centaur(10, 10, 10, xPos, yPos, 10, 10);
             textBox.setNextDialogue("*the " + monster.getName() + " stares at you menacingly*");
             battleMap = new BattleInterface(playerStatus, textBox, monster);
-
             battleMap.initMap(30, monster.getHeight());
             storedMaps.add(battleMap);
             mapIndex.put(CENTAUR, storedMaps.size() - 1);

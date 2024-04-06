@@ -192,4 +192,12 @@ public abstract class BaseMap {
             System.out.println();
         }
     }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 }

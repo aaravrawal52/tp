@@ -10,7 +10,13 @@ public enum CommandType {
     INTERACT("(?i)\\h*(e)\\h*"),
     QUIT("(?i)\\h*(q|quit)\\h*"),
     HELP("(?i)\\h*(h|help)\\h*"),
-    ERROR("");
+    ERROR(""),
+    INVENTORY("(?i)\\h*(i|inventory)\\h*"),
+    INV_NEXT("(?i)\\h*(n|next)\\h*"),
+    INV_PREV("(?i)\\h*(p|prev|previous)\\h*"),
+    USE_ITEM("(?i)\\h*(use)(\\h+\\d+|\\h+\\w+)?\\h*"),
+    SELL_ITEM("(?i)\\h*(sell)(\\h+\\d+|\\h+\\w+)?\\h*"),
+    CLOSE_INV("(?i)\\h*(c|close)\\h*"); // to delete aft sihan implements
     final String regExpression;
 
     CommandType(String regExpression) {
