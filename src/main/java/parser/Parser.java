@@ -18,6 +18,7 @@ import command.ErrorCommand;
 import command.HelpCommand;
 import command.QuitCommand;
 import command.Command;
+import command.mapmove.ExitShop;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,6 +27,7 @@ import java.util.regex.Pattern;
 import static map.BaseMap.currentMap;
 import static map.BaseMap.mapIndex;
 import static map.MapGenerator.FIRST_MAP_IDENTITY;
+import static map.MapGenerator.SHOP;
 import static map.MapGenerator.INVENTORY_IDENTITY;
 
 public class Parser {
@@ -52,6 +54,9 @@ public class Parser {
         switch (commandType) {
         case FIGHT:
             command = (currentMap != mapIndex.get(FIRST_MAP_IDENTITY)) ? new FightingCommand() : new ErrorCommand();
+            break;
+        case EXIT:
+            command = (currentMap == mapIndex.get(SHOP)) ? new ExitShop() : new ErrorCommand();
             break;
         case RUN:
             command = (currentMap != mapIndex.get(FIRST_MAP_IDENTITY)) ? new RunningCommand() : new ErrorCommand();

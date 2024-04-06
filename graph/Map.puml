@@ -1,0 +1,33 @@
+## AMap Class Diagram
+@startuml
+
+
+
+  class BaseMap {
+  }
+
+  class FirstMap {
+  }
+
+  class MapGenerator {
+  }
+
+  class ShopMap {
+  }
+
+    class BattleInterface {
+    }
+
+
+
+  BaseMap <|-- FirstMap
+  BaseMap <|-- ShopMap
+  BaseMap <|-- BattleInterface
+
+
+@enduml
+
+
+
+
+## AMap Sequence Diagram
