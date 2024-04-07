@@ -1,6 +1,7 @@
 package command.fight;
 import command.Command;
 import map.BaseMap;
+import map.ShopMap;
 
 import java.util.Scanner;
 
@@ -20,15 +21,22 @@ public class FightingCommand extends Command {
 
     @Override
     public void execute(Scanner in) {
-        currentMap.enableFight(in);
-        BaseMap.currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
-        if (currentMap.getEntityDeath()){
-            int xPos = storedMaps.get(BaseMap.currentMap).getInteractX();
-            int yPos = storedMaps.get(BaseMap.currentMap).getInteractY();
-            storedMaps.get(BaseMap.currentMap).clearSpot(xPos, yPos);
-            currentMap.handleLootingByPlayer();
-        } else if (currentMap.getPlayerDeath()){
-            currentMap.handleDeath();
+        if (currentMap instanceof map.battleinterface.BattleInterface) {
+            currentMap.enableFight(in);
+            BaseMap.currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
+            if (currentMap.getEntityDeath()) {
+                int xPos = storedMaps.get(BaseMap.currentMap).getInteractX();
+                int yPos = storedMaps.get(BaseMap.currentMap).getInteractY();
+                storedMaps.get(BaseMap.currentMap).clearSpot(xPos, yPos);
+                currentMap.handleLootingByPlayer();
+            } else if (currentMap.getPlayerDeath()) {
+                currentMap.handleDeath();
+            }
+        }
+
+        if (currentMap instanceof ShopMap) {
+            currentMap.enableFight(in);
+            BaseMap.currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
         }
     }
 }
