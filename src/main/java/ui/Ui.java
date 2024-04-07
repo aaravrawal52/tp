@@ -1,7 +1,6 @@
 package ui;
 
 import interactable.Enemy;
-import interactable.ShopKeeper;
 import inventoryitems.Item;
 import map.BaseMap;
 import textbox.PlayerStatus;

@@ -1,6 +1,5 @@
 package map;
 
-import org.w3c.dom.Text;
 import textbox.TextBox;
 import ui.Ui;
 
