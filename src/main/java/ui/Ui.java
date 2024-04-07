@@ -104,6 +104,7 @@ public class Ui {
         printDividingLine();
     }
 
+
     public void printEnemy(BaseMap map) {
         printDividingLine();
         for (ArrayList<Character> row : map.getMapData()) {
@@ -194,6 +195,7 @@ public class Ui {
 
 
     public void printDeathMessage(){
+        System.out.println("          _______             ______   ________  ______   _____      ");
         System.out.println("|\\     /|(  ___  )|\\     /|  (  __  \\ \\__   __/(  ____ \\(  __  \\ ");
         System.out.println("( \\   / )| (   ) || )   ( |  | (  \\  )   ) (   | (    \\/| (  \\  )");
         System.out.println(" \\ (_) / | |   | || |   | |  | |   ) |   | |   | (__    | |   ) |");
@@ -201,5 +203,13 @@ public class Ui {
         System.out.println("   ) (   | |   | || |   | |  | |   ) |   | |   | (      | |   ) |");
         System.out.println("   | |   | (___) || (___) |  | (__/  )___) (___| (____/\\| (__/  )");
         System.out.println("   \\_/   (_______)(_______)  (______/ \\_______/(_______/(______/ ");
+    }
+
+    public void insertOutOfBoundsMessage(TextBox box){
+        box.setNextNarration("You run straight into a wall");
+    }
+
+    public void insertObjectObstructionMessage(TextBox box){
+        box.setNextNarration("Something appears to be blocking your way");
     }
 }

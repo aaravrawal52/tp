@@ -1,5 +1,8 @@
 package map;
 
+import textbox.TextBox;
+import ui.Ui;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -15,9 +18,9 @@ public abstract class BaseMap {
     protected int playerX;
     protected int playerY;
     protected String mapName;
+    protected TextBox textBox;
 
     public BaseMap() {
-
     }
 
     public abstract void enableFight();
@@ -29,6 +32,10 @@ public abstract class BaseMap {
     public void initMap(int givenWidth, int givenHeight) {
         assert givenHeight != 0;
         assert givenWidth != 0;
+    }
+
+    public void setTextBox(TextBox box){
+        textBox = box;
     }
 
     public ArrayList<ArrayList<Character>> getMapData() {
@@ -52,50 +59,62 @@ public abstract class BaseMap {
     }
 
     public void movePlayerUpOne() {
+        Ui ui = new Ui();
         if (this.playerY - 1 >= 0) {
-            if (mapData.get(playerY - 1).get(playerX) == '@') {
-                System.out.println("MONSTER HERE\n");
+            if (mapData.get(playerY - 1).get(playerX) != '.') {
+                ui.insertObjectObstructionMessage(textBox);
             } else {
                 mapData.get(playerY).set(playerX, '.');
                 mapData.get(playerY - 1).set(playerX, 'P');
                 this.playerY -= 1;
             }
+        } else {
+            ui.insertOutOfBoundsMessage(textBox);
         }
     }
 
     public void movePlayerDownOne() {
+        Ui ui = new Ui();
         if (this.playerY + 1 < height) {
-            if (mapData.get(playerY + 1).get(playerX) == '@') {
-                System.out.println("MONSTER HERE\n");
+            if (mapData.get(playerY + 1).get(playerX) != '.') {
+                ui.insertObjectObstructionMessage(textBox);
             } else {
                 mapData.get(playerY).set(playerX, '.');
                 mapData.get(playerY + 1).set(playerX, 'P');
                 this.playerY += 1;
             }
+        } else {
+            ui.insertOutOfBoundsMessage(textBox);
         }
     }
 
     public void movePlayerLeftOne() {
+        Ui ui = new Ui();
         if (this.playerX - 1 >= 0) {
-            if (mapData.get(playerY).get(playerX - 1) == '@') {
-                System.out.println("MONSTER HERE\n");
+            if (mapData.get(playerY).get(playerX - 1) != '.') {
+                ui.insertObjectObstructionMessage(textBox);
             } else {
                 mapData.get(playerY).set(playerX, '.');
                 mapData.get(playerY).set(playerX - 1, 'P');
                 this.playerX -= 1;
             }
+        } else {
+            ui.insertOutOfBoundsMessage(textBox);
         }
     }
 
     public void movePlayerRightOne() {
+        Ui ui = new Ui();
         if (this.playerX + 1 < width) {
-            if (mapData.get(playerY).get(playerX + 1) == '@') {
-                System.out.println("MONSTER HERE\n");
+            if (mapData.get(playerY).get(playerX + 1) != '.') {
+                ui.insertObjectObstructionMessage(textBox);
             } else {
                 mapData.get(playerY).set(playerX, '.');
                 mapData.get(playerY).set(playerX + 1, 'P');
                 this.playerX += 1;
             }
+        } else {
+            ui.insertOutOfBoundsMessage(textBox);
         }
     }
 

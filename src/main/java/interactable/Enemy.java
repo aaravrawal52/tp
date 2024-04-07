@@ -7,6 +7,7 @@ public abstract class Enemy extends InteractableEntity{
     protected String filePath;
 
 
+
     public Enemy(int dmg, int def, int hp, int xCoordinate, int yCoordinate, int exp, int money){
         this.damage = dmg;
         this.defence = def;
