@@ -69,8 +69,7 @@ public abstract class BaseMap {
                 mapData.get(playerY - 1).set(playerX, 'P');
                 this.playerY -= 1;
             }
-        }
-        else {
+        } else {
             ui.insertOutOfBoundsMessage(textBox);
         }
     }
@@ -85,8 +84,7 @@ public abstract class BaseMap {
                 mapData.get(playerY + 1).set(playerX, 'P');
                 this.playerY += 1;
             }
-        }
-        else {
+        } else {
             ui.insertOutOfBoundsMessage(textBox);
         }
     }
@@ -101,8 +99,7 @@ public abstract class BaseMap {
                 mapData.get(playerY).set(playerX - 1, 'P');
                 this.playerX -= 1;
             }
-        }
-        else {
+        } else {
             ui.insertOutOfBoundsMessage(textBox);
         }
     }
@@ -117,8 +114,7 @@ public abstract class BaseMap {
                 mapData.get(playerY).set(playerX + 1, 'P');
                 this.playerX += 1;
             }
-        }
-        else {
+        } else {
             ui.insertOutOfBoundsMessage(textBox);
         }
     }
