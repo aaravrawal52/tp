@@ -49,6 +49,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
 
         MapGenerator.getInstance().generateMap(map);
         textBox.initTextBox();
+        map.setTextBox(textBox); // so that first map can use the text box
         PLAYER_INVENTORY.setPlayerStatus(playerStatus);
         PLAYER_INVENTORY.setCurrentTextBox(textBox);
 

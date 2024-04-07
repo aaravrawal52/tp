@@ -43,7 +43,9 @@ public class BattleInterface extends BaseMap {
             ui.printPlayerStatus(currentPlayer);
             ui.printMap(mapData, (Enemy) currentEntity);
             MathQuestion mathQuestion = mathPool.getQuestionByDifficulty(0);
-            ui.printQuestion(mathQuestion);
+            //ui.printQuestion(mathQuestion);
+            currentTextBox.setNextNarration(mathQuestion.getQuestion());
+            ui.printTextBox(currentTextBox);
             String answerCommand = in.nextLine().trim();
             while (!pattern.matcher(answerCommand).matches()) {
                 currentTextBox.setNextError("Answer must be an integer.");
@@ -53,11 +55,12 @@ public class BattleInterface extends BaseMap {
             }
             answer = Integer.parseInt(answerCommand);
             if (mathQuestion.checkAns(answer)) {
-                System.out.println("CORRECT!!!");
+                currentTextBox.setNextDialogue("You got the question CORRECT. You then proceed to swing as hard as you"
+                       + " can");
 
                 playerHitEnemy();
             } else {
-                System.out.println("WRONG ANSWER!!!");
+                currentTextBox.setNextDialogue("You got the question WRONG. The enemy proceeds to attack you.");
                 enemyHitPlayer();
             }
         }
