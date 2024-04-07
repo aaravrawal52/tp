@@ -44,7 +44,8 @@ public class ShopMap extends BaseMap{
     public void queueTextBox(){
         currentTextBox.setNextNarration("You are greeted by a cat with oddly small eyes.\n");
         currentTextBox.setNextDialogue(currentEntity.getDefaultMessage() + "\n" + currentEntity.formatShop());
-        currentTextBox.setNextInstruction("Give the shop keeper an [INDEX] to view the item and purchase or enter [exit]" +
+        currentTextBox.setNextInstruction("Give the shop keeper an [INDEX] to view the item and purchase" +
+                " or enter [exit]" +
                 " to leave the shop.");
     }
 
@@ -77,7 +78,7 @@ public class ShopMap extends BaseMap{
                     if (currentPlayer.getPlayerMoney() >= item.getPrice()) {
                         int currentMoney = currentPlayer.getPlayerMoney();
                         currentPlayer.setPlayerMoney(currentMoney - item.getPrice());
-                        textBox.setNextNarration("NEW ITEM ADDED TO INVENTORY");
+                        currentTextBox.setNextNarration("NEW ITEM ADDED TO INVENTORY");
                         inventory.addItems(item);
                     } else {
                         currentTextBox.setNextNarration("You are greeted by a cat with oddly small eyes.\n");
@@ -90,7 +91,8 @@ public class ShopMap extends BaseMap{
             }
 
             currentTextBox.setNextDialogue(currentEntity.getDefaultMessage() + "\n" + currentEntity.formatShop());
-            currentTextBox.setNextInstruction("Give the shopkeeper an [INDEX] to view the item and purchase or enter [exit]" +
+            currentTextBox.setNextInstruction("Give the shopkeeper an [INDEX] to view the item and purchase or " +
+                    "enter [exit]" +
                     " to leave the shop.");
         }
     }
