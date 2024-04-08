@@ -41,6 +41,9 @@ public class ShopKeeper extends InteractableEntity{
                         .append(item.getName())
                         .append(" - ")
                         .append(item.getDescription())
+                        .append(" - ")
+                        .append(" $")
+                        .append(item.getSellPrice())
                         .append("\n");
             }
             return formattedList.toString();

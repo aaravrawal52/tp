@@ -1,12 +1,18 @@
 package ui;
 
 import interactable.Enemy;
+import interactable.ShopKeeper;
 import inventoryitems.Item;
 import map.BaseMap;
 import textbox.PlayerStatus;
 import textbox.TextBox;
 import math.MathQuestion;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Ui {
     private static final int DEFAULT_WIDTH_OF_BATTLE_INTERFACE = 50;
@@ -114,6 +120,18 @@ public class Ui {
             System.out.println();
         }
         printDividingLine();
+    }
+
+    public void printShopKeeper(ShopKeeper cat){
+        String filePath = cat.getFilePath();
+        try {
+            List<String> lines = Files.readAllLines(Paths.get(filePath));
+            for (String line : lines) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading the file at " + filePath);
+        }
     }
 
     public void printInventoryLine(String text, int quantity, int width) {
