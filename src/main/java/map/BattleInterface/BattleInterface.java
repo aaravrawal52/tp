@@ -36,13 +36,13 @@ public class BattleInterface extends BaseMap {
         MathPool mathPool = new MathPool();
         mathPool.init();
         Ui ui = new Ui();
-
+        int difficulty = 0;
         while (currentPlayer.getPlayerHealth() > 0 && currentEntity.getHealth() > 0) {
             int answer;
             Pattern pattern = Pattern.compile("^[--]?[0-9]+$");
             ui.printPlayerStatus(currentPlayer);
             ui.printMap(mapData, (Enemy) currentEntity);
-            MathQuestion mathQuestion = mathPool.getQuestionByDifficulty(0);
+            MathQuestion mathQuestion = mathPool.getQuestionByDifficulty(difficulty);
             //ui.printQuestion(mathQuestion);
             currentTextBox.setNextNarration(mathQuestion.getQuestion());
             ui.printTextBox(currentTextBox);
@@ -59,6 +59,7 @@ public class BattleInterface extends BaseMap {
                        + " can");
 
                 playerHitEnemy();
+                difficulty += 1;
             } else {
                 currentTextBox.setNextDialogue("You got the question WRONG. The enemy proceeds to attack you.");
                 enemyHitPlayer();
