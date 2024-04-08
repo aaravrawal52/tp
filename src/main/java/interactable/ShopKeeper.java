@@ -7,15 +7,15 @@ import java.util.ArrayList;
 
 public class ShopKeeper extends InteractableEntity{
     protected ArrayList<ShopItem> shopItems;
-    protected String defaultMessgage; //whatever the guy says to introduce his items
+    protected String defaultMessage; //whatever the guy says to introduce his items
     protected String filePath;
 
 
     public ShopKeeper(String filePathway, String message){
         //addConsumable();
         this.filePath = filePathway;
-        this.defaultMessgage = message;
-
+        this.defaultMessage = message;
+        this.shopItems = new ArrayList<>();
     }
 
     public ArrayList<ShopItem> getShopItems() {
@@ -27,23 +27,30 @@ public class ShopKeeper extends InteractableEntity{
         shopItems.add(newConsumable);
     }
 
-    public String getDefaultMessgage() {
-        return defaultMessgage;
+    public String getDefaultMessage() {
+        return defaultMessage;
     }
 
 
     public String formatShop() {
-        StringBuilder formattedList = new StringBuilder();
-        for (int i = 0; i < shopItems.size(); i += 1) {
-            ShopItem item = shopItems.get(i);
-            formattedList.append(i + 1).append(". ")
-                    .append(item.getName())
-                    .append(" - ")
-                    .append(item.getDescription())
-                    .append("\n");
+        if (shopItems != null) {
+            StringBuilder formattedList = new StringBuilder();
+            for (int i = 0; i < shopItems.size(); i += 1) {
+                ShopItem item = shopItems.get(i);
+                formattedList.append(i + 1).append(". ")
+                        .append(item.getName())
+                        .append(" - ")
+                        .append(item.getDescription())
+                        .append(" - ")
+                        .append(" $")
+                        .append(item.getSellPrice())
+                        .append("\n");
+            }
+            return formattedList.toString();
         }
-        return formattedList.toString();
+        return "The shop is empty";
     }
+
 
     @Override
     public int getHealth() {

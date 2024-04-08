@@ -13,6 +13,7 @@ import map.battleinterface.BattleInterface;
 
 import java.util.Objects;
 
+import static main.CalculaChroniclesOfTheAlgorithmicKingdom.PLAYER_INVENTORY;
 import static map.BaseMap.storedMaps;
 import static map.BaseMap.mapIndex;
 import static map.MapGenerator.CENTAUR;
@@ -61,7 +62,7 @@ public class InteractingCommand extends MapMoveCommand {
             break;
         case DEMON:
             monster = new Demon(15, 15, 15, xPos, yPos, 15, 15);
-            textBox.setNextDialogue("*the " + monster.getName() + " stares at you menacingly*");
+            textBox.setNextDialogue("*the " + monster.getName() + " growls at you menacingly*");
             battleMap = new BattleInterface(playerStatus, textBox, monster);
             battleMap.initMap(30, monster.getHeight());
             storedMaps.add(battleMap);
@@ -70,7 +71,7 @@ public class InteractingCommand extends MapMoveCommand {
             break;
         case DRAGON:
             monster = new Dragon(20, 20, 20, xPos, yPos, 20, 20);
-            textBox.setNextDialogue("*the " + monster.getName() + " stares at you menacingly*");
+            textBox.setNextDialogue("*the " + monster.getName() + " breathes a ball of flame menacingly*");
             battleMap = new BattleInterface(playerStatus, textBox, monster);
             battleMap.initMap(30, monster.getHeight());
             storedMaps.add(battleMap);
@@ -79,7 +80,7 @@ public class InteractingCommand extends MapMoveCommand {
             break;
         case GOBLIN:
             monster = new Goblin(25, 25, 25, xPos, yPos, 25, 25);
-            textBox.setNextDialogue("*the " + monster.getName() + " stares at you menacingly*");
+            textBox.setNextDialogue("*the " + monster.getName() + " laughs maniacally*");
             battleMap = new BattleInterface(playerStatus, textBox, monster);
             battleMap.initMap(30, monster.getHeight());
             storedMaps.add(battleMap);
@@ -88,7 +89,7 @@ public class InteractingCommand extends MapMoveCommand {
             break;
         case GRYPHON:
             monster = new Gryphon(30, 30, 30, xPos, yPos, 30, 30);
-            textBox.setNextDialogue("*the " + monster.getName() + " stares at you menacingly*");
+            textBox.setNextDialogue("*the " + monster.getName() + " screams at you loudly*");
             battleMap = new BattleInterface(playerStatus, textBox, monster);
             battleMap.initMap(30, monster.getHeight());
             storedMaps.add(battleMap);
@@ -98,17 +99,21 @@ public class InteractingCommand extends MapMoveCommand {
         case SHOP:  //some shopkeeper
             ShopMap shopMap;
             ShopKeeper shopkeeper = new ShopKeeper("src/main/resources/ShopKeeper/ShopKeeper",
-                    "Hi welcome to my shop!");
-            shopMap = new ShopMap(playerStatus, textBox, shopkeeper);
+                    "*meow* Hi welcome to my shop! *meow*");
+            shopMap = new ShopMap(playerStatus, textBox, shopkeeper, PLAYER_INVENTORY);
             shopMap.initMap(30, 0); // Set appropriate width and height
-            //shopMap.printShopItems();
+            shopkeeper.addConsumable(20, 0, "The caffeine is so strong, it heals wounds",
+                    "Cup of Coffee", 10);
+            shopkeeper.addConsumable(0, 100, "Gun with a single round. Why does a cat have a " +
+                    "gun anyway?", "Desert Eagle", 50);
+
             storedMaps.add(shopMap);
 
             mapIndex.put(SHOP, storedMaps.size() - 1);
             BaseMap.currentMap = mapIndex.get(SHOP);
 
-            //((ShopMap) battleMap).interact(textBox); // Interact with the shop
-            textBox.setNextNarration(shopkeeper.getDefaultMessgage());
+            textBox.setNextNarration("You are greeted by a cat with oddly small eyes.");
+            textBox.setNextInstruction("To enter the shop enter [fight]. To leave now, enter [run].");
             break;
 
         default:

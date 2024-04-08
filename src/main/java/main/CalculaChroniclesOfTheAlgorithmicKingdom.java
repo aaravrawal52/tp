@@ -59,6 +59,8 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
 
         textBox.initTextBox();
 
+
+
         PLAYER_INVENTORY.setPlayerStatus(playerStatus);
         PLAYER_INVENTORY.setCurrentTextBox(textBox);
 
@@ -70,7 +72,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         } catch (InterruptedException e) {
             System.out.println("Timer error !!\n" + e.getMessage());
         }
-
+        map.setTextBox(textBox); // so that first map can use the text box
         HintHandler hints = new HintHandler(map, textBox);
         storedMaps.add(map);
         mapIndex.put(FIRST_MAP_IDENTITY, storedMaps.size() - 1);

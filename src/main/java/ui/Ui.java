@@ -1,12 +1,18 @@
 package ui;
 
 import interactable.Enemy;
+import interactable.ShopKeeper;
 import inventoryitems.Item;
 import map.BaseMap;
 import textbox.PlayerStatus;
 import textbox.TextBox;
 import math.MathQuestion;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Ui {
     private static final int DEFAULT_WIDTH_OF_BATTLE_INTERFACE = 50;
@@ -104,6 +110,7 @@ public class Ui {
         printDividingLine();
     }
 
+
     public void printEnemy(BaseMap map) {
         printDividingLine();
         for (ArrayList<Character> row : map.getMapData()) {
@@ -113,6 +120,18 @@ public class Ui {
             System.out.println();
         }
         printDividingLine();
+    }
+
+    public void printShopKeeper(ShopKeeper cat){
+        String filePath = cat.getFilePath();
+        try {
+            List<String> lines = Files.readAllLines(Paths.get(filePath));
+            for (String line : lines) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading the file at " + filePath);
+        }
     }
 
     public void printInventoryLine(String text, int quantity, int width) {
@@ -194,6 +213,7 @@ public class Ui {
 
 
     public void printDeathMessage(){
+        System.out.println("          _______             ______   ________  ______   _____      ");
         System.out.println("|\\     /|(  ___  )|\\     /|  (  __  \\ \\__   __/(  ____ \\(  __  \\ ");
         System.out.println("( \\   / )| (   ) || )   ( |  | (  \\  )   ) (   | (    \\/| (  \\  )");
         System.out.println(" \\ (_) / | |   | || |   | |  | |   ) |   | |   | (__    | |   ) |");
@@ -201,5 +221,13 @@ public class Ui {
         System.out.println("   ) (   | |   | || |   | |  | |   ) |   | |   | (      | |   ) |");
         System.out.println("   | |   | (___) || (___) |  | (__/  )___) (___| (____/\\| (__/  )");
         System.out.println("   \\_/   (_______)(_______)  (______/ \\_______/(_______/(______/ ");
+    }
+
+    public void insertOutOfBoundsMessage(TextBox box){
+        box.setNextNarration("You run straight into a wall");
+    }
+
+    public void insertObjectObstructionMessage(TextBox box){
+        box.setNextNarration("Something appears to be blocking your way");
     }
 }
