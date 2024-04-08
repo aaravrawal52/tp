@@ -56,7 +56,11 @@ public class Parser {
             command = (currentMap != mapIndex.get(FIRST_MAP_IDENTITY)) ? new FightingCommand() : new ErrorCommand();
             break;
         case EXIT:
-            command = (currentMap == mapIndex.get(SHOP)) ? new ExitShop() : new ErrorCommand();
+            try {
+                command = (currentMap == mapIndex.get(SHOP)) ? new ExitShop() : new ErrorCommand();
+            } catch (NullPointerException e){
+                command = new ErrorCommand();
+            }
             break;
         case RUN:
             command = (currentMap != mapIndex.get(FIRST_MAP_IDENTITY)) ? new RunningCommand() : new ErrorCommand();

@@ -1,6 +1,8 @@
 package main;
 
 
+import filereader.MapStorage;
+import filereader.PlayerStatusStorage;
 import hint.HintHandler;
 import command.Command;
 import map.BaseMap;
@@ -12,6 +14,8 @@ import textbox.PlayerStatus;
 import textbox.TextBox;
 import ui.Ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import map.MapGenerator;
@@ -37,22 +41,39 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
     public void startGame() {
         Scanner in = new Scanner(System.in);
 
-        PlayerStatus playerStatus = new PlayerStatus(START_HEALTH, START_MONEY, START_EXP, START_DAMAGE,
-                PLAYER_INVENTORY);
+        MapStorage mapStorage = new MapStorage();
+        PlayerStatusStorage playerStatusStorage = new PlayerStatusStorage();
+
+        PlayerStatus playerStatus = null;
+        try {
+            playerStatus = playerStatusStorage.readPlayerStatus();
+        } catch (IOException e) {
+            System.out.println("Can not read playerStatus !!\n" + e.getMessage());
+        }
         storedMaps.add(PLAYER_INVENTORY);
         mapIndex.put(INVENTORY_IDENTITY, storedMaps.size() - 1);
         TextBox textBox = new TextBox();
         Parser parser = new Parser();
-        BaseMap map = new FirstMap();
         Ui ui = new Ui();
-        HintHandler hints = new HintHandler(map, textBox);
 
-        MapGenerator.getInstance().generateMap(map);
+
         textBox.initTextBox();
-        map.setTextBox(textBox); // so that first map can use the text box
+
+
+
         PLAYER_INVENTORY.setPlayerStatus(playerStatus);
         PLAYER_INVENTORY.setCurrentTextBox(textBox);
 
+        BaseMap map = null;
+        try {
+            map = mapStorage.readFile();
+        } catch (FileNotFoundException e) {
+            System.out.println("\tCan not find your file!!!\n" + e.getMessage());
+        } catch (InterruptedException e) {
+            System.out.println("Timer error !!\n" + e.getMessage());
+        }
+        map.setTextBox(textBox); // so that first map can use the text box
+        HintHandler hints = new HintHandler(map, textBox);
         storedMaps.add(map);
         mapIndex.put(FIRST_MAP_IDENTITY, storedMaps.size() - 1);
         currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
@@ -64,6 +85,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
 
         Command userCommand;
         do {
+
             String userCommandText = in.nextLine();
             hints.checkMapThenDisplayHint(); //handles invisible map triggers for hints
             userCommand = parser.parseCommand(userCommandText);
@@ -72,6 +94,16 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
             executeCommand(userCommand, in);
 
             printMessageUnderMap(userCommand, ui, playerStatus, textBox);
+            try {
+                mapStorage.saveMap(storedMaps.get(mapIndex.get(FIRST_MAP_IDENTITY)));
+            } catch (IOException e) {
+                System.out.println("Can not save the map!\n" + e.getMessage());
+            }
+            try {
+                playerStatusStorage.savePlayerStatus(playerStatus);
+            } catch (IOException e) {
+                System.out.println("Can not save Player Status" + e.getMessage());
+            }
 
         } while (!userCommand.getCommandDescription().equals("TIRED"));
     }

@@ -14,6 +14,23 @@ public abstract class BaseMap {
     public static HashMap<Character, Integer> mapIndex = new HashMap<>();
     protected int width;
     protected int height;
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setPlayerX(int playerX) {
+        this.playerX = playerX;
+    }
+
+    public void setPlayerY(int playerY) {
+        this.playerY = playerY;
+    }
+
     protected ArrayList<ArrayList<Character>> mapData;
     protected int playerX;
     protected int playerY;
@@ -40,6 +57,9 @@ public abstract class BaseMap {
 
     public ArrayList<ArrayList<Character>> getMapData() {
         return mapData;
+    }
+    public void setMapData(ArrayList<ArrayList<Character>> mapData) {
+        this.mapData = mapData;
     }
 
     public void initPlayerLocation(int x, int y) {
