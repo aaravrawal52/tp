@@ -1,0 +1,16 @@
+@startuml
+box
+participant ":CalculaChroniclesOfTheAlgorithmicKingdom" as main
+participant ":OpenInventoryCommand" as open
+participant ":BaseMap" as map
+
+activate main
+main -> open : "execute()"
+activate open
+open -> map : "get(INVENTORY_IDENTITY)"
+activate map
+map --> open : inventory
+deactivate map
+open --> main
+end box
+@enduml

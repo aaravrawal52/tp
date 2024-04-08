@@ -1,0 +1,78 @@
+@startuml
+box
+participant ":CalculaChroniclesOfTheAlgorithmicKingdom" as main
+participant ":UseCommand" as use
+participant ":TextBox" as text
+participant ":PlayerStatus" as status
+participant ":BaseMap" as map
+participant ":PlayerInventory" as inventory
+
+activate main
+main -> use : execute()
+activate use
+opt current screen displayed is consumable inventory screen
+use -> text : setNextInstruction(instruction)
+activate text
+text --> use
+deactivate text
+use -> text : setNextError(error)
+activate text
+text --> use
+deactivate text
+use --> main
+end
+opt consumable list is empty
+use -> text : setNextError(error)
+activate text
+text --> use
+deactivate text
+use --> main
+end
+opt item not specified
+use -> text : setNextError(error)
+activate text
+text --> use
+deactivate text
+use --> main
+end
+opt item name was provided
+use -> use : findItem(itemString)
+activate use
+use -> status : getPlayerInventory()
+activate status
+
+status --> use : inventory
+deactivate status
+alt item is in list
+use -> inventory : useItem(item)
+activate inventory
+inventory --> use
+deactivate inventory
+else
+use -> text : setNextError(error)
+activate text
+text --> use
+deactivate text
+deactivate use
+end
+use --> main
+end
+use -> status : getPlayerInventory()
+activate status
+status --> use
+deactivate status
+opt item index doesn't exist
+use -> text : setNextError(error)
+activate text
+text --> use
+deactivate text
+use --> main
+end
+use -> inventory : useItem(item)
+activate inventory
+inventory --> use
+deactivate inventory
+use --> main
+deactivate use
+end box
+@enduml

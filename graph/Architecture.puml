@@ -1,0 +1,26 @@
+@startuml
+box Architecture
+participant "User" as user
+participant "CalculaChroniclesOfTheAlgorithmicKingdom" as main
+participant ":UI" as ui
+participant ":Parser" as parser
+participant ":MoveRightCommand" as command
+
+user -> main : "w"
+activate main
+main -> parser : parseCommand()
+activate parser
+parser --> main : command
+deactivate parser
+main -> command : execute()
+activate command
+command --> main
+deactivate command
+main -> ui : print()
+activate ui
+ui --> user
+deactivate ui
+user -> main : next command
+
+end box
+@enduml
