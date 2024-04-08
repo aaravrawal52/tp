@@ -10,6 +10,7 @@ public class Consumable extends ShopItem { //we assume all consumables are for 1
         damageAmpAmt = damage;
         super.name = itemName;
         super.price = cost;
+        super.sellPrice = cost;
     }
 
     public void use() {}

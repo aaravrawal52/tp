@@ -112,7 +112,7 @@ public class InteractingCommand extends MapMoveCommand {
             mapIndex.put(SHOP, storedMaps.size() - 1);
             BaseMap.currentMap = mapIndex.get(SHOP);
 
-            textBox.setNextNarration("You are greeted by a cat with oddly small eyes.\n");
+            textBox.setNextNarration("You are greeted by a cat with oddly small eyes.");
             textBox.setNextInstruction("To enter the shop enter [fight]. To leave now, enter [run].");
             break;
 

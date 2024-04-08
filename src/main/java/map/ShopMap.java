@@ -64,10 +64,11 @@ public class ShopMap extends BaseMap{
         while (!answerCommand.equalsIgnoreCase("exit")) {
 
             ui.printPlayerStatus(currentPlayer);
+            ui.printShopKeeper(currentEntity);
             ui.printTextBox(currentTextBox);
 
             answerCommand = in.nextLine().trim();
-
+            answerCommand = (answerCommand.length() > 10) ? answerCommand.substring(0, 10) : answerCommand;
             // Check if the input is numeric
             if (answerCommand.matches("\\d+")) {
                 int index = Integer.parseInt(answerCommand) - 1;
@@ -81,7 +82,7 @@ public class ShopMap extends BaseMap{
                         currentTextBox.setNextNarration("NEW ITEM ADDED TO INVENTORY");
                         inventory.addItems(item);
                     } else {
-                        currentTextBox.setNextNarration("You are greeted by a cat with oddly small eyes.\n");
+                        currentTextBox.setNextNarration("The cat silently judged your broke ass.\n");
                     }
                 } else {
                     currentTextBox.setNextError("Invalid index. Please enter a valid item index or 'exit'.");
@@ -95,6 +96,7 @@ public class ShopMap extends BaseMap{
                     "enter [exit]" +
                     " to leave the shop.");
         }
+        currentTextBox.clearAll();
     }
 
 
