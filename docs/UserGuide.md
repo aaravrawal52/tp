@@ -69,6 +69,15 @@ Enter `q`to quit the game.
 
 If you need a refresher on the controls, entering either `h` or `help` will bring up a set of instructions.
 
+### Saving
+
+Our program can save map when you are playing the game.  
+Also, it will save the player status and your inventory items
+
+### Inventory
+
+In our map, there is always a shop. In the shop, you can buy things and use them to battle with the monster!
+
 
 
 
