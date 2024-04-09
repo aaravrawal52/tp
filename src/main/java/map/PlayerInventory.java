@@ -101,7 +101,7 @@ public class PlayerInventory extends BaseMap {
     }
 
     public void useItem(Consumable item) {
-        item.use();
+        item.use(playerStatus, item, generalItems);
         int leftover = item.getQuantity() - 1;
         if (leftover <= 0) {
             consumableItems.remove(item);
