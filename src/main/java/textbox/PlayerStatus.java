@@ -9,6 +9,7 @@ public class PlayerStatus {
     private int playerExp;
     private int playerDamage;
     private PlayerInventory playerInventory;
+    private int playerDamageAmp;
 
     public PlayerStatus(int startHealth, int startMoney, int startExp, int startDamage,
                         PlayerInventory playerInventory){
@@ -17,6 +18,7 @@ public class PlayerStatus {
         this.playerExp = startExp;
         this.playerDamage = startDamage;
         this.playerInventory = playerInventory;
+        this.playerDamageAmp = 0;
     }
 
     public int getPlayerHealth(){
@@ -69,5 +71,13 @@ public class PlayerStatus {
 
     public void setPlayerInventory(PlayerInventory playerInventory) {
         this.playerInventory = playerInventory;
+    }
+
+    public int getPlayerDamageAmp(){
+        return playerDamageAmp;
+    }
+
+    public void setPlayerDamageAmp(int dmg){
+        playerDamageAmp = dmg;
     }
 }
