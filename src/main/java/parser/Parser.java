@@ -3,12 +3,9 @@ package parser;
 import command.CommandType;
 import command.fight.FightingCommand;
 import command.fight.RunningCommand;
-import command.inventory.SellCommand;
 import command.inventory.OpenInventoryCommand;
 import command.inventory.CloseInventoryCommand;
 import command.inventory.UseCommand;
-import command.inventory.NextPageCommand;
-import command.inventory.PrevPageCommand;
 import command.mapmove.InteractingCommand;
 import command.mapmove.MovingDownwardCommand;
 import command.mapmove.MovingForwardCommand;
@@ -97,21 +94,11 @@ public class Parser {
             command = (currentMap == mapIndex.get(FIRST_MAP_IDENTITY)) ?
                     new OpenInventoryCommand() : new ErrorCommand();
             break;
-        case INV_NEXT:
-            command = (currentMap == mapIndex.get(INVENTORY_IDENTITY)) ? new NextPageCommand() : new ErrorCommand();
-            break;
-        case INV_PREV:
-            command = (currentMap == mapIndex.get(INVENTORY_IDENTITY)) ? new PrevPageCommand() : new ErrorCommand();
-            break;
         case USE_ITEM:
             command = (currentMap == mapIndex.get(INVENTORY_IDENTITY)) ?
                     new UseCommand(userCommand) : new ErrorCommand();
             break;
-        case SELL_ITEM:
-            command = (currentMap == mapIndex.get(INVENTORY_IDENTITY)) ?
-                    new SellCommand(userCommand) : new ErrorCommand();
-            break;
-        case CLOSE_INV: // to delete aft sihan implements
+        case CLOSE_INV:
             command = (currentMap == mapIndex.get(INVENTORY_IDENTITY)) ?
                     new CloseInventoryCommand() : new ErrorCommand();
             break;

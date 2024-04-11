@@ -14,6 +14,7 @@ public class OpenInventoryCommand extends Command {
     @Override
     public void execute() {
         BaseMap.currentMap = mapIndex.get(INVENTORY_IDENTITY);
-        textBox.setNextNarration("Here's your inventory. Navigate the pages using [next] or [prev]");
+        textBox.setNextNarration("Here's your inventory! You can use an item by keying in [use] followed by it's " +
+                "index with a space between them.");
     }
 }

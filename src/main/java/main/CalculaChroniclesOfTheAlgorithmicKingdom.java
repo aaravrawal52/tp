@@ -6,7 +6,7 @@ import filereader.PlayerStatusStorage;
 import hint.HintHandler;
 import command.Command;
 import map.BaseMap;
-import map.FirstMap;
+import map.ShopMap;
 import map.PlayerInventory;
 import map.battleinterface.BattleInterface;
 import parser.Parser;
@@ -18,7 +18,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import map.MapGenerator;
 import static map.BaseMap.mapIndex;
 import static map.BaseMap.storedMaps;
 import static map.BaseMap.currentMap;
@@ -29,7 +28,7 @@ import static map.MapGenerator.INVENTORY_IDENTITY;
 public class CalculaChroniclesOfTheAlgorithmicKingdom {
 
     public static final int START_HEALTH = 100;
-    public static final int START_MONEY = 0;
+    public static final int START_MONEY = 200;
     public static final int START_EXP = 0;
     public static final int START_DAMAGE = 5;
     public static final PlayerInventory PLAYER_INVENTORY = new PlayerInventory();
@@ -112,12 +111,12 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         if (!userCommand.getCommandDescription().equals("HelpMe!!") &&
                 !userCommand.getCommandDescription().equals("TIRED")) {
             ui.printPlayerStatus(playerStatus);
-            if (storedMaps.get(currentMap) instanceof BattleInterface) {
+            if (storedMaps.get(currentMap) instanceof BattleInterface ||
+                    storedMaps.get(currentMap) instanceof ShopMap) {
                 ui.printEnemy(storedMaps.get(currentMap));
             } else if (storedMaps.get(currentMap) instanceof PlayerInventory){
-                int listIndex = playerStatus.getPlayerInventory().getCurrentItemPageNumber();
-                ui.printInventory(playerStatus.getPlayerInventory().getAllItemsList().get(listIndex),
-                        playerStatus.getPlayerInventory().getInventoryNames().get(listIndex),
+                ui.printInventory(playerStatus.getPlayerInventory().getGeneralItems(),
+                        playerStatus.getPlayerInventory().getInventoryNames().get(0),
                         storedMaps.get(currentMap).getWidth(), storedMaps.get(currentMap).getHeight());
             } else {
                 ui.printMap(storedMaps.get(currentMap));

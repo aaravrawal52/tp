@@ -2,6 +2,7 @@ package map;
 
 import interactable.ShopKeeper;
 import filereader.FileReader;
+import inventoryitems.Consumable;
 import inventoryitems.ShopItem;
 import textbox.PlayerStatus;
 import textbox.TextBox;
@@ -80,7 +81,7 @@ public class ShopMap extends BaseMap{
                         int currentMoney = currentPlayer.getPlayerMoney();
                         currentPlayer.setPlayerMoney(currentMoney - item.getPrice());
                         currentTextBox.setNextNarration("NEW ITEM ADDED TO INVENTORY");
-                        inventory.addItems(item);
+                        inventory.addItems((Consumable) item);
                     } else {
                         currentTextBox.setNextNarration("The cat silently judged your broke ass.\n");
                     }

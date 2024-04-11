@@ -31,8 +31,7 @@ public class SellCommand extends Command {
     @Override
     public void execute() {
         PlayerInventory inventory = playerStatus.getPlayerInventory();
-        int listIndex = inventory.getCurrentItemPageNumber();
-        ArrayList<Item> list = playerStatus.getPlayerInventory().getAllItemsList().get(listIndex);
+        ArrayList<Item> list = playerStatus.getPlayerInventory().getGeneralItems();
         if (list.isEmpty()) {
             textBox.setNextError("The item does not exist");
             return;

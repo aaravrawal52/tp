@@ -57,6 +57,7 @@ public class PlayerStatusStorage {
             case 3:
                 startDamage = playerStatusData;
                 break;
+            default:
             }
             round++;
         }
