@@ -16,8 +16,8 @@ public class HintHandler {
         currentTextBox = text;
         invisibleTriggers = new ArrayList<Trigger>();
 
-        addTrigger(0, 1, 4, 5, "you can't help but feel" +
-                " you might be tested on some basic addition here.");     //add all triggers in the map here
+        addTrigger(0, 1, 3, 2, "You should visit the shop sometime. The owner sells many" +
+                "useful items for your journey");     //add all triggers in the map here
     }
 
 
