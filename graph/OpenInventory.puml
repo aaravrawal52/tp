@@ -12,5 +12,6 @@ activate map
 map --> open : inventory
 deactivate map
 open --> main
+deactivate open
 end box
 @enduml

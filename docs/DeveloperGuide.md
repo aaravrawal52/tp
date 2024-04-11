@@ -25,7 +25,7 @@ listed below are a collection of classes used by multiple components which will 
 ```Parser``` is a collection of classes that converts the user's commands and starts the command execution process. <br>
 <br>
 Below is how some of the architecture components would interact with each other when the user inputs the command to move. 
-![architecture_sequence_diagram](../picture/ArchitectureSequenceDiagram.png)
+![architecture_sequence_diagram](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/ArchitectureSequenceDiagram.png)
 The section below gives more details of each component.
 ### UI Component
 
@@ -100,7 +100,7 @@ the user after battle, handled by ```CalculaChroniclesOfTheAlgorithmicKingdom```
 ### Item Usage Component
 
 The API of the following component is defined in OpenInventoryCommand.java.
-![OpenInventory_UML](../picture/OpenInventory.png)
+![OpenInventory_UML](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/OpenInventory.png)
 This component occurs when the user decides to open up the inventory. The user opens up the inventory using the command ```i```
 or ```inventory```.<br>
 Here is how it works:
@@ -110,7 +110,7 @@ the inventory from the stored maps in ```BaseMap```.
 3. The inventory would then be printed on the Ui for display.
 
 The API of the following component is defined in UseCommand.java.
-![UseItem_UML](../picture/ItemUsage.png)
+![UseItem_UML](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/ItemUsage.png)
 This component occurs when the user decides to use an item after navigating to the inventory page containing consumable items.
 Here is how it works:
 1. When the user chooses to use an item after navigating to the consumable items page, the command is parsed.
