@@ -35,27 +35,11 @@ text --> use
 deactivate text
 use --> main
 end
-opt item name was provided
-use -> use : findItem(itemString)
-activate use
-use -> status : getPlayerInventory()
-activate status
-
-status --> use : inventory
-deactivate status
-alt item is in list
-use -> inventory : useItem(item)
-activate inventory
-inventory --> use
-deactivate inventory
-else
+opt item index was not a valid integer
 use -> text : setNextError(error)
 activate text
 text --> use
 deactivate text
-deactivate use
-end
-use --> main
 end
 use -> status : getPlayerInventory()
 activate status

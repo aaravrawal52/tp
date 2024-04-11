@@ -12,11 +12,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 import static filereader.filepath.MapFilePath.BASE_MAP_PATH;
 import static filereader.filepath.MapFilePath.MAP_PROPERTY_PATH;
-import static map.BaseMap.storedMaps;
 
 public class MapStorage {
 
@@ -95,6 +93,7 @@ public class MapStorage {
             case 3:
                 map.setPlayerY(currentData);
                 break;
+            default:
             }
             round++;
         }

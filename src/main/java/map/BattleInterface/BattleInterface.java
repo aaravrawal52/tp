@@ -76,7 +76,7 @@ public class BattleInterface extends BaseMap {
         try {
             mapData = fileReader.readEnemyDesign();
         } catch (Exception e) {
-            // display exception, see how sihan wants to do.
+            currentTextBox.setNextError("Unable to read file from local");
         }
     }
 

@@ -224,7 +224,7 @@ public class Ui {
     }
 
     public void insertOutOfBoundsMessage(TextBox box){
-        box.setNextNarration("You run straight into a wall");
+        box.setNextNarration("You ran straight into a wall");
     }
 
     public void insertObjectObstructionMessage(TextBox box){

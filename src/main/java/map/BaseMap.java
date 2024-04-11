@@ -14,6 +14,14 @@ public abstract class BaseMap {
     public static HashMap<Character, Integer> mapIndex = new HashMap<>();
     protected int width;
     protected int height;
+    protected ArrayList<ArrayList<Character>> mapData;
+    protected int playerX;
+    protected int playerY;
+    protected String mapName;
+    protected TextBox textBox;
+
+    public BaseMap() {
+    }
 
     public void setWidth(int width) {
         this.width = width;
@@ -29,15 +37,6 @@ public abstract class BaseMap {
 
     public void setPlayerY(int playerY) {
         this.playerY = playerY;
-    }
-
-    protected ArrayList<ArrayList<Character>> mapData;
-    protected int playerX;
-    protected int playerY;
-    protected String mapName;
-    protected TextBox textBox;
-
-    public BaseMap() {
     }
 
     public abstract void enableFight();

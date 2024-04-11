@@ -1,7 +1,7 @@
 @startuml
 
 box Battle Component
-participant "CalculaChroniclesOfTheAlgorithmicKingdom" as main
+participant ":CalculaChroniclesOfTheAlgorithmicKingdom" as main
 participant ":UI" as ui
 participant ":Parser" as parser
 participant ":TextBox" as text
@@ -14,17 +14,17 @@ participant ":FileReader" as fileReader
 participant ":Map" as map
 
 activate main
-main -> parser : parseCommand(userCommandText)
-activate parser
-create iCommand
-parser -> iCommand
-activate iCommand
-iCommand --> parser
-deactivate iCommand
-parser --> main : command class
-deactivate parser
-main -> main : executeCommand()
-activate main
+'main -> parser : parseCommand(userCommandText)
+'activate parser
+'create iCommand
+'parser -> iCommand
+'activate iCommand
+'iCommand --> parser
+'deactivate iCommand
+'parser --> main : command class
+'deactivate parser
+'main -> main : executeCommand()
+'activate main
 main -> iCommand : execute()
 activate iCommand
 iCommand -> map : handleInteract()
@@ -96,22 +96,22 @@ else is a shop
 end
 iCommand --> main
 deactivate iCommand
-deactivate main
-main -> main : printMessageUnderMap(userCommand, ui, playerStatus, textBox)
-activate main
-alt not calling help menu or quitting game
-    alt show battle interface
-        main -> ui : printEnemy(currentMap)
-        activate ui
-        ui --> main
-        deactivate ui
-    else
-        main -> ui : printMap(currentMap)
-        activate ui
-        ui --> main
-        deactivate ui
-    end
-end
+'deactivate main
+'main -> main : printMessageUnderMap(userCommand, ui, playerStatus, textBox)
+'activate main
+'alt not calling help menu or quitting game
+'    alt show battle interface
+'        main -> ui : printEnemy(currentMap)
+'        activate ui
+'        ui --> main
+'        deactivate ui
+'    else
+'        main -> ui : printMap(currentMap)
+'        activate ui
+'        ui --> main
+'        deactivate ui
+'    end
+'end
 
 end box
 
