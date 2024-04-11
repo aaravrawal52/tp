@@ -26,6 +26,10 @@ public class PlayerInventory extends BaseMap {
         height = 8;
     }
 
+    public void loadInventory(Consumable item){
+        generalItems.add(item);
+    }
+
     public void addItems(Consumable item) {
         if (generalItems.isEmpty()) {
             item.setQuantity(1);

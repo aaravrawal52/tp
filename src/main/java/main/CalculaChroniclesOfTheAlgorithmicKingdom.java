@@ -1,6 +1,7 @@
 package main;
 
 
+import filereader.InventoryItemsStorage;
 import filereader.MapStorage;
 import filereader.PlayerStatusStorage;
 import hint.HintHandler;
@@ -40,6 +41,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
     public void startGame() {
         Scanner in = new Scanner(System.in);
 
+        InventoryItemsStorage inventoryItemsStorage = new InventoryItemsStorage();
         MapStorage mapStorage = new MapStorage();
         PlayerStatusStorage playerStatusStorage = new PlayerStatusStorage();
 
@@ -49,6 +51,12 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         } catch (IOException e) {
             System.out.println("Can not read playerStatus !!\n" + e.getMessage());
         }
+
+        try {
+            inventoryItemsStorage.readFile(PLAYER_INVENTORY);
+        } catch (IOException e) {
+            System.out.println("Can not read inventory file!\n" + e.getMessage());
+        }
         storedMaps.add(PLAYER_INVENTORY);
         mapIndex.put(INVENTORY_IDENTITY, storedMaps.size() - 1);
         TextBox textBox = new TextBox();
@@ -57,7 +65,6 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
 
 
         textBox.initTextBox();
-
 
 
         PLAYER_INVENTORY.setPlayerStatus(playerStatus);
@@ -93,18 +100,29 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
             executeCommand(userCommand, in);
 
             printMessageUnderMap(userCommand, ui, playerStatus, textBox);
-            try {
-                mapStorage.saveMap(storedMaps.get(mapIndex.get(FIRST_MAP_IDENTITY)));
-            } catch (IOException e) {
-                System.out.println("Can not save the map!\n" + e.getMessage());
-            }
-            try {
-                playerStatusStorage.savePlayerStatus(playerStatus);
-            } catch (IOException e) {
-                System.out.println("Can not save Player Status" + e.getMessage());
-            }
-
+            saveAllGameFile(mapStorage, playerStatusStorage, playerStatus, userCommand, inventoryItemsStorage);
         } while (!userCommand.getCommandDescription().equals("TIRED"));
+    }
+
+    private void saveAllGameFile(MapStorage mapStorage, PlayerStatusStorage playerStatusStorage,
+                                 PlayerStatus playerStatus, Command userCommand,
+                                 InventoryItemsStorage inventoryItemsStorage) {
+        try {
+            mapStorage.saveMap(storedMaps.get(mapIndex.get(FIRST_MAP_IDENTITY)));
+        } catch (IOException e) {
+            System.out.println("Can not save the map!\n" + e.getMessage());
+        }
+        try {
+            playerStatusStorage.savePlayerStatus(playerStatus);
+        } catch (IOException e) {
+            System.out.println("Can not save Player Status" + e.getMessage());
+        }
+
+        try {
+            inventoryItemsStorage.saveFile(PLAYER_INVENTORY);
+        } catch (IOException e) {
+            System.out.println("Can not save inventory items!\n" + e.getMessage());
+        }
     }
 
     private static void printMessageUnderMap(Command userCommand, Ui ui, PlayerStatus playerStatus, TextBox textBox) {
@@ -114,7 +132,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
             if (storedMaps.get(currentMap) instanceof BattleInterface ||
                     storedMaps.get(currentMap) instanceof ShopMap) {
                 ui.printEnemy(storedMaps.get(currentMap));
-            } else if (storedMaps.get(currentMap) instanceof PlayerInventory){
+            } else if (storedMaps.get(currentMap) instanceof PlayerInventory) {
                 ui.printInventory(playerStatus.getPlayerInventory().getGeneralItems(),
                         playerStatus.getPlayerInventory().getInventoryNames().get(0),
                         storedMaps.get(currentMap).getWidth(), storedMaps.get(currentMap).getHeight());

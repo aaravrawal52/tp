@@ -11,6 +11,7 @@ public class UseCommand extends Command {
     String userCommand;
 
     public UseCommand(String userCommand) {
+        commandDescription = "USE!";
         this.userCommand = userCommand;
     }
 
