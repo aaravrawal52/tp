@@ -13,6 +13,7 @@ public class SellCommand extends Command {
     String userCommand;
 
     public SellCommand(String userCommand) {
+        commandDescription = "SELL!";
         this.userCommand = userCommand;
     }
 

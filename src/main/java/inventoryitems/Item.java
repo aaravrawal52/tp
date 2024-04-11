@@ -30,6 +30,14 @@ public abstract class Item {
         return sellPrice;
     }
 
+    public int getDamageAmpAmt() {
+        return -1;
+    }
+
+    public int getHealAmt() {
+        return -1;
+    }
+
     public void setSellPrice(int sellPrice) {
         this.sellPrice = sellPrice;
     }
