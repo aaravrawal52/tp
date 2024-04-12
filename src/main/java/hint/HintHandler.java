@@ -17,7 +17,7 @@ public class HintHandler {
         invisibleTriggers = new ArrayList<Trigger>();
 
         addTrigger(0, 1, 3, 2, "You should visit the shop sometime. The owner sells many" +
-                "useful items for your journey");     //add all triggers in the map here
+                " useful items for your journey");     //add all triggers in the map here
     }
 
 

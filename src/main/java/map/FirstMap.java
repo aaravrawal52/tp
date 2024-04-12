@@ -36,4 +36,17 @@ public class FirstMap extends BaseMap {
             mapData.add(row);
         }
     }
+
+
+    public boolean isWon() {
+        for (ArrayList<Character> row : mapData) {
+            for (char element : row) {
+                if (element != '.' && element != 'P' && element != '#') {
+
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

@@ -34,11 +34,11 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
     public static final int START_DAMAGE = 5;
     public static final PlayerInventory PLAYER_INVENTORY = new PlayerInventory();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         new CalculaChroniclesOfTheAlgorithmicKingdom().startGame();
     }
 
-    public void startGame() {
+    public void startGame() throws InterruptedException {
         Scanner in = new Scanner(System.in);
 
         InventoryItemsStorage inventoryItemsStorage = new InventoryItemsStorage();
@@ -84,7 +84,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         mapIndex.put(FIRST_MAP_IDENTITY, storedMaps.size() - 1);
         currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
 
-
+        long startTime = System.currentTimeMillis(); // start speed run timer
         ui.printPlayerStatus(playerStatus);
         ui.printMap(storedMaps.get(currentMap));
         ui.printTextBox(textBox);
@@ -101,7 +101,11 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
 
             printMessageUnderMap(userCommand, ui, playerStatus, textBox);
             saveAllGameFile(mapStorage, playerStatusStorage, playerStatus, userCommand, inventoryItemsStorage);
-        } while (!userCommand.getCommandDescription().equals("TIRED"));
+            if (storedMaps.get(mapIndex.get(FIRST_MAP_IDENTITY)).isWon()){
+                ui.printWinMessage(playerStatus, startTime);
+                break;
+            }
+        } while (!userCommand.getCommandDescription().equals("TIRED") );
     }
 
     private void saveAllGameFile(MapStorage mapStorage, PlayerStatusStorage playerStatusStorage,

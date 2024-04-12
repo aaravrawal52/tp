@@ -238,4 +238,8 @@ public abstract class BaseMap {
     public int getHeight() {
         return height;
     }
+
+    public boolean isWon() {
+        return false;
+    }
 }
