@@ -117,7 +117,6 @@ public class BattleInterface extends BaseMap {
     public void handleDeath(){
         Ui ui = new Ui();
         ui.printDeathMessage();
-        System.exit(0);
     }
 
     public PlayerStatus getCurrentPlayer() {

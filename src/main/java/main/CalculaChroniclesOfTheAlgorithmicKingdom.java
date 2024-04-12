@@ -85,8 +85,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         mapIndex.put(FIRST_MAP_IDENTITY, storedMaps.size() - 1);
         currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
       
-      
-        long startTime = System.currentTimeMillis(); // start speed run timer
+
         assert playerStatus != null;
         ui.printPlayerStatus(playerStatus);
         ui.printMap(storedMaps.get(currentMap));
@@ -105,7 +104,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
             printMessageUnderMap(userCommand, ui, playerStatus, textBox);
             saveAllGameFile(mapStorage, playerStatusStorage, playerStatus, userCommand, inventoryItemsStorage);
             if (storedMaps.get(mapIndex.get(FIRST_MAP_IDENTITY)).isWon()){
-                ui.printWinMessage(playerStatus, startTime);
+                ui.printWinMessage(playerStatus);
                 break;
             }
         } while (!userCommand.getCommandDescription().equals("TIRED") );
