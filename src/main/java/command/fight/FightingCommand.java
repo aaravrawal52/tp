@@ -1,5 +1,6 @@
 package command.fight;
 import command.Command;
+import command.ResetCommand;
 import map.BaseMap;
 import map.ShopMap;
 
@@ -31,6 +32,8 @@ public class FightingCommand extends Command {
                 currentMapForCommand.handleLootingByPlayer();
             } else if (currentMapForCommand.getPlayerDeath()) {
                 currentMapForCommand.handleDeath();
+                Command deathReset = new ResetCommand();
+                deathReset.execute(playerStatus);
             }
         }
 
