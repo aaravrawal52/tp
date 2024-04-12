@@ -2,9 +2,7 @@ package filereader;
 
 import inventoryitems.Consumable;
 import inventoryitems.Item;
-import inventoryitems.ShopItem;
 import map.PlayerInventory;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;

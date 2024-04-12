@@ -223,11 +223,31 @@ public class Ui {
         System.out.println("   \\_/   (_______)(_______)  (______/ \\_______/(_______/(______/ ");
     }
 
+
+    public void printWinMessage(PlayerStatus player, long startTime) throws InterruptedException {
+        System.out.println(" __      __   ______   __    __        __       __  ______  __    __ \n" +
+                        "|  \\    /  \\ /      \\ |  \\  |  \\      |  \\  _  |  \\|      \\|  \\  |  \\\n" +
+                        " \\$$\\  /  $$|  $$$$$$\\| $$  | $$      | $$ / \\ | $$ \\$$$$$$| $$\\ | $$\n" +
+                        "  \\$$\\/  $$ | $$  | $$| $$  | $$      | $$/  $\\| $$  | $$  | $$$\\| $$\n" +
+                        "   \\$$  $$  | $$  | $$| $$  | $$      | $$  $$$\\ $$  | $$  | $$$$\\ $$\n" +
+                        "    \\$$$$   | $$  | $$| $$  | $$      | $$ $$\\$$\\$$  | $$  | $$\\$$ $$\n" +
+                        "    | $$    | $$__/ $$| $$__/ $$      | $$$$  \\$$$$ _| $$_ | $$ \\$$$$\n" +
+                        "    | $$     \\$$    $$ \\$$    $$      | $$$    \\$$$|   $$ \\| $$  \\$$$\n" +
+                        "     \\$$      \\$$$$$$   \\$$$$$$        \\$$      \\$$ \\$$$$$$ \\$$   \\$$\n" +
+                        "                                                                     ");
+        Thread.sleep(3000);
+        System.out.println("You Completed the game with $" + player.getPlayerMoney() + " remaining and a total" +
+                " of " + player.getPlayerExp() + " exp!!");
+        System.out.println("You completed this run in " + ((System.currentTimeMillis() - startTime) / 1000) + "s!");
+        Thread.sleep(3000);
+        System.out.println("Thank you for playing!!!");
+    }
+
     public void insertOutOfBoundsMessage(TextBox box){
         box.setNextNarration("You ran straight into a wall");
     }
 
     public void insertObjectObstructionMessage(TextBox box){
-        System.out.println();box.setNextNarration("Something appears to be blocking your way");
+        box.setNextNarration("Something appears to be blocking your way");
     }
 }
