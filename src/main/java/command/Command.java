@@ -11,30 +11,31 @@ public abstract class Command {
     protected TextBox textBox;
     protected PlayerStatus playerStatus;
     protected String commandDescription;
-    protected BaseMap currentMap;
+    protected BaseMap currentMapForCommand;
 
     public Command() {
         commandDescription = "Impossible";
-        currentMap = null;
+        currentMapForCommand = null;
     }
 
     public abstract void execute();
 
     public void execute(Scanner in) {
-
     }
 
+    public void execute(PlayerStatus playerStatus) {
+    }
 
     public String getCommandDescription() {
         return commandDescription;
     }
 
-    public BaseMap getCurrentMap() {
-        return currentMap;
+    public BaseMap getCurrentMapForCommand() {
+        return currentMapForCommand;
     }
 
-    public void setCurrentMap(BaseMap givenMap) {
-        currentMap = givenMap;
+    public void setCurrentMapForCommand(BaseMap givenMap) {
+        currentMapForCommand = givenMap;
     }
 
     public void setPlayerStatus(PlayerStatus playerStatus) {

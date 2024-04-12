@@ -14,10 +14,10 @@ public class ExitShop extends Command {
     }
     @Override
     public void execute(){
-        if(currentMap instanceof ShopMap) {
+        if(currentMapForCommand instanceof ShopMap) {
             textBox.setNextNarration("You exited the shop!!");
             BaseMap.currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
-            currentMap = storedMaps.get(BaseMap.currentMap);
+            currentMapForCommand = storedMaps.get(BaseMap.currentMap);
         }
     }
 }

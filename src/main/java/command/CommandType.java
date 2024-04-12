@@ -14,7 +14,8 @@ public enum CommandType {
     ERROR(""),
     INVENTORY("(?i)\\h*(i|inventory)\\h*"),
     USE_ITEM("(?i)\\h*(use)(\\h+\\d+|\\h+\\w+)?\\h*"),
-    CLOSE_INV("(?i)\\h*(close)\\h*");
+    CLOSE_INV("(?i)\\h*(close)\\h*"),
+    RESET("(?i)\\h*(reset)\\h*");
     final String regExpression;
 
     CommandType(String regExpression) {
