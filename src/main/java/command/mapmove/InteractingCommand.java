@@ -31,7 +31,7 @@ public class InteractingCommand extends MapMoveCommand {
 
     @Override
     public void execute() {
-        String entityInteractedWith = currentMap.handleInteract();
+        String entityInteractedWith = currentMapForCommand.handleInteract();
         if (Objects.equals(entityInteractedWith, "no interaction")) {
             textBox.setNextNarration("Nothing to interact with here");
         } else if (Objects.equals(entityInteractedWith, "@") ||
@@ -47,8 +47,8 @@ public class InteractingCommand extends MapMoveCommand {
         char entity = entityInteractedWith.charAt(0);
         BaseMap battleMap;
         InteractableEntity monster;
-        int xPos = currentMap.getInteractX();
-        int yPos = currentMap.getInteractY();
+        int xPos = currentMapForCommand.getInteractX();
+        int yPos = currentMapForCommand.getInteractY();
 
         switch (entity) {
         case CENTAUR:

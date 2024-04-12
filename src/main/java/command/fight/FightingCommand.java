@@ -21,21 +21,21 @@ public class FightingCommand extends Command {
 
     @Override
     public void execute(Scanner in) {
-        if (currentMap instanceof map.battleinterface.BattleInterface) {
-            currentMap.enableFight(in);
+        if (currentMapForCommand instanceof map.battleinterface.BattleInterface) {
+            currentMapForCommand.enableFight(in);
             BaseMap.currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
-            if (currentMap.getEntityDeath()) {
+            if (currentMapForCommand.getEntityDeath()) {
                 int xPos = storedMaps.get(BaseMap.currentMap).getInteractX();
                 int yPos = storedMaps.get(BaseMap.currentMap).getInteractY();
                 storedMaps.get(BaseMap.currentMap).clearSpot(xPos, yPos);
-                currentMap.handleLootingByPlayer();
-            } else if (currentMap.getPlayerDeath()) {
-                currentMap.handleDeath();
+                currentMapForCommand.handleLootingByPlayer();
+            } else if (currentMapForCommand.getPlayerDeath()) {
+                currentMapForCommand.handleDeath();
             }
         }
 
-        if (currentMap instanceof ShopMap) {
-            currentMap.enableFight(in);
+        if (currentMapForCommand instanceof ShopMap) {
+            currentMapForCommand.enableFight(in);
             BaseMap.currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
         }
     }

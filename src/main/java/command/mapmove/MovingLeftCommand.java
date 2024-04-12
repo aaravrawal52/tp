@@ -9,7 +9,7 @@ public class MovingLeftCommand extends MapMoveCommand {
     @Override
     public void execute() {
         for (int i = 0; i < commandModifier; i++) {
-            currentMap.movePlayerLeftOne();
+            currentMapForCommand.movePlayerLeftOne();
         }
     }
 }

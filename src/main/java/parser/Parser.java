@@ -1,6 +1,6 @@
 package parser;
 
-import command.CommandType;
+import command.*;
 import command.fight.FightingCommand;
 import command.fight.RunningCommand;
 import command.inventory.OpenInventoryCommand;
@@ -11,10 +11,6 @@ import command.mapmove.MovingDownwardCommand;
 import command.mapmove.MovingForwardCommand;
 import command.mapmove.MovingLeftCommand;
 import command.mapmove.MovingRightCommand;
-import command.ErrorCommand;
-import command.HelpCommand;
-import command.QuitCommand;
-import command.Command;
 import command.mapmove.ExitShop;
 
 import java.util.regex.Matcher;
@@ -101,6 +97,9 @@ public class Parser {
         case CLOSE_INV:
             command = (currentMap == mapIndex.get(INVENTORY_IDENTITY)) ?
                     new CloseInventoryCommand() : new ErrorCommand();
+            break;
+        case RESET:
+            command = new ResetCommand();
             break;
         default:
             command = new ErrorCommand();
