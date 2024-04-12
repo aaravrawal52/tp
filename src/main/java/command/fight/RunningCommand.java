@@ -14,10 +14,10 @@ public class RunningCommand extends Command {
     }
     @Override
     public void execute(){
-        if(currentMap instanceof BattleInterface) {
+        if(currentMapForCommand instanceof BattleInterface) {
             textBox.setNextNarration("You decide to run and successfully got away");
             BaseMap.currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
-            currentMap = storedMaps.get(BaseMap.currentMap);
+            currentMapForCommand = storedMaps.get(BaseMap.currentMap);
         }
     }
 }
