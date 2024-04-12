@@ -248,6 +248,6 @@ public class Ui {
     }
 
     public void insertObjectObstructionMessage(TextBox box){
-        System.out.println();box.setNextNarration("Something appears to be blocking your way");
+        box.setNextNarration("Something appears to be blocking your way");
     }
 }

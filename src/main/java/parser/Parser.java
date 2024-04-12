@@ -1,6 +1,11 @@
 package parser;
 
-import command.*;
+import command.Command;
+import command.HelpCommand;
+import command.CommandType;
+import command.ResetCommand;
+import command.ErrorCommand;
+import command.QuitCommand;
 import command.fight.FightingCommand;
 import command.fight.RunningCommand;
 import command.inventory.OpenInventoryCommand;
