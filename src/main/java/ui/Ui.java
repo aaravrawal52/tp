@@ -224,7 +224,7 @@ public class Ui {
     }
 
 
-    public void printWinMessage(PlayerStatus player, long startTime) throws InterruptedException {
+    public void printWinMessage(PlayerStatus player) throws InterruptedException {
         System.out.println(" __      __   ______   __    __        __       __  ______  __    __ \n" +
                         "|  \\    /  \\ /      \\ |  \\  |  \\      |  \\  _  |  \\|      \\|  \\  |  \\\n" +
                         " \\$$\\  /  $$|  $$$$$$\\| $$  | $$      | $$ / \\ | $$ \\$$$$$$| $$\\ | $$\n" +
@@ -238,7 +238,6 @@ public class Ui {
         Thread.sleep(3000);
         System.out.println("You Completed the game with $" + player.getPlayerMoney() + " remaining and a total" +
                 " of " + player.getPlayerExp() + " exp!!");
-        System.out.println("You completed this run in " + ((System.currentTimeMillis() - startTime) / 1000) + "s!");
         Thread.sleep(3000);
         System.out.println("Thank you for playing!!!");
     }
