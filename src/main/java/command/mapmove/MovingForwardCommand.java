@@ -8,7 +8,7 @@ public class MovingForwardCommand extends MapMoveCommand {
     @Override
     public void execute() {
         for (int i = 0; i < commandModifier; i++) {
-            currentMap.movePlayerUpOne();
+            currentMapForCommand.movePlayerUpOne();
         }
     }
 }

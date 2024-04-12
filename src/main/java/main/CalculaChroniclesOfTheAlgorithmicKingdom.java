@@ -29,7 +29,7 @@ import static map.MapGenerator.INVENTORY_IDENTITY;
 public class CalculaChroniclesOfTheAlgorithmicKingdom {
 
     public static final int START_HEALTH = 100;
-    public static final int START_MONEY = 200;
+    public static final int START_MONEY = 0;
     public static final int START_EXP = 0;
     public static final int START_DAMAGE = 5;
     public static final PlayerInventory PLAYER_INVENTORY = new PlayerInventory();
@@ -78,13 +78,16 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         } catch (InterruptedException e) {
             System.out.println("Timer error !!\n" + e.getMessage());
         }
+        assert map != null;
         map.setTextBox(textBox); // so that first map can use the text box
         HintHandler hints = new HintHandler(map, textBox);
         storedMaps.add(map);
         mapIndex.put(FIRST_MAP_IDENTITY, storedMaps.size() - 1);
         currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
-
+      
+      
         long startTime = System.currentTimeMillis(); // start speed run timer
+        assert playerStatus != null;
         ui.printPlayerStatus(playerStatus);
         ui.printMap(storedMaps.get(currentMap));
         ui.printTextBox(textBox);
@@ -97,7 +100,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
             userCommand = parser.parseCommand(userCommandText);
             setUserCommand(userCommand, storedMaps.get(currentMap), playerStatus, textBox);
 
-            executeCommand(userCommand, in);
+            executeCommand(userCommand, in, playerStatus);
 
             printMessageUnderMap(userCommand, ui, playerStatus, textBox);
             saveAllGameFile(mapStorage, playerStatusStorage, playerStatus, userCommand, inventoryItemsStorage);
@@ -108,9 +111,9 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         } while (!userCommand.getCommandDescription().equals("TIRED") );
     }
 
-    private void saveAllGameFile(MapStorage mapStorage, PlayerStatusStorage playerStatusStorage,
-                                 PlayerStatus playerStatus, Command userCommand,
-                                 InventoryItemsStorage inventoryItemsStorage) {
+    private static void saveAllGameFile(MapStorage mapStorage, PlayerStatusStorage playerStatusStorage,
+                                        PlayerStatus playerStatus, Command userCommand,
+                                        InventoryItemsStorage inventoryItemsStorage) {
         try {
             mapStorage.saveMap(storedMaps.get(mapIndex.get(FIRST_MAP_IDENTITY)));
         } catch (IOException e) {
@@ -147,16 +150,18 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         }
     }
 
-    private static void executeCommand(Command userCommand, Scanner in) {
+    private static void executeCommand(Command userCommand, Scanner in, PlayerStatus playerStatus) {
         if (userCommand.getCommandDescription().equals("FIGHT!")) {
             userCommand.execute(in);
+        } else if (userCommand.getCommandDescription().equals("RESET!")) {
+            userCommand.execute(playerStatus);
         } else {
             userCommand.execute();
         }
     }
 
     private static void setUserCommand(Command userCommand, BaseMap map, PlayerStatus playerStatus, TextBox textBox) {
-        userCommand.setCurrentMap(map);
+        userCommand.setCurrentMapForCommand(map);
         userCommand.setPlayerStatus(playerStatus);
         userCommand.setTextBox(textBox);
     }
