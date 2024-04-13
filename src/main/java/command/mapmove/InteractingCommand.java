@@ -9,7 +9,7 @@ import interactable.enemies.Gryphon;
 import interactable.enemies.Goblin;
 import map.BaseMap;
 import map.ShopMap;
-import map.battleinterface.BattleInterface;
+import map.BattleInterface.BattleInterface;
 
 import java.util.Objects;
 
@@ -98,7 +98,7 @@ public class InteractingCommand extends MapMoveCommand {
             break;
         case SHOP:  //some shopkeeper
             ShopMap shopMap;
-            ShopKeeper shopkeeper = new ShopKeeper("src/main/resources/ShopKeeper/ShopKeeper",
+            ShopKeeper shopkeeper = new ShopKeeper("ShopKeeper/ShopKeeper.txt",
                     "*meow* Hi welcome to my shop! *meow*");
             shopMap = new ShopMap(playerStatus, textBox, shopkeeper, PLAYER_INVENTORY);
             shopMap.initMap(30, 0); // Set appropriate width and height

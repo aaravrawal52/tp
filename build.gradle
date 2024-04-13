@@ -33,7 +33,7 @@ application {
 }
 
 shadowJar {
-    archiveBaseName.set("Release v2.0")
+    archiveBaseName.set("Release v2.1")
     archiveClassifier.set("")
 }
 

@@ -1,4 +1,4 @@
-package map.battleinterface;
+package map.BattleInterface;
 
 import interactable.Enemy;
 import interactable.InteractableEntity;
@@ -74,7 +74,7 @@ public class BattleInterface extends BaseMap {
 
         FileReader fileReader = new FileReader(currentEntity.getFilePath());
         try {
-            mapData = fileReader.readEnemyDesign();
+            mapData = fileReader.readDesign();
         } catch (Exception e) {
             currentTextBox.setNextError("Unable to read file from local");
         }

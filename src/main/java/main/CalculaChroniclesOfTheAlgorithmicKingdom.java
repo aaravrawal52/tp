@@ -9,7 +9,7 @@ import command.Command;
 import map.BaseMap;
 import map.ShopMap;
 import map.PlayerInventory;
-import map.battleinterface.BattleInterface;
+import map.BattleInterface.BattleInterface;
 import parser.Parser;
 import textbox.PlayerStatus;
 import textbox.TextBox;
