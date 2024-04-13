@@ -46,7 +46,7 @@ public class ShopMap extends BaseMap{
         currentTextBox.setNextNarration("You are greeted by a cat with oddly small eyes.\n");
         currentTextBox.setNextDialogue(currentEntity.getDefaultMessage() + "\n" + currentEntity.formatShop());
         currentTextBox.setNextInstruction("Give the shop keeper an [INDEX] to view the item and purchase" +
-                " or enter [exit]" +
+                " or enter [exit] or [run]" +
                 " to leave the shop.");
     }
 
@@ -62,7 +62,7 @@ public class ShopMap extends BaseMap{
         String answerCommand = "";
         Ui ui = new Ui();
         queueTextBox();
-        while (!answerCommand.equalsIgnoreCase("exit")) {
+        while (true) {
 
             ui.printPlayerStatus(currentPlayer);
             ui.printShopKeeper(currentEntity);
@@ -70,7 +70,13 @@ public class ShopMap extends BaseMap{
 
             answerCommand = in.nextLine().trim();
             answerCommand = (answerCommand.length() > 10) ? answerCommand.substring(0, 10) : answerCommand;
-            // Check if the input is numeric
+
+            // Check if the command is "exit" to break the loop
+            if (answerCommand.equalsIgnoreCase("exit")) {
+                break;  // Exit the loop if the command is "exit"
+            }
+
+            // Check if the input is numeric and not 'run'
             if (answerCommand.matches("\\d+")) {
                 int index = Integer.parseInt(answerCommand) - 1;
                 ArrayList<ShopItem> shopItems = currentEntity.getShopItems();
@@ -88,7 +94,10 @@ public class ShopMap extends BaseMap{
                 } else {
                     currentTextBox.setNextError("Invalid index. Please enter a valid item index or 'exit'.");
                 }
-            } else if (!answerCommand.equalsIgnoreCase("exit")) {
+            } else if (answerCommand.equalsIgnoreCase("run")) {
+                // Handle "run" as an invalid input, maybe logging or just ignoring
+                currentTextBox.setNextError("Invalid command. The word 'run' is not recognized in this context.");
+            } else {
                 currentTextBox.setNextError("Invalid command. Please enter a valid item index or 'exit'.");
             }
 
@@ -98,7 +107,9 @@ public class ShopMap extends BaseMap{
                     " to leave the shop.");
         }
         currentTextBox.clearAll();
+        currentTextBox.setNextNarration("You exited the shop!!");
     }
+
 
 
     @Override
