@@ -93,7 +93,9 @@ public class PlayerStatus {
     }
 
     public void setPlayerInventory(PlayerInventory playerInventory) {
-        if (playerInventory == null) throw new NullPointerException("Player inventory cannot be null.");
+        if (playerInventory == null) {
+            throw new NullPointerException("Player inventory cannot be null.");
+        }
         this.playerInventory = playerInventory;
     }
 

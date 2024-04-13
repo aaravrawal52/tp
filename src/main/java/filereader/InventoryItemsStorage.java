@@ -4,7 +4,6 @@ import inventoryitems.Consumable;
 import inventoryitems.Item;
 import map.PlayerInventory;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
