@@ -149,7 +149,8 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         }
     }
 
-    private static void executeCommand(Command userCommand, Scanner in, PlayerStatus playerStatus) throws FileNotFoundException {
+    private static void executeCommand(Command userCommand, Scanner in, PlayerStatus playerStatus)
+            throws FileNotFoundException {
         if (userCommand.getCommandDescription().equals("FIGHT!")) {
             userCommand.execute(in);
         } else if (userCommand.getCommandDescription().equals("RESET!")) {
