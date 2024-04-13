@@ -4,6 +4,7 @@ import textbox.PlayerStatus;
 import textbox.TextBox;
 import map.BaseMap;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 
@@ -20,7 +21,7 @@ public abstract class Command {
 
     public abstract void execute();
 
-    public void execute(Scanner in) {
+    public void execute(Scanner in) throws FileNotFoundException {
     }
 
     public void execute(PlayerStatus playerStatus) {

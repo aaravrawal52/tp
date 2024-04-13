@@ -3,6 +3,7 @@ package map;
 import textbox.TextBox;
 import ui.Ui;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -41,7 +42,7 @@ public abstract class BaseMap {
 
     public abstract void enableFight();
 
-    public void enableFight(Scanner in) {
+    public void enableFight(Scanner in) throws FileNotFoundException {
         assert in != null;
     }
 

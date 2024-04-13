@@ -7,12 +7,11 @@ import map.BaseMap;
 import textbox.PlayerStatus;
 import textbox.TextBox;
 import math.MathQuestion;
+import filereader.FileReader;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Ui {
     private static final int DEFAULT_WIDTH_OF_BATTLE_INTERFACE = 50;
@@ -122,15 +121,19 @@ public class Ui {
         printDividingLine();
     }
 
-    public void printShopKeeper(ShopKeeper cat){
-        String filePath = cat.getFilePath();
+    public void printShopKeeper(ShopKeeper cat) throws FileNotFoundException {
+        FileReader fileReader = new FileReader(cat.getFilePath());
+        ArrayList<ArrayList<Character>> mapData = new ArrayList<>();
         try {
-            List<String> lines = Files.readAllLines(Paths.get(filePath));
-            for (String line : lines) {
-                System.out.println(line);
+            mapData = fileReader.readDesign();
+        } catch (Exception e) {
+            System.out.println("Unable to read file from local");
+        }
+        for (ArrayList<Character> row : mapData) {
+            for (Character ch : row) {
+                System.out.print(ch);  // Print each character without a newline
             }
-        } catch (IOException e) {
-            System.out.println("Error reading the file at " + filePath);
+            System.out.println();  // Print a newline after each row
         }
     }
 

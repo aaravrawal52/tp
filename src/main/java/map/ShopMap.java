@@ -8,6 +8,7 @@ import textbox.PlayerStatus;
 import textbox.TextBox;
 import ui.Ui;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -58,7 +59,7 @@ public class ShopMap extends BaseMap{
 
 
     @Override
-    public void enableFight(Scanner in) {
+    public void enableFight(Scanner in) throws FileNotFoundException {
         String answerCommand = "";
         Ui ui = new Ui();
         queueTextBox();
