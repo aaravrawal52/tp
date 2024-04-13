@@ -22,7 +22,7 @@ public class FightingCommand extends Command {
 
     @Override
     public void execute(Scanner in) {
-        if (currentMapForCommand instanceof map.battleinterface.BattleInterface) {
+        if (currentMapForCommand instanceof map.BattleInterface.BattleInterface) {
             currentMapForCommand.enableFight(in);
             BaseMap.currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
             if (currentMapForCommand.getEntityDeath()) {
