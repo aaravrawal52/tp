@@ -19,14 +19,14 @@ import static main.CalculaChroniclesOfTheAlgorithmicKingdom.PLAYER_INVENTORY;
 
 public class PlayerStatusStorage {
     public PlayerStatus readPlayerStatus() throws FileNotFoundException {
-        try{
+        try {
             Files.createDirectories(Paths.get("./data"));
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Fail to create directory!\n" + e.getMessage());
         }
 
         File file = new File(PLAYER_STATUS_PATH);
-        if(!file.exists() || file.length() == 0){
+        if (!file.exists() || file.length() == 0) {
             try {
                 Files.createFile(Paths.get(PLAYER_STATUS_PATH));
             } catch (IOException e) {
@@ -42,29 +42,36 @@ public class PlayerStatusStorage {
         int startMoney = -1;
         int startExp = -1;
         int startDamage = -1;
-        while(fileContent.hasNext()){
-            int playerStatusData = Integer.parseInt(fileContent.nextLine());
-            switch (round){
-            case 0:
-                startHealth = playerStatusData;
-                break;
-            case 1:
-                startMoney = playerStatusData;
-                break;
-            case 2:
-                startExp = playerStatusData;
-                break;
-            case 3:
-                startDamage = playerStatusData;
-                break;
-            default:
+        try {
+            while (fileContent.hasNext()) {
+                int playerStatusData = Integer.parseInt(fileContent.nextLine());
+                switch (round) {
+                case 0:
+                    startHealth = playerStatusData;
+                    break;
+                case 1:
+                    startMoney = playerStatusData;
+                    break;
+                case 2:
+                    startExp = playerStatusData;
+                    break;
+                case 3:
+                    startDamage = playerStatusData;
+                    break;
+                default:
+                }
+                round++;
             }
-            round++;
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException | StringIndexOutOfBoundsException e) {
+            System.out.println("Player status corrupted, resetting it to default : (");
+            return new PlayerStatus(START_HEALTH, START_MONEY, START_EXP, START_DAMAGE,
+                    PLAYER_INVENTORY);
         }
         return new PlayerStatus(startHealth, startMoney, startExp, startDamage, PLAYER_INVENTORY);
     }
 
     public void savePlayerStatus(PlayerStatus playerStatus) throws IOException {
+        new FileWriter(PLAYER_STATUS_PATH).close();
         FileWriter fileWriter = new FileWriter(PLAYER_STATUS_PATH);
 
         String startHealth = String.valueOf(playerStatus.getPlayerHealth());

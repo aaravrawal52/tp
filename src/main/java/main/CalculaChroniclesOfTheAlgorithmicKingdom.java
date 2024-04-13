@@ -53,7 +53,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         }
 
         try {
-            inventoryItemsStorage.readFile(PLAYER_INVENTORY);
+            inventoryItemsStorage.readFile();
         } catch (IOException e) {
             System.out.println("Can not read inventory file!\n" + e.getMessage());
         }
@@ -84,7 +84,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         storedMaps.add(map);
         mapIndex.put(FIRST_MAP_IDENTITY, storedMaps.size() - 1);
         currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
-      
+
 
         assert playerStatus != null;
         ui.printPlayerStatus(playerStatus);
@@ -103,11 +103,11 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
 
             printMessageUnderMap(userCommand, ui, playerStatus, textBox);
             saveAllGameFile(mapStorage, playerStatusStorage, playerStatus, userCommand, inventoryItemsStorage);
-            if (storedMaps.get(mapIndex.get(FIRST_MAP_IDENTITY)).isWon()){
+            if (storedMaps.get(mapIndex.get(FIRST_MAP_IDENTITY)).isWon()) {
                 ui.printWinMessage(playerStatus);
                 break;
             }
-        } while (!userCommand.getCommandDescription().equals("TIRED") );
+        } while (!userCommand.getCommandDescription().equals("TIRED"));
     }
 
     private static void saveAllGameFile(MapStorage mapStorage, PlayerStatusStorage playerStatusStorage,

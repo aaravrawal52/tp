@@ -116,6 +116,8 @@ If you need a refresher on the controls, entering either `h` or `help` will brin
 
 Our program can save map when you are playing the game.  
 Also, it will save the player status and your inventory items
+Please Note: After buying things in shop or fighting with a monster, you have to move on the map to save your  
+file.
 
 ### Reset
 
