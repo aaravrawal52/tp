@@ -22,7 +22,7 @@ game played entirely on the terminal. It is written in Java.
 - Project management
   - Documented the Architecture in the Developer Guide.
   - Documented the BattleInterface, Interacting, Inventory usage and Item Usage component in the Developer Guide with the use of puml diagrams.
-  - Documented the User Stories in the Developer Guide.
+  - Documented the User Stories, nonfunctional requirements and manual testing guide in the Developer Guide.
 
 
 - Community

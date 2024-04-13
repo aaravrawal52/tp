@@ -131,9 +131,9 @@ at ANY POINT IN THE GAME by entering `reset`.
 
 ## FAQ
 
-**Q**: 
+**Q**: Is there any prerequisite to run the application.
 
-**A**: 
+**A**: Java 11 needs to be installed and the jar file must be in an empty folder before running.
 
 ## Command Summary
 
