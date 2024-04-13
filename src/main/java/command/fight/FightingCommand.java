@@ -4,6 +4,7 @@ import command.ResetCommand;
 import map.BaseMap;
 import map.ShopMap;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import static map.BaseMap.mapIndex;
@@ -21,7 +22,7 @@ public class FightingCommand extends Command {
     }
 
     @Override
-    public void execute(Scanner in) {
+    public void execute(Scanner in) throws FileNotFoundException {
         if (currentMapForCommand instanceof map.BattleInterface.BattleInterface) {
             currentMapForCommand.enableFight(in);
             BaseMap.currentMap = mapIndex.get(FIRST_MAP_IDENTITY);

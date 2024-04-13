@@ -34,11 +34,11 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
     public static final int START_DAMAGE = 5;
     public static final PlayerInventory PLAYER_INVENTORY = new PlayerInventory();
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, FileNotFoundException {
         new CalculaChroniclesOfTheAlgorithmicKingdom().startGame();
     }
 
-    public void startGame() throws InterruptedException {
+    public void startGame() throws InterruptedException, FileNotFoundException {
         Scanner in = new Scanner(System.in);
 
         InventoryItemsStorage inventoryItemsStorage = new InventoryItemsStorage();
@@ -149,7 +149,7 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         }
     }
 
-    private static void executeCommand(Command userCommand, Scanner in, PlayerStatus playerStatus) {
+    private static void executeCommand(Command userCommand, Scanner in, PlayerStatus playerStatus) throws FileNotFoundException {
         if (userCommand.getCommandDescription().equals("FIGHT!")) {
             userCommand.execute(in);
         } else if (userCommand.getCommandDescription().equals("RESET!")) {
