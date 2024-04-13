@@ -1,9 +1,5 @@
 # Developer Guide
 
-## Acknowledgements
-
-{list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
-
 ## Design
 
 ### Architecture
@@ -156,12 +152,50 @@ It allows the target user to supplement their existing revision with a more fun 
 
 ## Non-Functional Requirements
 
-{Give non-functional requirements}
+1. Should work on any Windows, Linux, Unix as long as it has Java 11 or above installed.
+2. Users should be able to use the app without problems with basic CLI knowledge.
+3. A student user should be able to complete the game by answering all the questions.
 
-## Glossary
-
-* *glossary item* - Definition
 
 ## Instructions for manual testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+### Launch and Shutdown
+1. Initial launch
+   1. Download the jar file and copy it into an empty folder.
+   2. In your command line interface (CLI), navigate to the directory the jar file is in
+   and enter this command ```java -jar Release.v2.1.jar```.
+2. Saving the game
+   1. When you feel like closing the game, enter the command ```quit``` or ```q```.
+   2. This will close and save the game for when you're ready to come back.
+
+### Game Movement
+1. The game controls utilises w, a, s and d keys to move about as we are all familiar with. ```w``` is for moving upwards,
+```a``` is for moving leftwards, ```s``` is for moving downwards and ```d``` is for moving rightwards.
+2. Enter ```s``` in the command line and the character represented by the symbol P will move 1 space downwards. A space is denoted by a ```.``` on the map.
+3. To move multiple spaces at a time, you may enter a movement direction followed by an integer with a space between them. <br>
+e.g. ```s 3```
+
+### Interacting with entities
+1. An interactable entity is denoted by a character on the map.
+2. The ```#``` character denotes the shop to buy items and the rest is for you to explore and find out.
+3. Navigate next to a character and enter ```e``` to interact with it.
+4. There will be prompts in the game to help you navigate the interactions.
+
+### Battling
+1. Interacting with an enemy will trigger a battle prompt.
+2. ```r``` or ```run``` will allow u to eun away if you're not ready to face the enemy.
+3. ```f``` or ```fight``` will trigger the battling sequence where the aim is to get the math questions correct
+in order to chip away at the enemies health to defeat it.
+4. All answers to the questions are integers.
+5. Upon successfully defeating the enemy, exp and money is obtained.
+
+### Shop
+1. Once enough money is accumulated, items can be bought from the shop in order to defeat persistent enemies.
+2. Interacting with the shop will bring up a page to enter or exit the shop.
+3. Key in the command to enter the shop to be greeted with items to purchase.
+4. In order to purchase an item enter the index of the item, e.g. ```1```.
+
+### Item usage
+1. In order to use the items, open up the inventory using the ```i``` or ```inventory``` command.
+2. To use an item of index item 1, enter the command ```use 1``` .
+3. This only works if there are items in your inventory.

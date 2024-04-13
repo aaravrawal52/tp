@@ -202,6 +202,7 @@ public class Ui {
         printDividingLine();
         System.out.println("'w' 'a' 's' 'd' to move around");
         System.out.println("'e' to interact");
+        System.out.println("'i' to open inventory");
         System.out.println("'q' to quit");
         System.out.println("'h' to print help menu");
         System.out.println("'run' to escape the battle interface");
