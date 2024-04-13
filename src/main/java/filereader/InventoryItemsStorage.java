@@ -17,7 +17,7 @@ import static main.CalculaChroniclesOfTheAlgorithmicKingdom.PLAYER_INVENTORY;
 
 public class InventoryItemsStorage {
 
-    public void readFile(PlayerInventory playerInventory) throws FileNotFoundException {
+    public void readFile() throws IOException {
         try {
             Files.createDirectories(Paths.get("./data"));
         } catch (IOException e) {
@@ -36,13 +36,18 @@ public class InventoryItemsStorage {
         }
 
         Scanner fileContent = new Scanner(inventoryItems);
-        while (fileContent.hasNext()) {
-            String originalData = fileContent.nextLine();
-            String[] data = originalData.split("\\|");
-            Consumable item = new Consumable(Integer.parseInt(data[0]), Integer.parseInt(data[1]), data[2],
-                    data[3], Integer.parseInt(data[4]));
-            item.setQuantity(Integer.parseInt(data[5]));
-            PLAYER_INVENTORY.loadInventory(item);
+        try {
+            while (fileContent.hasNext()) {
+                String originalData = fileContent.nextLine();
+                String[] data = originalData.split("\\|");
+                Consumable item = new Consumable(Integer.parseInt(data[0]), Integer.parseInt(data[1]), data[2],
+                        data[3], Integer.parseInt(data[4]));
+                item.setQuantity(Integer.parseInt(data[5]));
+                PLAYER_INVENTORY.loadInventory(item);
+            }
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException | StringIndexOutOfBoundsException e){
+            System.out.println("Inventory data corrupted, cleaning your items : (");
+            new FileWriter(INVENTORY_ITEMS_PATH).close();
         }
         fileContent.close();
     }

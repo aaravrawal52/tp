@@ -102,17 +102,8 @@ public class MapStorage {
     }
 
     public void saveMap(BaseMap map) throws IOException {
-        FileWriter fileWriter1 = new FileWriter(MAP_PROPERTY_PATH);
-
-        String width = String.valueOf(map.getWidth());
-        String height = String.valueOf(map.getHeight());
-        String playerX = String.valueOf(map.getPlayerX());
-        String playerY = String.valueOf(map.getPlayerY());
-
-        fileWriter1.write(width + System.lineSeparator());
-        fileWriter1.write(height + System.lineSeparator());
-        fileWriter1.write(playerX + System.lineSeparator());
-        fileWriter1.write(playerY + System.lineSeparator());
+        new FileWriter(MAP_PROPERTY_PATH).close();
+        FileWriter fileWriter1 = getFileWriter(map);
 
         fileWriter1.close();
         FileWriter fileWriter2 = new FileWriter(BASE_MAP_PATH);
@@ -125,5 +116,20 @@ public class MapStorage {
             fileWriter2.write(temp + System.lineSeparator());
         }
         fileWriter2.close();
+    }
+
+    private FileWriter getFileWriter(BaseMap map) throws IOException {
+        FileWriter fileWriter1 = new FileWriter(MAP_PROPERTY_PATH);
+
+        String width = String.valueOf(map.getWidth());
+        String height = String.valueOf(map.getHeight());
+        String playerX = String.valueOf(map.getPlayerX());
+        String playerY = String.valueOf(map.getPlayerY());
+
+        fileWriter1.write(width + System.lineSeparator());
+        fileWriter1.write(height + System.lineSeparator());
+        fileWriter1.write(playerX + System.lineSeparator());
+        fileWriter1.write(playerY + System.lineSeparator());
+        return fileWriter1;
     }
 }
