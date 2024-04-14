@@ -123,7 +123,6 @@ public class CalculaChroniclesOfTheAlgorithmicKingdom {
         } catch (IOException e) {
             System.out.println("Can not save Player Status" + e.getMessage());
         }
-
         try {
             inventoryItemsStorage.saveFile(PLAYER_INVENTORY);
         } catch (IOException e) {

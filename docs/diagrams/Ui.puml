@@ -1,0 +1,32 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+
+class Ui
+class PlayerStatus
+class TextBox
+class "{abstract}\nBaseMap" as BaseMap{
+#mapData:ArrayList<ArrayList<Character>>
+}
+class Enemy
+class ShopKeeper{
+#shopItems:ArrayList<ShopItem>
+}
+class InteractableEntity
+class BattleInterface
+class ShopMap
+class PlayerInventory
+class FirstMap
+
+Ui ..> PlayerStatus
+Ui ..> TextBox
+Ui ..> BaseMap
+Ui ..> Enemy
+Ui ..> ShopKeeper
+InteractableEntity <|-- ShopKeeper
+InteractableEntity <|-- Enemy
+BaseMap <|-- BattleInterface
+BaseMap <|-- ShopMap
+BaseMap <|-- PlayerInventory
+BaseMap <|-- FirstMap
+@enduml

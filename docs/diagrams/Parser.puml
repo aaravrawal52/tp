@@ -1,0 +1,29 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+
+class Parser{
+{method} +parseCommand(userCommand:String) : Command
+}
+enum "<<enumeration>>\nCommandType" as CommandType{
+FIGHT
+RUN
+MOVE_FORWARD
+MOVE_DOWNWARD
+MOVE_LEFT
+MOVE_RIGHT
+INTERACT
+QUIT
+HELP
+EXIT
+ERROR
+INVENTORY
+USE_ITEM
+CLOSE_INV
+RESET
+}
+
+Parser ..> CommandType
+
+hide CommandType method
+@enduml
