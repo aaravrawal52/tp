@@ -60,7 +60,8 @@ public class BattleInterface extends BaseMap {
             }
             answer = Integer.parseInt(answerCommand); // Parse the possibly truncated input
             if (mathQuestion.checkAns(answer)) {
-                currentTextBox.setNextDialogue("You got the question CORRECT. You then proceed to swing as hard as you can");
+                currentTextBox.setNextDialogue("You got the question CORRECT. You then proceed to swing as " +
+                        "hard as you can");
                 playerHitEnemy();
                 difficulty += 1;
             } else {
