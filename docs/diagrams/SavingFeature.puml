@@ -1,0 +1,44 @@
+@startuml
+hide footbox
+
+actor User
+
+
+participant ":CalculaChroniclesOfTheAlgorithmicKingdom" as mainClass
+participant ":MapStorage" as MapStorage
+participant ":PlayerStatusStorage" as PlayerStatusStorage
+participant ":InventoryItemsStorage" as InventoryItemsStorage
+
+
+loop until the command type is QuitCommand
+    User -> mainClass:type a random command
+    activate mainClass
+    mainClass -> mainClass: setUserCommand(...)
+    activate mainClass
+    deactivate mainClass
+    mainClass -> mainClass: executeCommand(...)
+    activate mainClass
+    deactivate mainClass
+    mainClass -> mainClass: printMessageUnderMap(...)
+    activate mainClass
+    deactivate mainClass
+    mainClass -> mainClass: saveAllGameFile(...)
+    activate mainClass
+    mainClass -> MapStorage:saveMap(map)
+    activate MapStorage
+    mainClass -> PlayerStatusStorage:savePlayerStatus(playerStatus)
+    activate PlayerStatusStorage
+    mainClass -> InventoryItemsStorage:saveFile(PLAYER_INVENTORY)
+    activate InventoryItemsStorage
+    deactivate mainClass
+end
+
+deactivate mainClass
+deactivate MapStorage
+deactivate PlayerStatusStorage
+deactivate InventoryItemsStorage
+destroy mainClass
+destroy MapStorage
+destroy PlayerStatusStorage
+destroy InventoryItemsStorage
+@enduml
