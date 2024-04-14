@@ -47,7 +47,7 @@ public class ShopMap extends BaseMap{
         currentTextBox.setNextNarration("You are greeted by a cat with oddly small eyes.\n");
         currentTextBox.setNextDialogue(currentEntity.getDefaultMessage() + "\n" + currentEntity.formatShop());
         currentTextBox.setNextInstruction("Give the shop keeper an [INDEX] to view the item and purchase" +
-                " or enter [exit] or [run]" +
+                " or enter [exit]" +
                 " to leave the shop.");
     }
 
