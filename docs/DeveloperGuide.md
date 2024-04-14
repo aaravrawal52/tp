@@ -67,7 +67,7 @@ only used in `FirstMap` only.
 
 The following image shows the architecture of the Map component
 
-![Map UML](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/Map.png)
+![Map UML](https://github.com/AY2324S2-CS2113-W12-3/tp/blob/master/picture/Map.png?raw=true) 
 
 
 The reason why the player's map(FirstMap), the shop's interface and the battle interface all extend off of the `BaseMap`
@@ -84,7 +84,7 @@ There exists only 1 shop at any given time during gameplay. During an interactio
  will execute. This comes from the execution of `enableFight`. Below is the diagram that displays how the `enableFight`
 method works.
 
-![ShopMap](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/ShopMap.png)
+![ShopMap](https://github.com/AY2324S2-CS2113-W12-3/tp/blob/master/picture/ShopMap.png?raw=true)
 
 This is the general flow of `enableFight`.
 
@@ -95,6 +95,8 @@ This is the general flow of `enableFight`.
 5. push dialogue to the text box.
 6. repeat until the command given is "exit".
 
+This general flow is also similar to that of the battleInterface's enableFight. However, in the battleInterface, the 
+fight loop only ends when either the player or the enemy dies.
 
 ### Interacting with Environment Component
 
