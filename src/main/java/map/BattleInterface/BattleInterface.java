@@ -39,25 +39,28 @@ public class BattleInterface extends BaseMap {
         int difficulty = 0;
         while (currentPlayer.getPlayerHealth() > 0 && currentEntity.getHealth() > 0) {
             int answer;
-            Pattern pattern = Pattern.compile("^[--]?[0-9]+$");
+            Pattern pattern = Pattern.compile("^[--]?[0-9]+$"); // Pattern to check if the input is numeric
             ui.printPlayerStatus(currentPlayer);
             ui.printMap(mapData, (Enemy) currentEntity);
             MathQuestion mathQuestion = mathPool.getQuestionByDifficulty(difficulty);
-            //ui.printQuestion(mathQuestion);
             currentTextBox.setNextNarration(mathQuestion.getQuestion());
             ui.printTextBox(currentTextBox);
             String answerCommand = in.nextLine().trim();
-            while (!pattern.matcher(answerCommand).matches()) {
+            if (answerCommand.length() > 5) { // Check if input length exceeds 5 characters
+                answerCommand = answerCommand.substring(0, 5); // Take only the first 5 characters
+            }
+            while (!pattern.matcher(answerCommand).matches()) { // Validate the trimmed input
                 currentTextBox.setNextError("Answer must be an integer.");
                 currentTextBox.setNextInstruction(mathQuestion.getQuestion());
                 ui.printTextBox(currentTextBox);
                 answerCommand = in.nextLine().trim();
+                if (answerCommand.length() > 5) {
+                    answerCommand = answerCommand.substring(0, 5); // Again trim input if needed
+                }
             }
-            answer = Integer.parseInt(answerCommand);
+            answer = Integer.parseInt(answerCommand); // Parse the possibly truncated input
             if (mathQuestion.checkAns(answer)) {
-                currentTextBox.setNextDialogue("You got the question CORRECT. You then proceed to swing as hard as you"
-                       + " can");
-
+                currentTextBox.setNextDialogue("You got the question CORRECT. You then proceed to swing as hard as you can");
                 playerHitEnemy();
                 difficulty += 1;
             } else {
@@ -66,6 +69,7 @@ public class BattleInterface extends BaseMap {
             }
         }
     }
+
 
     public void initMap(int givenWidth, int givenHeight) {
         this.width = givenWidth;
