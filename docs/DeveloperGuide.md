@@ -19,6 +19,7 @@ listed below are a collection of classes used by multiple components which will 
 ```Ui``` responsible for displaying the game's UI, interactions and narrations to the user.<br>
 ```Storage``` responsible for saving the current state of the game when quitting the app.<br>
 ```Parser``` is a collection of classes that converts the user's commands and starts the command execution process. <br>
+```Map``` is a collection of classes that handles the data that is being printed to the main portion of the screen. <br>
 <br>
 Below is how some of the architecture components would interact with each other when the user inputs the command to move. 
 ![architecture_sequence_diagram](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/ArchitectureSequenceDiagram.png)
@@ -43,20 +44,26 @@ conditions, we will call the execute function with no parameter.
 
 The API of this component is defined in BaseMap.java.
 
-Each map instance consists of a `currentMap` which stores a 2-dimensional array of characters which represents the 
-printed map for the player. All maps will come with a given `height` and `width`, all of these attributes are inherited
+Each map instance is associated with a 2-dimensional array of characters which represents the 
+printed map for the player, all the printable data is stored in the `MapData` for each instance of a map.
+All maps will come with a given `height` and `width`, all of these attributes are inherited
 from the AMap abstract class. Currently, the `FirstMap` and `BattleInterface` classes
 extend AMap. `FirstMap` is the first map displayed upon entering the game and it displays the position of the player. 
-The `BattleInterface` is the map displayed when the player interacts with an `interactable`. The following image
-shows the architecture of the Map component
+The `BattleInterface` is the map displayed when the player interacts with an `interactable`.
+
+The `MapGenerator` is a class that handles the random generation of the enemies and the location of the shop, and is
+only used in `FirstMap` only.
+
+The following image shows the architecture of the Map component
 
 ![Map UML](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/Map.png)
 
-At the moment the `MapGenerator` class allows the positions of enemies to be placed randomly throughout instances of
-`FirstMap` only. 
 
 The reason why the player's map(FirstMap), the shop's interface and the battle interface all extend off of the `BaseMap`
-class is because during the game loop, these maps are being cycled through as the main screen the user will view.
+class is because during the game loop, these maps are being cycled through as the main screen the user will view. When 
+an `Enemy` is interacted with and the [FIGHT] command is used, the `enableFight` is executed for either the Enemy, this
+also applies for the Shop. `enableFight` is another game loop that handles all the user - Enemy or user - ShopKeeper
+interactions. 
 
 ### Interacting with Environment Component
 
