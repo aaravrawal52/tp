@@ -1,28 +1,53 @@
 ## AMap Class Diagram
 @startuml
-
+hide circle
 
 
   class BaseMap {
+- currentMap : int (static)
+- storedMaps : ArrayList<BaseMap> (static)
++ movePlayerUpOne() : void
++ movePlayerDownOne() : void
++ movePlayerLeftOne() : void
++ movePlayerRightOne() : void
++ handleInteract() : String
   }
 
   class FirstMap {
++ isWon() : boolean
   }
 
   class MapGenerator {
+  + generateMap() : void
   }
 
   class ShopMap {
+  - currentPlayer : PlayerStatus
+  - currentTextBox : TextBox
+  - currentEntity : ShopKeeper
+  - inventory : PLayerInventory
+  + enableFight(Scanner in) : void
   }
 
-    class BattleInterface {
-    }
+   class BattleInterface {
+  - currentPlayer : PlayerStatus
+  - currentTextBox : TextBox
+  - currentEntity : InteractableEntity
+  + enableFight() : void
+   }
+
+   class PLayerInventory {
+   - currentTextBox : TextBox
+   - playerstatus : PlayerStatus
+   + useItem(Consumable item)
+   }
 
 
 
   BaseMap <|-- FirstMap
   BaseMap <|-- ShopMap
   BaseMap <|-- BattleInterface
+  BaseMap <|-- PLayerInventory
 
 
 @enduml
