@@ -51,7 +51,7 @@ Command back to the main based on the command type. The Final step is to call th
 is the type of `fightCommand`, we will call the execute function with one parameter `Scanner`. For all other
 conditions, we will call the execute function with no parameter.
 
-### Map Component
+### Map Component: Overview
 
 The API of this component is defined in BaseMap.java.
 
@@ -75,6 +75,26 @@ class is because during the game loop, these maps are being cycled through as th
 an `Enemy` is interacted with and the [FIGHT] command is used, the `enableFight` is executed for either the Enemy, this
 also applies for the Shop. `enableFight` is another game loop that handles all the user - Enemy or user - ShopKeeper
 interactions. 
+
+### Map Component: ShopMap Class
+
+The API of this class is defined in ShopMap.java.
+
+There exists only 1 shop at any given time during gameplay. During an interaction with the shop. A new separate gameloop
+ will execute. This comes from the execution of `enableFight`. Below is the diagram that displays how the `enableFight`
+method works.
+
+![ShopMap](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/ShopMap.png)
+
+This is the general flow of `enableFight`.
+
+1. Enter game loop.
+2. Print player status, the shopkeeper and the text box.
+3. Get a command from the user.
+4. if a valid purchase is detected the purchase is processed.
+5. push dialogue to the text box.
+6. repeat until the command given is "exit".
+
 
 ### Interacting with Environment Component
 
