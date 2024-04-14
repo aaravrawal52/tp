@@ -25,7 +25,7 @@ Below is how some of the architecture components would interact with each other 
 ![architecture_sequence_diagram](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/ArchitectureSequenceDiagram.png)
 The section below gives more details of each component.
 ### UI Component (Ui class)
-![](/picture/Ui.png)
+![](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/Ui.png)
 The Ui class is responsible for managing the user interface aspects of the application. It handles the display  
 of various elements such as player status, text boxes, maps, inventory, help menu, and messages.
 
@@ -33,11 +33,11 @@ The `Ui` Component,
 - contains only one class `Ui.java` for Ui related job
 - depends on attributes such as `mapData` or `shopItems` in other classes to print
 ### Parser Component (Parser class)
-![](/picture/Parser.png)
+![](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/Parser.png)
 The Parser class package is designed to analyze and parse user commands in a text-based adventure game scenario.   
 It processes user input and determines the appropriate action to take based on predefined command types.
 
-The parser component,
+The `parser` component,
 - provides method to read text-based user command
 - analyzes and returns the corresponding command type based on the text-based user command
 
@@ -140,7 +140,7 @@ an error message is printed outlining the error.
 ### Saving feature
 In the main class, the saving is done in every loop through a method called `saveAllGameFile`.
 The following sequence diagram shows how methods are called during saving mechanism.
-![](/picture/SavingFeature.png)
+![](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/SavingFeature.png)
 
 
 ## Product scope
