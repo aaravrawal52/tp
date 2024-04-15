@@ -20,7 +20,7 @@ main -> ui : print()
 activate ui
 ui --> user
 deactivate ui
-user -> main : next command
+user -> main : "d"
 
 end box
 @enduml
