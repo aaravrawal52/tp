@@ -31,12 +31,13 @@ loop until the command type is QuitCommand
     mainClass -> InventoryItemsStorage:saveFile(PLAYER_INVENTORY)
     activate InventoryItemsStorage
     deactivate mainClass
+    deactivate MapStorage
+    deactivate PlayerStatusStorage
+    deactivate InventoryItemsStorage
 end
 
 deactivate mainClass
-deactivate MapStorage
-deactivate PlayerStatusStorage
-deactivate InventoryItemsStorage
+
 destroy mainClass
 destroy MapStorage
 destroy PlayerStatusStorage
