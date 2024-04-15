@@ -1,7 +1,7 @@
 @startuml
 box Architecture
 participant "User" as user
-participant "CalculaChroniclesOfTheAlgorithmicKingdom" as main
+participant ":CalculaChroniclesOfTheAlgorithmicKingdom" as main
 participant ":UI" as ui
 participant ":Parser" as parser
 participant ":MoveRightCommand" as command
