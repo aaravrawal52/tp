@@ -23,7 +23,7 @@ public class FightingCommand extends Command {
 
     @Override
     public void execute(Scanner in) throws FileNotFoundException {
-        if (currentMapForCommand instanceof map.BattleInterface.BattleInterface) {
+        if (currentMapForCommand instanceof map.battleinterface.BattleInterface) {
             currentMapForCommand.enableFight(in);
             BaseMap.currentMap = mapIndex.get(FIRST_MAP_IDENTITY);
             if (currentMapForCommand.getEntityDeath()) {

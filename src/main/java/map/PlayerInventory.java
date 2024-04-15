@@ -39,6 +39,7 @@ public class PlayerInventory extends BaseMap {
         List<Item> filteredList = generalItems.stream().filter(x -> x.getName().equalsIgnoreCase(
                 item.getName())).collect(Collectors.toList());
         if (filteredList.isEmpty()) {
+            item.setQuantity(1);
             generalItems.add(item);
             return;
         }

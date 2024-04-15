@@ -1,4 +1,4 @@
-package map.BattleInterface;
+package map.battleinterface;
 
 import interactable.Enemy;
 import interactable.InteractableEntity;
