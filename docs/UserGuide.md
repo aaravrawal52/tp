@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to Calcula: Chronicles of the Algorithmic Kingdom. This is a simple text based
+Welcome to CalculaChroniclesOfTheAlgorithmicKingdom. This is a simple text based
 game. Your goal in this game is to defeat the enemies within and claim victory for yourself as a 
 math wizard.
 
