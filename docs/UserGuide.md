@@ -10,7 +10,7 @@ math wizard.
 
 
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `CalculaChroniclesOfTheAlgorithmicKingdom` from [here](https://github.com/AY2324S2-CS2113-W12-3/tp/releases).
+2. Download the latest version of `CalculaChroniclesOfTheAlgorithmicKingdom` from [here](https://github.com/AY2324S2-CS2113-W12-3/tp/releases).
 
 ## Features 
 
@@ -51,9 +51,8 @@ diagonally.
 
 To interact the player enters `e`. 
 
-This action will bring up a new interface called the battle interface. For now there will only be battles using this 
-interface but we plan to implement shops and other entities using this interface. For now, this interface will display 
-the enemy the symbol represents and gives you 2 options, to `run` or to `fight`.
+This action will bring up a new interface called the battle interface which can be for either battling enemies or accessing the shop.
+This interface will display an image that corresponds to the symbol on the map and gives you 2 options, to `run` or to `fight`.
 
 ### Run 
 
@@ -105,7 +104,7 @@ player, hints are entirely passive and no user input is required for the hints t
 
 ### Quit
 
-Enter `q`to quit the game. The game is automatically saved.
+Enter `q` to quit the game. The game is automatically saved.
 
 
 ### Help
@@ -116,8 +115,7 @@ If you need a refresher on the controls, entering either `h` or `help` will brin
 
 Our program can save map when you are playing the game.  
 Also, it will save the player status and your inventory items
-Please Note: After buying things in shop or fighting with a monster, you have to move on the map to save your  
-file.
+Please Note: After buying things in shop or fighting with a monster, you have to move on the map to save your file.
 
 ### Reset
 
