@@ -54,6 +54,7 @@ public class PlayerInventory extends BaseMap {
         } else {
             item.setQuantity(item.getQuantity() - 1);
         }
+        currentTextBox.setNextDialogue(item.getName() + " has been used.");
     }
 
     public void sellItem(Item item) {
