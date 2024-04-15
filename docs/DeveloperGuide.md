@@ -84,7 +84,7 @@ There exists only 1 shop at any given time during gameplay. During an interactio
  will execute. This comes from the execution of `enableFight`. Below is the diagram that displays how the `enableFight`
 method works.
 
-![ShopMap](https://github.com/AY2324S2-CS2113-W12-3/tp/blob/master/picture/ShopMap.png?raw=true)
+![ShopMap](https://github.com/AY2324S2-CS2113-W12-3/tp/blob/master/picture/ShopMap.png?raw=true) 
 
 This is the general flow of `enableFight`.
 
