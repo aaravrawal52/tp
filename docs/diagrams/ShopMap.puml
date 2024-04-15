@@ -20,14 +20,14 @@ loop while answerCommand != "exit"
     Shop -> UI : printShopKeeper(currentEntity)
     Shop -> UI : printTextBox(currentTextBox)
     UI --> Player : await command
-    Player -> Scanner : answerCommand = in.nextLine()
+    Player -> Scanner : nextLine()
     Scanner --> Shop : user command
 
-    alt if answerCommand matches "\\d+"
+    alt answerCommand matches "\\d+"
         Shop -> Shop : processPurchase(answerCommand)
     else answerCommand == "run"
         TextBox -> TextBox : setNextError("Invalid command...")
-    else
+    else else
         TextBox -> TextBox : setNextError("Invalid command...")
     end if
 
