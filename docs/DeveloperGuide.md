@@ -191,25 +191,25 @@ It allows the target user to supplement their existing revision with a more fun 
 
 ## User Stories
 
-| Priority | As a ...       | I want to ...                                               | So that I can ...                                       |
-|----------|----------------|-------------------------------------------------------------|---------------------------------------------------------|
-| ***      | new player     | to get access to a help menu                                | refer to them when I don't know the commands to proceed |
-| ***      | player         | to see a map of the play area                               | see the map and location in real-time                   |
-| ***      | player         | to move around at will                                      | explore the world as I want to                          |
-| ***      | player         | to have an ending to the game                               | win the game                                            |
-| ***      | player         | to be able to track stats/items                             | gauge how my characters progress                        |
-| ***      | player         | save my game                                                | come back and finish it when I have time                |
-| ***      | player         | To have a death and restart mechanic                        | add challenge to the game                               |
-| **       | player         | To be able to fight entities                                | battle in and interactive way                           |
-| **       | player         | To collect items                                            | enhance my character                                    |
-| **       | player         | To interact with things in the environment                  | be more immersed into the game                          |
-| **       | player         | See an actual image of the characters                       | know what I am fighting against                         |
-| **       | student player | To have variations in the questions asked                   | revise more stuff rather than the same questions        |
-| **       | player         | to have clear distinctions between entities I interact with | have a clearer picture of what I'm doing                |
-| **       | student player | refresh my knowledge of math                                | revise as I play at the same time                       |
-| *        | player         | To know the background of this game                         | follow the storyline                                    |
-| *        | player         | to see funny and engaging dialogue                          | enjoy the story                                         |
-| *        | player         | To have access to hints to the questions                    | make calculations easier                                |
+| Priority | As a ...       | I want to ...                                            | So that I can ...                                       |
+|----------|----------------|----------------------------------------------------------|---------------------------------------------------------|
+| ***      | new player     | get access to a help menu                                | refer to them when I don't know the commands to proceed |
+| ***      | player         | see a map of the play area                               | see the map and location in real-time                   |
+| ***      | player         | move around at will                                      | explore the world as I want to                          |
+| ***      | player         | have an ending to the game                               | win the game                                            |
+| ***      | player         | be able to track stats/items                             | gauge how my characters progress                        |
+| ***      | player         | save my game                                             | come back and finish it when I have time                |
+| ***      | player         | have a death and restart mechanic                        | add challenge to the game                               |
+| **       | player         | be able to fight entities                                | battle in and interactive way                           |
+| **       | player         | collect items                                            | enhance my character                                    |
+| **       | player         | interact with things in the environment                  | be more immersed into the game                          |
+| **       | player         | see an actual image of the characters                    | know what I am fighting against                         |
+| **       | student player | have variations in the questions asked                   | revise more stuff rather than the same questions        |
+| **       | player         | have clear distinctions between entities I interact with | have a clearer picture of what I'm doing                |
+| **       | student player | refresh my knowledge of math                             | revise as I play at the same time                       |
+| *        | player         | know the background of this game                         | follow the storyline                                    |
+| *        | player         | see funny and engaging dialogue                          | enjoy the story                                         |
+| *        | player         | have access to hints to the questions                    | make calculations easier                                |
 
 
 ## Non-Functional Requirements
