@@ -2,7 +2,7 @@ package command.fight;
 
 import command.Command;
 import map.BaseMap;
-import map.BattleInterface.BattleInterface;
+import map.battleinterface.BattleInterface;
 import map.ShopMap;
 
 import static map.BaseMap.storedMaps;

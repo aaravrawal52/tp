@@ -9,7 +9,7 @@ import interactable.enemies.Gryphon;
 import interactable.enemies.Goblin;
 import map.BaseMap;
 import map.ShopMap;
-import map.BattleInterface.BattleInterface;
+import map.battleinterface.BattleInterface;
 
 import java.util.Objects;
 
