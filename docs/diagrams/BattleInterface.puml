@@ -115,7 +115,7 @@ else player died
 end
 f --> main
 deactivate f
-deactivate main
+
 
 
 end box
