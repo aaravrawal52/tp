@@ -1,9 +1,9 @@
 @startuml
 actor Player
-participant "ShopMap" as Shop
-participant "Ui" as UI
-participant "TextBox" as TextBox
-participant "Scanner" as Scanner
+participant ":ShopMap" as Shop
+participant ":Ui" as UI
+participant ":TextBox" as TextBox
+participant ":Scanner" as Scanner
 
 Player -> Shop : enableFight(Scanner)
 activate Shop
@@ -19,20 +19,20 @@ loop while answerCommand != "exit"
     Shop -> UI : printPlayerStatus(currentPlayer)
     Shop -> UI : printShopKeeper(currentEntity)
     Shop -> UI : printTextBox(currentTextBox)
-    UI -> Player : await command
-    Player -> Scanner : answerCommand = in.nextLine().trim()
-    Scanner -> Shop
+    UI --> Player : await command
+    Player -> Scanner : answerCommand = in.nextLine()
+    Scanner --> Shop : user command
 
     alt if answerCommand matches "\\d+"
         Shop -> Shop : processPurchase(answerCommand)
-    else if answerCommand == "run"
+    else answerCommand == "run"
         TextBox -> TextBox : setNextError("Invalid command...")
     else
         TextBox -> TextBox : setNextError("Invalid command...")
     end if
 
     Shop -> TextBox : prepareNextDialogue()
-    TextBox -> Player : Display updated dialogue/instruction
+    TextBox --> Player : Display updated dialogue/instruction
 end
 
 Shop -> TextBox : clearAll()
