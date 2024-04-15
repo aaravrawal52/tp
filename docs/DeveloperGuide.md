@@ -22,10 +22,14 @@ listed below are a collection of classes used by multiple components which will 
 ```Map``` is a collection of classes that handles the data that is being printed to the main portion of the screen. <br>
 <br>
 Below is how some of the architecture components would interact with each other when the user inputs the command to move. 
+<br>
 ![architecture_sequence_diagram](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/ArchitectureSequenceDiagram.png)
+<br>
 The section below gives more details of each component.
 ### UI Component (Ui class)
-![](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/Ui.png)
+<br>
+![Ui_diagram](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/Ui.png)
+<br>
 The Ui class is responsible for managing the user interface aspects of the application. It handles the display  
 of various elements such as player status, text boxes, maps, inventory, help menu, and messages.
 
@@ -33,7 +37,9 @@ The `Ui` Component,
 - contains only one class `Ui.java` for Ui related job
 - depends on attributes such as `mapData` or `shopItems` in other classes to print
 ### Parser Component (Parser class)
-![](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/Parser.png)
+<br>
+![Parser_diagram](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/Parser.png)
+<br>
 The Parser class package is designed to analyze and parse user commands in a text-based adventure game scenario.   
 It processes user input and determines the appropriate action to take based on predefined command types.
 
@@ -66,9 +72,9 @@ The `MapGenerator` is a class that handles the random generation of the enemies 
 only used in `FirstMap` only.
 
 The following image shows the architecture of the Map component
-
+<br>
 ![Map UML](https://github.com/AY2324S2-CS2113-W12-3/tp/blob/master/picture/Map.png?raw=true) 
-
+<br>
 
 The reason why the player's map(FirstMap), the shop's interface and the battle interface all extend off of the `BaseMap`
 class is because during the game loop, these maps are being cycled through as the main screen the user will view. When 
@@ -83,8 +89,9 @@ The API of this class is defined in ShopMap.java.
 There exists only 1 shop at any given time during gameplay. During an interaction with the shop. A new separate gameloop
  will execute. This comes from the execution of `enableFight`. Below is the diagram that displays how the `enableFight`
 method works.
-
+<br>
 ![ShopMap](https://github.com/AY2324S2-CS2113-W12-3/tp/blob/master/picture/ShopMap.png?raw=true) 
+<br>
 
 This is the general flow of `enableFight`.
 
@@ -101,8 +108,9 @@ fight loop only ends when either the player or the enemy dies.
 ### Interacting with Environment Component
 
 The API of this component is defined in InteractingCommand.java
-
+<br>
 ![Interaction UML](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/Interaction.png)
+<br>
 
 This component happens when the user chooses to key the interact command ```e```. <br>
 Here is how it works:
@@ -117,8 +125,9 @@ running their respective methods.
 ### Battling Component
 
 The API of this component is defined in FightCommand.java.
-
+<br>
 ![BattleInterface UML](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/BattleInterface.png)
+<br>
 
 This component occurs when the user chooses to fight an enemy after interacting with it using the command 
 ```f``` or ```fight```. <br>
@@ -136,7 +145,9 @@ the user after battle, handled by ```CalculaChroniclesOfTheAlgorithmicKingdom```
 ### Item Usage Component
 
 The API of the following component is defined in OpenInventoryCommand.java.
+<br>
 ![OpenInventory_UML](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/OpenInventory.png)
+<br>
 This component occurs when the user decides to open up the inventory. The user opens up the inventory using the command ```i```
 or ```inventory```.<br>
 Here is how it works:
@@ -146,7 +157,9 @@ the inventory from the stored maps in ```BaseMap```.
 3. The inventory would then be printed on the Ui for display.
 
 The API of the following component is defined in UseCommand.java.
+<br>
 ![UseItem_UML](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/ItemUsage.png)
+<br>
 This component occurs when the user decides to use an item after navigating to the inventory page containing consumable items.
 Here is how it works:
 1. When the user chooses to use an item after navigating to the consumable items page, the command is parsed.
@@ -162,7 +175,9 @@ an error message is printed outlining the error.
 ### Saving feature
 In the main class, the saving is done in every loop through a method called `saveAllGameFile`.
 The following sequence diagram shows how methods are called during saving mechanism.
+<br>
 ![](https://raw.githubusercontent.com/AY2324S2-CS2113-W12-3/tp/master/picture/SavingFeature.png)
+<br>
 
 
 ## Product scope
